@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piccolavita Tiny House</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:#0f172a;color:#fff}
+    a{text-decoration:none}
+
+    nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(0,0,0,0.6);position:sticky;top:0;z-index:1000}
+    nav a{color:#fff;margin:0 15px;font-weight:500}
+
+    .hero{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') center/cover}
+    .hero h1{font-size:48px;margin-bottom:20px}
+    .hero p{font-size:18px;max-width:600px}
+    .btn{margin-top:20px;padding:14px 28px;background:#22c55e;border-radius:8px;color:#000;font-weight:600}
+
+    section{padding:80px 40px;max-width:1200px;margin:auto}
+    h2{font-size:32px;margin-bottom:20px}
+    p{color:#cbd5f5}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+    .card{background:#1e293b;padding:20px;border-radius:12px;transition:0.3s}
+    .card:hover{transform:translateY(-5px)}
+
+    footer{background:#020617;text-align:center;padding:40px;color:#94a3b8}
+
+    /* Single page sections for models, projects, blog */
+    #models, #projects, #blog {padding-top:80px;}
+  </style>
+</head>
+<body>
+
+<nav>
+  <h2>Piccolavita</h2>
+  <div>
+    <a href="#home">Ana Sayfa</a>
+    <a href="#models">Modeller</a>
+    <a href="#projects">Projeler</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">İletişim</a>
+  </div>
+</nav>
+
+<div id="home" class="hero">
+  <h1>Piccolavita Tiny House</h1>
+  <p>4 mevsim yaşanabilir Tiny House deneyimi, yatırım ve rehber içerikleri.</p>
+</div>
+
+<section id="models">
+  <h2>Modellerimiz</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>2+1 Aile Modeli</h3>
+      <p>25 m² – Ebeveyn yatak odası + Çocuk/misafir odası</p>
+      <p>Açık plan salon + mutfak + banyo + WC</p>
+      <p>Fiyat: 950.000 TL’den başlayan</p>
+      <a href="https://wa.me/905324521522" class="btn">Teklif Al</a>
+    </div>
+    <div class="card">
+      <h3>1+1 Kompakt Model</h3>
+      <p>18–22 m² – Yatak odası + Açık plan salon/mutfak</p>
+      <p>4 mevsim kullanım için yalıtımlı</p>
+      <p>Fiyat: 750.000 TL’den başlayan</p>
+      <a href="https://wa.me/905324521522" class="btn">Teklif Al</a>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projelerimiz</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Nikfer Projesi</h3>
+      <p>Gülay & Uğur Bey: “İyi ki bu kararı vermişiz. Tiny House’ta yaşamanın mutluluğunu yaşıyoruz.”</p>
+      <a href="#contact" class="btn">Bilgi Al</a>
+    </div>
+    <div class="card">
+      <h3>Diğer Teslim Projeleri</h3>
+      <p>Denizli ve Marmaris projeleri – 2+1 ve yazlık kullanım için uygun.</p>
+      <a href="#contact" class="btn">Detaylı Bilgi</a>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <h2>Blog & Rehberler</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Tiny House ile 4 Mevsim Yaşam Rehberi</h3>
+      <p>Yalıtım, elektrik ve su sistemleri ile konforlu yaşamın ipuçları.</p>
+      <a href="#contact" class="btn">Detaylı Bilgi</a>
+    </div>
+    <div class="card">
+      <h3>Tiny House Yatırım Fırsatları</h3>
+      <p>Kiraya vererek gelir elde etme ve yatırım geri dönüş hesapları.</p>
+      <a href="#contact" class="btn">Detaylı Bilgi</a>
+    </div>
+    <div class="card">
+      <h3>Marmaris ve Nikfer Projelerimiz</h3>
+      <p>Gerçek müşteri deneyimleri ve teslim edilen projeler.</p>
+      <a href="#projects" class="btn">Projeleri Gör</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>İletişim</h2>
+  <p>Bizimle iletişime geçmek ve teklif almak için WhatsApp üzerinden ulaşabilirsiniz:</p>
+  <a href="https://wa.me/905324521522" class="btn">WhatsApp ile Teklif Al</a>
+</section>
+
+<footer>
+  <p>© 2026 Piccolavita Tiny House</p>
+</footer>
+
+<!-- Voiceflow Widget -->
+<script src="https://widget.voiceflow.com/embed.js"></script>
+<script>
+  function initVoiceflowWidget() {
+    if (typeof VoiceflowEmbed !== 'undefined') {
+      VoiceflowEmbed.init({
+        id: "VF.DM.69d21a3ee277ab03d4e774e0.QaYVCD3tsKgjw2vA",
+        container: document.body
+      });
+    } else {
+      setTimeout(initVoiceflowWidget, 100);
+    }
+  }
+  initVoiceflowWidget();
+</script>
+
+</body>
+</html>

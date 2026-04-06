@@ -1,136 +1,133 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Piccolavita Tiny House</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;background:#0f172a;color:#fff}
-    a{text-decoration:none}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piccolavita Tiny House</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#fff;color:#173836}
+html{scroll-behavior:smooth}
 
-    nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(0,0,0,0.6);position:sticky;top:0;z-index:1000}
-    nav a{color:#fff;margin:0 15px;font-weight:500}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:#fff;position:fixed;width:100%;top:0;border-bottom:1px solid #eee;z-index:1000}
+nav a{margin:0 15px;color:#173836;font-weight:500}
 
-    .hero{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') center/cover}
-    .hero h1{font-size:48px;margin-bottom:20px}
-    .hero p{font-size:18px;max-width:600px}
-    .btn{margin-top:20px;padding:14px 28px;background:#22c55e;border-radius:8px;color:#000;font-weight:600}
+.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.hero video{position:absolute;width:100%;height:100%;object-fit:cover;z-index:-1}
+.hero-overlay{background:rgba(0,0,0,0.55);position:absolute;width:100%;height:100%;top:0}
+.hero-content{z-index:2;max-width:800px;padding:20px}
+.hero h1{font-size:48px;margin-bottom:20px}
+.hero p{font-size:18px;margin-bottom:20px}
 
-    section{padding:80px 40px;max-width:1200px;margin:auto}
-    h2{font-size:32px;margin-bottom:20px}
-    p{color:#cbd5f5}
+.btn{display:inline-block;padding:16px 32px;background:#e37226;color:#173836;font-weight:700;border-radius:10px;margin:10px;transition:0.3s}
+.btn:hover{transform:scale(1.05)}
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-    .card{background:#1e293b;padding:20px;border-radius:12px;transition:0.3s}
-    .card:hover{transform:translateY(-5px)}
+section{padding:100px 60px}
+h2{font-size:34px;margin-bottom:30px}
 
-    footer{background:#020617;text-align:center;padding:40px;color:#94a3b8}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.card{background:#fff;padding:25px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.08);transition:0.3s}
+.card:hover{transform:translateY(-10px)}
 
-    /* Single page sections for models, projects, blog */
-    #models, #projects, #blog {padding-top:80px;}
-  </style>
+.highlight{background:#173836;color:#fff;text-align:center}
+.highlight p{color:#fff}
+
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#e37226;color:#173836;padding:15px 20px;border-radius:50px;font-weight:700;z-index:999}
+
+.fade{opacity:0;transform:translateY(30px);transition:1s}
+.fade.show{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
 
 <nav>
-  <h2>Piccolavita</h2>
-  <div>
-    <a href="#home">Ana Sayfa</a>
-    <a href="#models">Modeller</a>
-    <a href="#projects">Projeler</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">İletişim</a>
-  </div>
+<h3>Piccolavita</h3>
+<div>
+<a href="#models">Modeller</a>
+<a href="#projects">Projeler</a>
+<a href="#contact">İletişim</a>
+</div>
 </nav>
 
-<div id="home" class="hero">
-  <h1>Piccolavita Tiny House</h1>
-  <p>4 mevsim yaşanabilir Tiny House deneyimi, yatırım ve rehber içerikleri.</p>
+<div class="hero">
+<video autoplay muted loop>
+<source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-house-in-nature-5174/1080p.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1>1.000.000 TL’den başlayan fiyatlarla Tiny House sahibi olun</h1>
+<p>Kira yok. Beton yok. Kendi arazinde özgür yaşam var.</p>
+<a href="https://wa.me/905324521522?text=Merhaba%2C%202%2B1%20tiny%20house%20i%C3%A7in%20bilgi%20almak%20istiyorum" class="btn">Fiyat ve Plan Al</a>
+</div>
 </div>
 
-<section id="models">
-  <h2>Modellerimiz</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>2+1 Aile Modeli</h3>
-      <p>25 m² – Ebeveyn yatak odası + Çocuk/misafir odası</p>
-      <p>Açık plan salon + mutfak + banyo + WC</p>
-      <p>Fiyat: 950.000 TL’den başlayan</p>
-      <a href="https://wa.me/905324521522" class="btn">Teklif Al</a>
-    </div>
-    <div class="card">
-      <h3>1+1 Kompakt Model</h3>
-      <p>18–22 m² – Yatak odası + Açık plan salon/mutfak</p>
-      <p>4 mevsim kullanım için yalıtımlı</p>
-      <p>Fiyat: 750.000 TL’den başlayan</p>
-      <a href="https://wa.me/905324521522" class="btn">Teklif Al</a>
-    </div>
-  </div>
+<section class="highlight fade">
+<h2>SON 3 ÜRETİM KALDI</h2>
+<p>Nisan üretim kotası dolmak üzere. Şimdi karar ver, sıranı kaybetme.</p>
 </section>
 
-<section id="projects">
-  <h2>Projelerimiz</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Nikfer Projesi</h3>
-      <p>Gülay & Uğur Bey: “İyi ki bu kararı vermişiz. Tiny House’ta yaşamanın mutluluğunu yaşıyoruz.”</p>
-      <a href="#contact" class="btn">Bilgi Al</a>
-    </div>
-    <div class="card">
-      <h3>Diğer Teslim Projeleri</h3>
-      <p>Denizli ve Marmaris projeleri – 2+1 ve yazlık kullanım için uygun.</p>
-      <a href="#contact" class="btn">Detaylı Bilgi</a>
-    </div>
-  </div>
+<section id="projects" class="fade">
+<h2>Bu Kararı Veren Müşterilerimiz Pişman Olmadı</h2>
+<p>“İyi ki bu kararı vermişiz. Tiny House’ta yaşamak bambaşka bir özgürlük.”</p>
+
+<!-- Müşteri Video Alanı -->
+<div style="margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto;">
+  <!-- YouTube/Vimeo Video Embed -->
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2)">
+  <!-- BURAYA YOUTUBE LINKİNİ KOY -->
+  <!-- örnek: https://www.youtube.com/embed/9Sv7DtvMSl0?autoplay=1&mute=1&rel=0 -->
+  <iframe src="https://www.youtube.com/embed/VIDEOID" 
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" 
+    allowfullscreen>
+  </iframe>
+</div>
+</div>
+
+<a href="https://wa.me/905324521522" class="btn">Siz de Aynı Deneyimi Yaşayın</a>
 </section>
 
-<section id="blog">
-  <h2>Blog & Rehberler</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Tiny House ile 4 Mevsim Yaşam Rehberi</h3>
-      <p>Yalıtım, elektrik ve su sistemleri ile konforlu yaşamın ipuçları.</p>
-      <a href="#contact" class="btn">Detaylı Bilgi</a>
-    </div>
-    <div class="card">
-      <h3>Tiny House Yatırım Fırsatları</h3>
-      <p>Kiraya vererek gelir elde etme ve yatırım geri dönüş hesapları.</p>
-      <a href="#contact" class="btn">Detaylı Bilgi</a>
-    </div>
-    <div class="card">
-      <h3>Marmaris ve Nikfer Projelerimiz</h3>
-      <p>Gerçek müşteri deneyimleri ve teslim edilen projeler.</p>
-      <a href="#projects" class="btn">Projeleri Gör</a>
-    </div>
-  </div>
+<section id="models" class="fade">
+<h2>Popüler Model</h2>
+<div class="grid">
+<div class="card">
+<h3>2+1 Aile Modeli</h3>
+<p>25 m² – 4 kişilik yaşam</p>
+<p>4 mevsim yalıtım</p>
+<p><strong>1.000.000 TL’den başlayan</strong></p>
+<a href="https://wa.me/905324521522?text=2%2B1%20model%20i%C3%A7in%20fiyat%20almak%20istiyorum" class="btn">Bana Özel Fiyat Ver</a>
+</div>
+</div>
 </section>
 
-<section id="contact">
-  <h2>İletişim</h2>
-  <p>Bizimle iletişime geçmek ve teklif almak için WhatsApp üzerinden ulaşabilirsiniz:</p>
-  <a href="https://wa.me/905324521522" class="btn">WhatsApp ile Teklif Al</a>
+<section id="contact" class="fade">
+<h2>Hemen Teklif Al</h2>
+<p>Size özel plan ve fiyat çalışması için WhatsApp’tan yazın.</p>
+<a href="https://wa.me/905324521522" class="btn">WhatsApp</a>
 </section>
 
-<footer>
-  <p>© 2026 Piccolavita Tiny House</p>
-</footer>
+<a href="https://wa.me/905324521522" class="whatsapp">Teklif Al</a>
 
-<!-- Voiceflow Widget -->
+<script>
+// scroll animation
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+ faders.forEach(el=>{
+  const top=el.getBoundingClientRect().top;
+  if(top<window.innerHeight-100){el.classList.add('show')}
+ })
+});
+</script>
+
+<!-- Voiceflow -->
 <script src="https://widget.voiceflow.com/embed.js"></script>
 <script>
-  function initVoiceflowWidget() {
-    if (typeof VoiceflowEmbed !== 'undefined') {
-      VoiceflowEmbed.init({
-        id: "VF.DM.69d21a3ee277ab03d4e774e0.QaYVCD3tsKgjw2vA",
-        container: document.body
-      });
-    } else {
-      setTimeout(initVoiceflowWidget, 100);
-    }
-  }
-  initVoiceflowWidget();
+function initVF(){
+ if(typeof VoiceflowEmbed!=="undefined"){
+  VoiceflowEmbed.init({id:"VF.DM.69d21a3ee277ab03d4e774e0.QaYVCD3tsKgjw2vA",container:document.body});
+ } else {setTimeout(initVF,100)}
+}
+initVF();
 </script>
 
 </body>

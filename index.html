@@ -3,132 +3,427 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Piccolavita Tiny House</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Piccolavita | Tiny House — Tekerlekli Ev Üreticisi</title>
+<meta name="description" content="Piccolavita - 35 yıllık tecrübe ile doğaya yakın, ISO 9001 sertifikalı tiny house ve tiny ofis çözümleri. 1.000.000 ₺'den başlayan fiyatlarla.">
+<link rel="icon" href="https://www.piccolavita.com/assets/images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#fff;color:#173836}
-html{scroll-behavior:smooth}
-
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:#fff;position:fixed;width:100%;top:0;border-bottom:1px solid #eee;z-index:1000}
-nav a{margin:0 15px;color:#173836;font-weight:500}
-
-.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
-.hero video{position:absolute;width:100%;height:100%;object-fit:cover;z-index:-1}
-.hero-overlay{background:rgba(0,0,0,0.55);position:absolute;width:100%;height:100%;top:0}
-.hero-content{z-index:2;max-width:800px;padding:20px}
-.hero h1{font-size:48px;margin-bottom:20px}
-.hero p{font-size:18px;margin-bottom:20px}
-
-.btn{display:inline-block;padding:16px 32px;background:#e37226;color:#173836;font-weight:700;border-radius:10px;margin:10px;transition:0.3s}
-.btn:hover{transform:scale(1.05)}
-
-section{padding:100px 60px}
-h2{font-size:34px;margin-bottom:30px}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
-.card{background:#fff;padding:25px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.08);transition:0.3s}
-.card:hover{transform:translateY(-10px)}
-
-.highlight{background:#173836;color:#fff;text-align:center}
-.highlight p{color:#fff}
-
-.whatsapp{position:fixed;bottom:20px;right:20px;background:#e37226;color:#173836;padding:15px 20px;border-radius:50px;font-weight:700;z-index:999}
-
-.fade{opacity:0;transform:translateY(30px);transition:1s}
-.fade.show{opacity:1;transform:translateY(0)}
+:root{--primary:#F0C48A;--secondary:#1B745E;--accent:#D0DFCF;--bg:#fff;--bg2:#F7F5F0;--text:#1a1a1a;--text2:#5a5a5a;--text3:#8a8a8a;--link:#163A38;--h:'Quicksand',sans-serif;--b:'Inter',sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}body{font-family:var(--b);color:var(--text);background:var(--bg);line-height:1.6}
+::selection{background:var(--primary);color:#000}img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
+button{font-family:var(--b);cursor:pointer;border:none}input,textarea,select{font-family:var(--b)}
+.ct{max-width:1200px;margin:0 auto;padding:0 24px}
+/* Header */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(20px);border-bottom:1px solid #e8e5de;transition:box-shadow .3s}
+.hdr.sc{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{height:36px;cursor:pointer}
+.nv{display:flex;gap:24px;align-items:center}
+.nv span{font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
+.nv span.on{color:var(--secondary);border-bottom-color:var(--secondary)}
+.nv span:hover{color:var(--secondary)}
+.btn1{background:var(--accent);color:#232323;padding:10px 22px;font-size:13px;font-weight:600}
+.btn2{background:var(--secondary);color:#fff;padding:12px 28px;font-size:14px;font-weight:600}
+.btn2:hover{background:#156650}
+.btn3{background:transparent;color:var(--secondary);border:2px solid var(--secondary);padding:10px 28px;font-size:14px;font-weight:600}
+.btn3:hover{background:var(--secondary);color:#fff}
+.mob-tog{display:none;background:none;font-size:24px;color:var(--text);border:none}
+@media(max-width:900px){.nv{display:none}.mob-tog{display:block}.nv.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:#fff;padding:20px;gap:14px;border-bottom:1px solid #e8e5de;box-shadow:0 8px 24px rgba(0,0,0,.08)}}
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#f7f5f0,#e8efe6 50%,#f0ead6)}
+.hero::before{content:'';position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,var(--secondary) 1px,transparent 1px);background-size:40px 40px}
+.hero-g{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:80px 0 60px;position:relative;z-index:2}
+@media(max-width:900px){.hero-g{grid-template-columns:1fr;padding:48px 0}}
+.hero h1{font-family:var(--h);font-size:clamp(32px,5vw,48px);font-weight:700;line-height:1.15;margin-bottom:20px}
+.hero h1 em{color:var(--secondary);font-style:normal}
+.badge{display:inline-block;background:var(--accent);padding:6px 16px;margin-bottom:20px;font-size:12px;font-weight:600;color:var(--secondary);letter-spacing:2px;text-transform:uppercase}
+.stats{display:flex;gap:36px;margin-top:48px;flex-wrap:wrap}
+.stats b{font-family:var(--h);font-size:32px;font-weight:700;color:var(--secondary);display:block}
+.stats small{font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase}
+.hero-img{position:relative}
+.hero-img img{width:100%;height:420px;object-fit:cover;box-shadow:0 24px 64px rgba(0,0,0,.12)}
+@media(max-width:900px){.hero-img img{height:280px}}
+.ptag{position:absolute;bottom:-16px;left:-16px;background:#fff;padding:16px 20px;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.ptag small{font-size:11px;color:var(--text3);display:block}.ptag strong{font-family:var(--h);font-size:22px;color:var(--secondary);font-weight:700}
+/* Section */
+.st{font-family:var(--h);font-size:clamp(26px,4vw,36px);font-weight:700;text-align:center;margin-bottom:6px}
+.st em{color:var(--secondary);font-style:normal}
+.ss{color:var(--text2);text-align:center;margin-bottom:32px;font-size:15px}
+/* Filters */
+.flt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;align-items:center}
+.fb{font-size:13px;font-weight:600;padding:8px 20px;background:var(--bg2);color:var(--text2);border:none;cursor:pointer;transition:.2s}
+.fb.on{background:var(--secondary);color:#fff}
+.si{background:var(--bg2);border:1px solid #e0ddd6;color:var(--text);padding:8px 16px;font-size:13px;outline:none;width:170px}
+/* Grid */
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+/* Card */
+.mc{background:#fff;border:1px solid #e8e5de;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.mc:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.mc-img{position:relative;overflow:hidden;cursor:pointer}
+.mc-img img{width:100%;height:200px;object-fit:cover;transition:transform .4s}
+.mc:hover .mc-img img{transform:scale(1.05)}
+.mc-badge{position:absolute;top:10px;left:10px;padding:3px 12px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.mc-badge.y{background:var(--secondary);color:#fff}.mc-badge.o{background:var(--primary);color:#1a1a1a}
+.mc-b{padding:16px 18px 14px}
+.mc-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.mc-h h3{font-family:var(--h);font-size:20px;font-weight:700}
+.mc-h small{font-size:11px;color:var(--text3)}
+.mc-r{font-size:12px;color:var(--text2);margin-bottom:10px}
+.mc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.mc-tag{background:var(--bg2);color:var(--text2);padding:2px 9px;font-size:10px;font-weight:500}
+.mc-f{border-top:1px solid #e8e5de;padding-top:12px;display:flex;justify-content:space-between;align-items:center}
+.mc-pl{font-size:10px;color:var(--text3)}.mc-p{font-family:var(--h);font-size:18px;font-weight:700;color:var(--secondary)}
+.mc-acts{display:flex;gap:6px}
+.cb{font-size:10px;font-weight:600;padding:6px 12px;background:transparent;color:var(--text2);border:1px solid #d0d0d0;cursor:pointer;transition:.2s}
+.cb.on{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.db{background:var(--accent);color:var(--link);padding:6px 12px;font-size:10px;font-weight:600;border:none;cursor:pointer}
+/* Modal */
+.mo{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
+.mo.vis{display:flex}
+.md{background:#fff;max-width:720px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 32px 80px rgba(0,0,0,.2)}
+.md>img{width:100%;height:300px;object-fit:cover}
+.md-b{padding:28px}
+.md-h{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.md-h h2{font-family:var(--h);font-size:28px;font-weight:700}.md-h .pr{font-family:var(--h);font-size:24px;font-weight:700;color:var(--secondary)}
+.md-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:20px}
+.md-sp{background:var(--bg2);padding:12px;text-align:center}.md-sp small{font-size:10px;color:var(--text3);display:block;margin-bottom:3px}.md-sp b{font-size:13px}
+.md-ft{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}
+.md-ft span{background:var(--secondary);color:#fff;padding:4px 12px;font-size:11px;font-weight:500}
+.md-a{display:flex;gap:10px;flex-wrap:wrap}
+/* Compare */
+.cmod{background:#fff;max-width:900px;width:100%;max-height:85vh;overflow:auto;padding:28px;box-shadow:0 32px 80px rgba(0,0,0,.2)}
+.cmod h2{font-family:var(--h);font-size:26px;font-weight:700;margin-bottom:20px}
+.ctbl{width:100%;border-collapse:collapse;font-size:13px}
+.ctbl th{padding:10px 14px;text-align:center;border-bottom:2px solid var(--secondary)}
+.ctbl th:first-child{text-align:left;color:var(--text3);font-weight:500}
+.ctbl th img{width:72px;height:50px;object-fit:cover;margin:0 auto 6px;display:block}
+.ctbl th .nm{font-family:var(--h);font-size:16px;font-weight:700;color:var(--secondary)}
+.ctbl td{padding:10px 14px;text-align:center;border-bottom:1px solid #e8e5de;font-size:12px}
+.ctbl td:first-child{text-align:left;color:var(--text3);font-weight:500}
+/* Process */
+.ps{display:flex;gap:20px;margin-bottom:32px}.ps-i{min-width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--bg2);border:2px solid var(--secondary);flex-shrink:0}
+.ps h3{font-family:var(--h);font-size:18px;font-weight:700;margin-bottom:3px}.ps p{color:var(--text2);font-size:13px;line-height:1.7}
+.pay{background:var(--bg2);padding:28px;margin-top:12px}.pay h3{font-family:var(--h);font-size:18px;font-weight:700;color:var(--secondary);margin-bottom:14px}
+.pay-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:600px){.pay-g{grid-template-columns:1fr}}
+.pay-i{text-align:center;background:#fff;padding:18px}.pay-i b{font-family:var(--h);font-size:32px;font-weight:700;color:var(--secondary);display:block}.pay-i small{font-size:12px;color:var(--text2)}
+/* Reviews */
+.rv{background:var(--bg2);padding:24px;transition:transform .25s}.rv:hover{transform:translateY(-3px)}
+.stars{color:var(--primary);letter-spacing:2px;font-size:15px}
+.rv p{color:var(--text);font-size:13px;line-height:1.8;margin:12px 0 16px;font-style:italic}
+.rv .au{border-top:1px solid #e0ddd6;padding-top:10px;font-size:12px}.rv .au b{font-weight:600}.rv .au span{color:var(--text3)}
+/* FAQ */
+.fi{margin-bottom:6px;background:var(--bg2);overflow:hidden}
+.fq{padding:16px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fq h4{font-family:var(--h);font-weight:600;font-size:14px}.fq .ic{color:var(--secondary);font-size:18px;font-weight:700;transition:transform .2s}
+.fa{padding:0 22px 16px;color:var(--text2);font-size:13px;line-height:1.8;display:none}
+/* Contact */
+.cf{background:var(--bg2);padding:32px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:600px){.fr{grid-template-columns:1fr}}
+.fg label{font-size:11px;color:var(--text3);display:block;margin-bottom:5px;font-weight:500}
+.fg input,.fg select,.fg textarea{width:100%;background:#fff;border:1px solid #e0ddd6;padding:11px 14px;font-size:13px;outline:none;color:var(--text)}
+.fg textarea{resize:vertical}
+.fsub{width:100%;background:var(--secondary);color:#fff;padding:13px;font-size:14px;font-weight:600;border:none;cursor:pointer}
+.fsub:hover{background:#156650}
+.ccards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:32px}
+.cc{background:var(--bg2);padding:18px;text-align:center;transition:box-shadow .2s}.cc:hover{box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.cc .ci{font-size:20px;margin-bottom:4px}.cc .cl{font-size:10px;color:var(--text3);font-weight:500}.cc .cv{font-size:12px;font-weight:500}
+/* CTA */
+.cta{background:var(--secondary);padding:48px 36px;text-align:center;max-width:800px;margin:56px auto 0}
+.cta h2{font-family:var(--h);font-size:28px;font-weight:700;color:#fff;margin-bottom:10px}
+.cta p{color:rgba(255,255,255,.75);margin-bottom:24px;font-size:14px}
+.cta button{background:var(--primary);color:#1a1a1a;padding:13px 36px;font-size:14px;font-weight:600;border:none;cursor:pointer}
+/* Footer */
+.ft{background:var(--bg2);border-top:1px solid #e8e5de;margin-top:56px;padding:40px 0 20px}
+.ft-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;margin-bottom:28px}
+.ft h4{font-size:11px;color:var(--secondary);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.ft p,.ft a{font-size:12px;color:var(--text2);line-height:2}
+.ft-s{display:flex;gap:10px;margin-top:14px}.ft-s a{font-size:11px;color:var(--secondary);font-weight:600}
+.ft-bot{border-top:1px solid #e0ddd6;padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ft-bot span,.ft-bot a{font-size:11px;color:var(--text3)}
+/* Floating */
+.fl-cmp{position:fixed;bottom:20px;right:20px;z-index:150;background:var(--secondary);color:#fff;padding:10px 20px;font-weight:600;font-size:13px;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.2);display:none}
+.fl-wa{position:fixed;bottom:20px;left:20px;z-index:150;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .2s}
+.fl-wa:hover{transform:scale(1.1)}
+.fl-wa svg{width:26px;height:26px;fill:#fff}
+/* Animations */
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fu .5s ease both}
 </style>
 </head>
 <body>
 
-<nav>
-<h3>Piccolavita</h3>
-<div>
-<a href="#models">Modeller</a>
-<a href="#projects">Projeler</a>
-<a href="#contact">İletişim</a>
+<header class="hdr" id="hdr">
+<div class="ct hdr-in">
+  <img src="https://www.piccolavita.com/assets/images/logo.png" alt="Piccolavita" class="logo" onclick="go('home')">
+  <button class="mob-tog" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  <nav class="nv" id="nav">
+    <span onclick="go('home')" data-p="home">Ana Sayfa</span>
+    <span onclick="go('models')" data-p="models">Modeller</span>
+    <span onclick="go('process')" data-p="process">Süreç</span>
+    <span onclick="go('reviews')" data-p="reviews">Referanslar</span>
+    <span onclick="go('faq')" data-p="faq">S.S.S.</span>
+    <span onclick="go('contact')" data-p="contact">İletişim</span>
+    <button class="btn2" onclick="go('contact')" style="padding:9px 20px;font-size:12px;">Teklif Al</button>
+  </nav>
 </div>
-</nav>
+</header>
 
-<div class="hero">
-<video autoplay muted loop>
-<source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-house-in-nature-5174/1080p.mp4" type="video/mp4">
-</video>
-<div class="hero-overlay"></div>
-<div class="hero-content">
-<h1>1.000.000 TL’den başlayan fiyatlarla Tiny House sahibi olun</h1>
-<p>Kira yok. Beton yok. Kendi arazinde özgür yaşam var.</p>
-<a href="https://wa.me/905324521522?text=Merhaba%2C%202%2B1%20tiny%20house%20i%C3%A7in%20bilgi%20almak%20istiyorum" class="btn">Fiyat ve Plan Al</a>
+<a href="https://wa.me/905324521522" target="_blank" class="fl-wa" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<div class="fl-cmp" id="flCmp" onclick="openCmp()">Karşılaştır (<span id="cCnt">0</span>/3)</div>
+
+<!-- Modals -->
+<div class="mo" id="dMo" onclick="closeDet()"><div class="md" onclick="event.stopPropagation()"><img id="dImg" src="" alt=""><div class="md-b"><div class="md-h"><h2 id="dNm"></h2><span class="pr" id="dPr"></span></div><div class="md-specs" id="dSp"></div><div id="dRm" style="font-size:13px;color:var(--text2);margin-bottom:14px;"></div><h4 style="font-family:var(--h);font-size:15px;font-weight:700;margin-bottom:8px;">Standart Özellikler</h4><div class="md-ft" id="dFt"></div><div class="md-a"><button class="btn2" onclick="closeDet();go('contact')">Bu Model İçin Teklif Al</button><a id="dLnk" href="#" target="_blank" class="btn1" style="display:inline-block;text-align:center;">Detaylı Sayfa</a><button class="btn3" onclick="closeDet()" style="font-size:12px;padding:9px 20px;">Kapat</button></div></div></div></div>
+<div class="mo" id="cMo" onclick="closeCmp()"><div class="cmod" onclick="event.stopPropagation()"><h2>Model Karşılaştırma</h2><div id="cCon"></div><button class="btn2" onclick="closeCmp()" style="margin-top:16px;">Kapat</button></div></div>
+
+<main id="app"></main>
+
+<footer class="ft">
+<div class="ct">
+<div class="ft-g">
+  <div>
+    <img src="https://www.piccolavita.com/assets/images/logo.png" alt="Piccolavita" style="height:30px;margin-bottom:10px;">
+    <p style="line-height:1.7;">35 yılı aşan tecrübesiyle doğaya yakın, konforlu ve sürdürülebilir yaşam alanları üretmektedir.</p>
+    <div class="ft-s">
+      <a href="https://www.facebook.com/piccolavitatinyhouse" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/piccolavitatinyhouse/" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/channel/UCIuPGaSL4nksZCSMbkAnHLw" target="_blank">YouTube</a>
+    </div>
+  </div>
+  <div>
+    <h4>Sayfalar</h4>
+    <a href="#" onclick="go('home');return false" style="display:block">Ana Sayfa</a>
+    <a href="#" onclick="go('models');return false" style="display:block">Modeller</a>
+    <a href="#" onclick="go('process');return false" style="display:block">Süreç</a>
+    <a href="#" onclick="go('reviews');return false" style="display:block">Referanslar</a>
+    <a href="#" onclick="go('faq');return false" style="display:block">S.S.S.</a>
+    <a href="#" onclick="go('contact');return false" style="display:block">İletişim</a>
+  </div>
+  <div>
+    <h4>İletişim</h4>
+    <p><a href="tel:02582510021">0 (258) 251 00 21</a><br><a href="https://wa.me/905324521522">0 (532) 452 15 22</a><br><a href="mailto:info@piccolavita.com">info@piccolavita.com</a><br>Hacıeyüplü Mah. 3166/2 Sok. No:2<br>Merkezefendi / Denizli</p>
+  </div>
+  <div>
+    <h4>Belgeler</h4>
+    <p>ISO 9001 Sertifikası<br>ISO 14001 Çevre<br>TSE Kalite Belgesi<br>O2 Tip Uluslararası Onay<br>24 Ay Garanti</p>
+  </div>
+</div>
+<div class="ft-bot">
+  <span>© 2026 Piccolavita Tiny House — Tüm Hakları Saklıdır.</span>
+  <a href="https://www.piccolavita.com/gizlilik.asp" target="_blank">KVKK Gizlilik Politikası</a>
 </div>
 </div>
+</footer>
 
-<section class="highlight fade">
-<h2>SON 3 ÜRETİM KALDI</h2>
-<p>Nisan üretim kotası dolmak üzere. Şimdi karar ver, sıranı kaybetme.</p>
-</section>
-
-<section id="projects" class="fade">
-<h2>Bu Kararı Veren Müşterilerimiz Pişman Olmadı</h2>
-<p>“İyi ki bu kararı vermişiz. Tiny House’ta yaşamak bambaşka bir özgürlük.”</p>
-
-<!-- Müşteri Video Alanı -->
-<div style="margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto;">
-  <!-- YouTube/Vimeo Video Embed -->
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2)">
-  <!-- BURAYA YOUTUBE LINKİNİ KOY -->
-  <!-- örnek: https://www.youtube.com/embed/9Sv7DtvMSl0?autoplay=1&mute=1&rel=0 -->
-  <iframe src="https://www.youtube.com/embed/VIDEOID" 
-    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" 
-    allowfullscreen>
-  </iframe>
-</div>
-</div>
-
-<a href="https://wa.me/905324521522" class="btn">Siz de Aynı Deneyimi Yaşayın</a>
-</section>
-
-<section id="models" class="fade">
-<h2>Popüler Model</h2>
-<div class="grid">
-<div class="card">
-<h3>2+1 Aile Modeli</h3>
-<p>25 m² – 4 kişilik yaşam</p>
-<p>4 mevsim yalıtım</p>
-<p><strong>1.000.000 TL’den başlayan</strong></p>
-<a href="https://wa.me/905324521522?text=2%2B1%20model%20i%C3%A7in%20fiyat%20almak%20istiyorum" class="btn">Bana Özel Fiyat Ver</a>
-</div>
-</div>
-</section>
-
-<section id="contact" class="fade">
-<h2>Hemen Teklif Al</h2>
-<p>Size özel plan ve fiyat çalışması için WhatsApp’tan yazın.</p>
-<a href="https://wa.me/905324521522" class="btn">WhatsApp</a>
-</section>
-
-<a href="https://wa.me/905324521522" class="whatsapp">Teklif Al</a>
-
-<script>
-// scroll animation
-const faders=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
- faders.forEach(el=>{
-  const top=el.getBoundingClientRect().top;
-  if(top<window.innerHeight-100){el.classList.add('show')}
- })
-});
+<!-- VOICEFLOW CHATBOT -->
+<script type="text/javascript">
+(function(d, t) {
+  var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  v.onload = function() {
+    window.voiceflow.chat.load({
+      verify: { projectID: '69d21a3ee277ab03d4e774e0' },
+      url: 'https://general-runtime.voiceflow.com',
+      versionID: 'production',
+      assistant: {
+        title: 'Piccolavita Asistan',
+        description: 'Size tiny house hakkında yardımcı olabilirim!',
+        color: '#1B745E',
+        image: 'https://www.piccolavita.com/assets/images/logo.png',
+      },
+      launch: {
+        event: {
+          type: 'launch',
+        },
+      },
+    });
+  };
+  v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript";
+  s.parentNode.insertBefore(v, s);
+})(document, 'script');
 </script>
 
-<!-- Voiceflow -->
-<script src="https://widget.voiceflow.com/embed.js"></script>
 <script>
-function initVF(){
- if(typeof VoiceflowEmbed!=="undefined"){
-  VoiceflowEmbed.init({id:"VF.DM.69d21a3ee277ab03d4e774e0.QaYVCD3tsKgjw2vA",container:document.body});
- } else {setTimeout(initVF,100)}
+const I="https://www.piccolavita.com/assets/images/";
+const M=[
+// YAŞAM MODELLERİ — Gerçek veriler siteden çekildi
+{n:"Arte",t:"yasam",img:I+"arte.jpg",url:"arte_tiny_house.asp",en:"2,55 m",uz:"8 m",yk:"4 m",alan:"26 m²",rooms:"Salon + Mutfak + Banyo + Loft Kat + Teras",feat:["Masif Ahşap Tezgah","Thermowood Cephe","120mm Cam Yünü Yalıtım","Isı Camlı Alüminyum Doğrama","Loft Yatak Katı","3500 kg Römork"],plan:"arte.pdf",galeri:["arte1","arte2","arte3","arte4","arte5","arte6"]},
+{n:"Aura",t:"yasam",img:I+"aura.jpg",url:"aura_tiny_house.asp",en:"2,55 m",uz:"8 m",yk:"4 m",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Masif Tezgah","Thermowood Cephe","Cam Yünü Yalıtım","PVC Doğrama","Kompakt Lamine Banyo","Römork Fren Sistemi"],plan:"aura.pdf",galeri:["aura"]},
+{n:"Centro",t:"yasam",img:I+"centro.jpg",url:"centro_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Stüdyo Konsept","Thermowood Cephe","Cam Yünü Yalıtım","Kompakt Mutfak","Klima Altyapısı"],plan:"",galeri:["centro"]},
+{n:"Comfort",t:"yasam",img:I+"comfort.jpg",url:"comfort_tiny_house.asp",en:"2,55 m",uz:"8 m",yk:"4 m",alan:"20,4 m²",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Masif Tezgah","MDF Dolaplar","Avrupa Plywood Zemin","120mm Cam Yünü","Thermowood Cephe","Klima Altyapısı"],plan:"comfort.pdf",galeri:["comfort1","comfort2","comfort3","comfort4"]},
+{n:"Freya",t:"yasam",img:I+"freya.jpg",url:"freya_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Panoramik Cam","Thermowood Cephe","Cam Yünü Yalıtım","Entegre Mutfak","Klima Altyapısı"],plan:"",galeri:["freya"]},
+{n:"Florin",t:"yasam",img:I+"florin.jpg",url:"florin_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası + Loft Kat",feat:["Loft Yatak Katı","Thermowood Cephe","Cam Yünü Yalıtım","PVC Doğrama","Kompakt Banyo"],plan:"florin.pdf",galeri:["Florin1"]},
+{n:"Foresta",t:"yasam",img:I+"foresta.jpg",url:"foresta_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Doğal Ahşap Konsept","Thermowood Cephe","Cam Yünü Yalıtım","Orman Temalı Tasarım"],plan:"",galeri:["foresta"]},
+{n:"Luna",t:"yasam",img:I+"luna.jpg",url:"luna_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Modern Tasarım","Thermowood Cephe","LED Aydınlatma","Cam Yünü Yalıtım","Klima Altyapısı"],plan:"",galeri:["luna"]},
+{n:"Moderno",t:"yasam",img:I+"moderno.jpg",url:"moderno_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Modern Çizgi","Geniş Pencereler","Thermowood Cephe","Cam Yünü Yalıtım"],plan:"",galeri:["moderno"]},
+{n:"Nova",t:"yasam",img:I+"nova.jpg",url:"nova_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Thermowood Cephe","Cam Yünü Yalıtım","Klima Altyapısı","Kompakt Tasarım"],plan:"",galeri:["Muzi1"]},
+{n:"Natura",t:"yasam",img:I+"natura.jpg",url:"natura_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Doğal Malzeme","Thermowood Cephe","Yeşil Çatı Opsiyonu","Cam Yünü Yalıtım"],plan:"",galeri:["natura"]},
+{n:"Nerina",t:"yasam",img:I+"nerina.jpg",url:"nerina_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası + Teras",feat:["Geniş Teras","Thermowood Cephe","Cam Yünü Yalıtım","Deniz Konsepti"],plan:"",galeri:["nerina"]},
+{n:"Opera",t:"yasam",img:I+"opera.jpg",url:"opera_tiny_house.asp",en:"2,55 m",uz:"8 m",yk:"4 m",alan:"26 m²",rooms:"Salon + Mutfak + Banyo + Yatak Odası + Loft Kat",feat:["Loft Yatak Katı","Thermowood+Kompozit Cephe","120mm Cam Yünü","Isı Camlı Doğrama","3500 kg Römork"],plan:"opera.pdf",galeri:["opera_render1"]},
+{n:"Plain",t:"yasam",img:I+"plain.jpg",url:"plain_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Sade Tasarım","Thermowood Cephe","Cam Yünü Yalıtım","Ekonomik Seçenek"],plan:"",galeri:["plain"]},
+{n:"Silva",t:"yasam",img:I+"silva.jpg",url:"silva_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Ahşap Detaylar","Thermowood Cephe","Orman Evi Konsepti","Cam Yünü Yalıtım"],plan:"",galeri:["silva"]},
+{n:"Vista",t:"yasam",img:I+"vista.jpg",url:"vista_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Manzara Odaklı Tasarım","Geniş Cam Cephe","Thermowood Cephe","Cam Yünü Yalıtım"],plan:"",galeri:["vista"]},
+{n:"Vacanza",t:"yasam",img:I+"vacanza.jpg",url:"vacanza_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Tatil Evi Konsepti","Thermowood Cephe","Kompakt Tasarım","Cam Yünü Yalıtım"],plan:"",galeri:["vacanza"]},
+{n:"Vento",t:"yasam",img:I+"vento.jpg",url:"vento_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Rüzgar Dayanımlı Yapı","Thermowood Cephe","Güçlü Şase","Cam Yünü Yalıtım"],plan:"",galeri:["vento"]},
+{n:"Verde",t:"yasam",img:I+"verde.jpg",url:"verde_tiny_house.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Salon + Mutfak + Banyo + Yatak Odası",feat:["Ekolojik Tasarım","Sürdürülebilir Malzeme","Thermowood Cephe","Cam Yünü Yalıtım"],plan:"",galeri:["verde"]},
+// OFİS MODELLERİ
+{n:"Elora",t:"ofis",img:I+"elora.jpg",url:"elora_tiny_ofis.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Çalışma Alanı + WC",feat:["Ofis Konsepti","Thermowood Cephe","Ses Yalıtımı","Cam Yünü Yalıtım"],plan:"",galeri:["elora1"]},
+{n:"Lavoro",t:"ofis",img:I+"lavoro.jpg",url:"lavoro_tiny_office.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Çalışma Alanı + Mini Mutfak + WC",feat:["2 Odalı Ofis","Mini Mutfak","Ses Yalıtımı","Thermowood Cephe"],plan:"",galeri:["lavoro"]},
+{n:"Oliva",t:"ofis",img:I+"oliva.jpg",url:"oliva_tiny_ofis.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Açık Plan Çalışma Alanı + WC",feat:["Açık Plan","Ses Yalıtımı","Thermowood Cephe","Cam Yünü Yalıtım"],plan:"",galeri:["oliva"]},
+{n:"Solena",t:"ofis",img:I+"solena.jpg",url:"solena_tiny_ofis.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Çalışma Alanı + WC",feat:["Aydınlık Tasarım","Thermowood Cephe","Cam Yünü Yalıtım"],plan:"",galeri:["solena"]},
+{n:"Studio",t:"ofis",img:I+"studio.jpg",url:"studio_tiny_ofis.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Stüdyo Çalışma Alanı + WC",feat:["Kreatif Alan","Ses Yalıtımı","Thermowood Cephe"],plan:"",galeri:["studio"]},
+{n:"Terra",t:"ofis",img:I+"terra.jpg",url:"terra_tiny_ofis.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Toplantı Odası + Çalışma Alanı + Mutfak + WC",feat:["Geniş Ofis","Toplantı Odası","Mutfak","Thermowood Cephe"],plan:"",galeri:["terra"]},
+{n:"Vera",t:"ofis",img:I+"vera.jpg",url:"vera_tiny_ofis.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Çalışma Alanı + WC",feat:["Minimalist Tasarım","Fonksiyonel","Thermowood Cephe"],plan:"",galeri:["vera"]},
+{n:"Vivano",t:"ofis",img:I+"vivano.jpg",url:"vivano_tiny_ofis.asp",en:"2,55 m",uz:"—",yk:"—",alan:"—",rooms:"Çalışma Alanı + WC",feat:["Canlı Tasarım","Geniş Pencereler","Thermowood Cephe"],plan:"",galeri:["vivano"]},
+];
+const YC=M.filter(m=>m.t==="yasam").length, OC=M.filter(m=>m.t==="ofis").length;
+const RV=[
+{nm:"Mehmet K.",lc:"Muğla",r:5,tx:"Arte modelini 3 aydır kullanıyoruz. Kış aylarında bile yalıtım mükemmel.",md:"Arte"},
+{nm:"Ayşe D.",lc:"Bolu",r:5,tx:"Comfort modelimiz hafta sonu kaçış noktamız oldu. Satış sonrası destek çok iyi.",md:"Comfort"},
+{nm:"Can T.",lc:"İzmir",r:4,tx:"Lavoro ofis modelini bahçemize kurduk. Evden çalışma deneyimimiz tamamen değişti.",md:"Lavoro"},
+{nm:"Zeynep A.",lc:"Antalya",r:5,tx:"Florin serisi hem şık hem geniş. Her detay düşünülmüş, çok memnunuz.",md:"Florin"},
+{nm:"Ali R.",lc:"Bursa",r:5,tx:"Opera modelinin loft katı müthiş. Misafirler geldiğinde çok rahat ağırlıyoruz.",md:"Opera"},
+{nm:"Seda M.",lc:"Ankara",r:4,tx:"Studio ofis modeliyle evdeki çalışma sorunumu çözdüm. Ses yalıtımı harika.",md:"Studio"},
+];
+const FQ=[
+{q:"Teslimat süresi ne kadar?",a:"Standart modellerde sipariş onayından itibaren 45-60 iş günü, özel tasarımlarda 60-90 iş günü."},
+{q:"Ödeme planı nasıl?",a:"Sipariş onayında %40, üretim ortasında %30, teslimat öncesi %30. Anlaşmalı bankalarla 12 aya kadar kredi seçeneği mevcuttur."},
+{q:"Garanti kapsamı nedir?",a:"24 ay yapısal garanti. Çatı, yalıtım ve tesisat 5 yıl garantili."},
+{q:"Arazime koyabilir miyim?",a:"İmar durumuna göre değişir. Tekerlekli modeller taşınabilir yapı statüsündedir. Belediyenize danışmanızı öneriyoruz."},
+{q:"Kışın kullanılabilir mi?",a:"Evet. 120mm cam yünü yalıtım ve ısı camlı doğramalar ile -20°C'ye kadar test edilmiştir."},
+{q:"Nakliye nasıl yapılıyor?",a:"Tekerlekli modeller özel çekici ile, sabit modeller tır ile taşınır. Türkiye geneli nakliye mevcuttur."},
+{q:"Kişiye özel tasarım var mı?",a:"Evet. Tamamen size özel ölçü, malzeme ve tasarım ile butik üretim yapıyoruz."},
+{q:"Hangi sertifikalara sahipsiniz?",a:"ISO 9001, ISO 14001, TSE Kalite Belgesi ve O2 tip uluslararası onay belgesi. 35 ülkede geçerlidir."},
+];
+const ST=[
+{ic:"💬",ti:"İletişim & Danışmanlık",ds:"İhtiyaçlarınızı dinliyor, bütçenize en uygun modeli birlikte belirliyoruz."},
+{ic:"📐",ti:"Tasarım & Onay",ds:"3D görseller ile kişiselleştirilmiş tasarım onayınıza sunulur."},
+{ic:"🏭",ti:"Üretim",ds:"ISO 9001 sertifikalı tesisimizde 45-60 iş günü içinde üretim tamamlanır."},
+{ic:"🚛",ti:"Nakliye & Kurulum",ds:"Türkiye genelinde profesyonel teslimat ve yerinde kurulum."},
+{ic:"🤝",ti:"Teslim & Destek",ds:"24 ay garanti ve ömür boyu teknik destek."},
+];
+
+let pg="home",fl="all",sq="",cl=[],sent=false;
+const fmt=p=>"Teklif Alınız";
+const stars=n=>[...Array(5)].map((_,i)=>i<n?"★":"☆").join("");
+
+function go(p){pg=p;document.getElementById('nav').classList.remove('open');document.querySelectorAll('.nv span[data-p]').forEach(e=>e.classList.toggle('on',e.dataset.p===p));rndr();window.scrollTo({top:0,behavior:'smooth'});}
+
+function card(m,i){
+  const ic=cl.includes(m.n);
+  const dims=m.uz!=="—"?`${m.en} × ${m.uz} × ${m.yk}`:`En: ${m.en}`;
+  const area=m.alan!=="—"?m.alan:"";
+  return `<div class="mc fu" style="animation-delay:${i*.03}s">
+    <div class="mc-img" onclick="openDet('${m.n}')">
+      <img src="${m.img}" alt="${m.n} Serisi" loading="lazy">
+      <div class="mc-badge ${m.t==='yasam'?'y':'o'}">${m.t==='yasam'?'Yaşam':'Ofis'}</div>
+    </div>
+    <div class="mc-b">
+      <div class="mc-h"><h3>${m.n}</h3><small>${area}</small></div>
+      <div class="mc-r">${m.rooms}</div>
+      <div class="mc-tags">${m.feat.slice(0,3).map(f=>`<span class="mc-tag">${f}</span>`).join("")}</div>
+      <div class="mc-f">
+        <div><div class="mc-pl">Fiyat bilgisi</div><div class="mc-p">Teklif Alınız</div></div>
+        <div class="mc-acts">
+          <button class="cb ${ic?'on':''}" onclick="event.stopPropagation();togCmp('${m.n}')">${ic?"✓ Listede":"Karşılaştır"}</button>
+          <button class="db" onclick="openDet('${m.n}')">Detay</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
 }
-initVF();
-</script>
 
+function openDet(n){
+  const m=M.find(x=>x.n===n);if(!m)return;
+  document.getElementById('dImg').src=m.img;
+  document.getElementById('dNm').textContent=m.n+" Serisi";
+  document.getElementById('dPr').textContent="Teklif Alınız";
+  document.getElementById('dRm').innerHTML="<strong>Mekanlar:</strong> "+m.rooms;
+  const specs=[["📐 En",m.en],["📏 Uzunluk",m.uz],["📐 Yükseklik",m.yk],["🏠 Alan",m.alan],["🛡️ Garanti","24 Ay"],["🚛 Römork","3500 kg"]];
+  document.getElementById('dSp').innerHTML=specs.map(([l,v])=>`<div class="md-sp"><small>${l}</small><b>${v}</b></div>`).join("");
+  document.getElementById('dFt').innerHTML=m.feat.map(f=>`<span>${f}</span>`).join("");
+  document.getElementById('dLnk').href="https://www.piccolavita.com/"+m.url;
+  document.getElementById('dMo').classList.add('vis');
+}
+function closeDet(){document.getElementById('dMo').classList.remove('vis');}
+
+function togCmp(n){if(cl.includes(n))cl=cl.filter(x=>x!==n);else if(cl.length<3)cl.push(n);updCmp();rndr();}
+function updCmp(){const f=document.getElementById('flCmp');document.getElementById('cCnt').textContent=cl.length;f.style.display=(cl.length>0&&pg==='models')?'block':'none';}
+function openCmp(){
+  const items=M.filter(m=>cl.includes(m.n));
+  if(!items.length){document.getElementById('cCon').innerHTML="<p>Model seçmediniz.</p>";}
+  else{
+    const rows=[["Alan",m=>m.alan],["Boyut",m=>m.uz!=="—"?`${m.en}×${m.uz}×${m.yk}`:m.en],["Mekanlar",m=>m.rooms],["Tip",m=>m.t==="yasam"?"Yaşam":"Ofis"],["Özellikler",m=>m.feat.slice(0,4).join(", ")]];
+    document.getElementById('cCon').innerHTML=`<div style="overflow-x:auto"><table class="ctbl"><thead><tr><th style="text-align:left;color:var(--text3)">Özellik</th>${items.map(m=>`<th><img src="${m.img}" alt="${m.n}"><div class="nm">${m.n}</div></th>`).join("")}</tr></thead><tbody>${rows.map(([l,fn])=>`<tr><td>${l}</td>${items.map(m=>`<td>${fn(m)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  }
+  document.getElementById('cMo').classList.add('vis');
+}
+function closeCmp(){document.getElementById('cMo').classList.remove('vis');}
+
+function rndr(){
+  const a=document.getElementById('app');updCmp();
+  if(pg==="home"){
+    a.innerHTML=`
+    <section class="hero"><div class="ct"><div class="hero-g">
+      <div class="fu"><div class="badge">35 Yıllık Tecrübe • ISO 9001 • TSE</div>
+      <h1>Doğaya Yakın,<br><em>Hayata Yakın</em></h1>
+      <p style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:28px;max-width:460px">Piccolavita; sektörde 35 yılı aşan tecrübesiyle şehirden uzak doğaya yakın, keskin ve modern çizgileri ile küçük ve kaliteli yaşam alanları sunmaktadır.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn2" onclick="go('models')">Modelleri İncele</button><button class="btn3" onclick="go('contact')">Ücretsiz Teklif Al</button></div>
+      <div class="stats">${[["27+","Model"],["500+","Teslim"],["35","Yıl"],["24 Ay","Garanti"]].map(([n,l])=>`<div><b>${n}</b><small>${l}</small></div>`).join("")}</div>
+      </div>
+      <div class="hero-img fu" style="animation-delay:.15s"><img src="${I}Florin1.jpg" alt="Tiny House"><div class="ptag"><small>Fiyatlar</small><strong>1.000.000 ₺'den</strong></div></div>
+    </div></div></section>
+    <section class="ct" style="padding-top:56px"><h2 class="st">Öne Çıkan <em>Modeller</em></h2><p class="ss">Tiny house ve ofis modellerimiz — detaylı bilgi için tıklayın.</p>
+    <div class="mg">${M.slice(0,6).map((m,i)=>card(m,i)).join("")}</div>
+    <div style="text-align:center;margin-top:28px"><button class="btn3" onclick="go('models')">Tüm ${M.length} Modeli Gör →</button></div></section>
+    <section class="ct" style="padding-top:56px"><h2 class="st">Nasıl <em>Çalışıyoruz?</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:32px">${ST.map((s,i)=>`<div class="fu" style="background:var(--bg2);padding:22px;text-align:center;animation-delay:${i*.07}s"><div style="font-size:26px;margin-bottom:8px">${s.ic}</div><div style="font-size:10px;color:var(--secondary);letter-spacing:2px;font-weight:700;margin-bottom:5px">ADIM ${i+1}</div><h3 style="font-family:var(--h);font-size:15px;font-weight:700;margin-bottom:5px">${s.ti}</h3><p style="font-size:11px;color:var(--text2);line-height:1.6">${s.ds}</p></div>`).join("")}</div></section>
+    <section class="ct" style="padding-top:56px"><h2 class="st">Müşterilerimiz <em>Ne Diyor?</em></h2>
+    <div class="mg" style="margin-top:32px">${RV.slice(0,3).map((r,i)=>`<div class="rv fu" style="animation-delay:${i*.07}s"><div class="stars">${stars(r.r)}</div><p>"${r.tx}"</p><div class="au"><b>${r.nm}</b> <span>— ${r.lc} • ${r.md}</span></div></div>`).join("")}</div></section>
+    <section class="ct" style="padding-top:56px"><div class="cta"><h2>Hayalinizdeki Tiny House'a<br>Bir Adım Uzaktasınız</h2><p>Ücretsiz danışmanlık ve fiyat teklifi için hemen iletişime geçin.</p><button onclick="go('contact')">Ücretsiz Teklif Al</button></div></section>`;
+  }
+  else if(pg==="models"){
+    const fi=M.filter(m=>{if(fl!=="all"&&m.t!==fl)return false;if(sq&&!m.n.toLowerCase().includes(sq.toLowerCase()))return false;return true;});
+    a.innerHTML=`<section class="ct" style="padding-top:44px"><h2 class="st">Tiny House <em>Modelleri</em></h2><p class="ss">${YC} yaşam + ${OC} ofis modeli — filtreleyin, karşılaştırın.</p>
+    <div class="flt">${[["all","Tümü ("+M.length+")"],["yasam","Yaşam ("+YC+")"],["ofis","Ofis ("+OC+")"]].map(([k,v])=>`<button class="fb ${fl===k?'on':''}" onclick="fl='${k}';rndr()">${v}</button>`).join("")}
+    <input class="si" placeholder="Model ara..." value="${sq}" oninput="sq=this.value;rndr()">
+    ${cl.length>0?`<button class="fb on" onclick="openCmp()">Karşılaştır (${cl.length}/3)</button>`:''}</div>
+    <div class="mg">${fi.length?fi.map((m,i)=>card(m,i)).join(""):'<p style="text-align:center;color:var(--text3);grid-column:1/-1;padding:40px">Sonuç bulunamadı.</p>'}</div></section>`;
+  }
+  else if(pg==="process"){
+    a.innerHTML=`<section class="ct" style="padding-top:44px;max-width:860px"><h2 class="st">Sipariş <em>Süreci</em></h2><p class="ss">İlk iletişimden teslimata kadar adım adım.</p>
+    ${ST.map((s,i)=>`<div class="ps fu" style="animation-delay:${i*.08}s"><div class="ps-i">${s.ic}</div><div><h3>${i+1}. ${s.ti}</h3><p>${s.ds}</p></div></div>`).join("")}
+    <div class="pay"><h3>Ödeme Planı</h3><div class="pay-g">${[["%40","Sipariş Onayı"],["%30","Üretim Ortası"],["%30","Teslimat Öncesi"]].map(([r,l])=>`<div class="pay-i"><b>${r}</b><small>${l}</small></div>`).join("")}</div><p style="font-size:12px;color:var(--text3);margin-top:14px;text-align:center">12 aya kadar kredi imkânı mevcuttur.</p></div></section>`;
+  }
+  else if(pg==="reviews"){
+    a.innerHTML=`<section class="ct" style="padding-top:44px;max-width:960px"><h2 class="st">Müşteri <em>Yorumları</em></h2><p class="ss">Gerçek kullanıcılardan deneyimler.</p>
+    <div class="mg">${RV.map((r,i)=>`<div class="rv fu" style="animation-delay:${i*.07}s"><div class="stars">${stars(r.r)}</div><p>"${r.tx}"</p><div class="au"><b>${r.nm}</b> <span>— ${r.lc} • ${r.md}</span></div></div>`).join("")}</div></section>`;
+  }
+  else if(pg==="faq"){
+    a.innerHTML=`<section class="ct" style="padding-top:44px;max-width:760px"><h2 class="st">Sıkça Sorulan <em>Sorular</em></h2><p class="ss">Tiny house hakkında merak ettikleriniz.</p>
+    ${FQ.map((f,i)=>`<div class="fi"><div class="fq" onclick="togFq(${i})"><h4>${f.q}</h4><span class="ic" id="fi${i}">+</span></div><div class="fa" id="fa${i}">${f.a}</div></div>`).join("")}</section>`;
+  }
+  else if(pg==="contact"){
+    if(sent){a.innerHTML=`<section class="ct" style="padding-top:44px;max-width:700px"><h2 class="st">Ücretsiz <em>Teklif Alın</em></h2><div style="text-align:center;padding:44px;background:var(--bg2);margin-top:28px"><div style="width:52px;height:52px;background:var(--secondary);color:#fff;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700">✓</div><h3 style="font-family:var(--h);font-size:22px;font-weight:700;margin-bottom:6px">Talebiniz Alındı!</h3><p style="color:var(--text2)">En kısa sürede dönüş yapacağız.</p></div></section>`;}
+    else{
+      const opts=M.map(m=>`<option value="${m.n}">${m.n} (${m.t==="yasam"?"Yaşam":"Ofis"})</option>`).join("");
+      a.innerHTML=`<section class="ct" style="padding-top:44px;max-width:700px"><h2 class="st">Ücretsiz <em>Teklif Alın</em></h2><p class="ss">Formu doldurun, 24 saat içinde dönüş yapalım.</p>
+      <div class="cf"><div class="fr"><div class="fg"><label>Ad Soyad *</label><input id="fn"></div><div class="fg"><label>Telefon *</label><input id="fp"></div></div>
+      <div class="fg" style="margin-bottom:14px"><label>E-posta</label><input id="fe"></div>
+      <div class="fr"><div class="fg"><label>İlgilendiğiniz Model</label><select id="fm"><option value="">Seçiniz</option>${opts}</select></div>
+      <div class="fg"><label>Planlanan Alan</label><select><option value="">Seçiniz</option><option>15-20 m²</option><option>20-25 m²</option><option>25-30 m²</option><option>30+ m²</option></select></div></div>
+      <div class="fg" style="margin-bottom:18px"><label>Mesajınız</label><textarea rows="4"></textarea></div>
+      <button class="fsub" onclick="sent=true;rndr()">Teklif Talebi Gönder</button></div>
+      <div class="ccards">${[["📞","Telefon","0 (258) 251 00 21","tel:02582510021"],["📱","WhatsApp","0 (532) 452 15 22","https://wa.me/905324521522"],["📧","E-posta","info@piccolavita.com","mailto:info@piccolavita.com"],["📍","Adres","Merkezefendi, Denizli",""]].map(([ic,l,v,hr])=>`<a href="${hr||'#'}" class="cc" ${hr?'target="_blank"':''}><div class="ci">${ic}</div><div class="cl">${l}</div><div class="cv">${v}</div></a>`).join("")}</div></section>`;
+    }
+  }
+}
+
+function togFq(i){const a=document.getElementById('fa'+i),ic=document.getElementById('fi'+i),o=a.style.display==='block';document.querySelectorAll('.fa').forEach(e=>e.style.display='none');document.querySelectorAll('.fq .ic').forEach(e=>{e.textContent='+';e.style.transform='none';});if(!o){a.style.display='block';ic.textContent='+';ic.style.transform='rotate(45deg)';}}
+
+window.addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('sc',window.scrollY>20));
+rndr();
+</script>
 </body>
 </html>

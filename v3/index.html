@@ -275,6 +275,118 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 @keyframes wa-pulse { 0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.35)} 50%{box-shadow:0 8px 40px rgba(37,211,102,.55)} }
 @media (max-width: 480px) { .wa-float span { display: none; } .wa-float { padding: 14px; border-radius: 50%; } }
 
+
+/* ── MODELS SECTION ── */
+.models-section { padding: 100px 0; background: var(--bg); }
+.models-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: 56px; flex-wrap: wrap;
+}
+.section-label-light {
+  font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--secondary); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label-light::before { content: ''; width: 24px; height: 1px; background: var(--secondary); }
+.section-h-dark {
+  font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 700; line-height: 1.05; color: var(--primary); letter-spacing: -.02em;
+}
+.section-h-dark em { font-style: italic; color: var(--secondary); }
+
+.models-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+@media (max-width: 960px) { .models-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .models-grid { grid-template-columns: 1fr; } }
+
+.model-card {
+  background: var(--white); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(47,74,61,.07);
+  transition: transform .25s, box-shadow .25s;
+}
+.model-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(47,74,61,.14); }
+.model-card-img { position: relative; overflow: hidden; aspect-ratio: 4/3; }
+.model-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.model-card:hover .model-card-img img { transform: scale(1.05); }
+.model-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--accent); color: var(--primary);
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 20px;
+}
+.model-card-body { padding: 22px 24px 24px; }
+.model-name { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+.model-tagline { font-size: 13px; color: var(--neutral-2); margin-bottom: 14px; line-height: 1.5; }
+.model-meta {
+  display: flex; gap: 16px; margin-bottom: 18px;
+  font-size: 12px; font-weight: 600; color: var(--secondary);
+}
+.model-meta span::before { content: '· '; opacity: .4; }
+.model-meta span:first-child::before { content: ''; }
+.model-link {
+  font-size: 13px; font-weight: 700; color: var(--primary);
+  letter-spacing: .04em; transition: color .2s;
+}
+.model-link:hover { color: var(--secondary); }
+.models-footer-cta {
+  display: flex; justify-content: center; gap: 16px;
+  margin-top: 56px; flex-wrap: wrap;
+}
+
+/* ── WHY SECTION ── */
+.why-section { background: var(--forest); padding: 100px 0; }
+.why-section .section-label { color: var(--accent); margin-bottom: 12px; }
+.why-section .section-label::before { background: var(--accent); }
+.why-section .section-h { color: var(--white); margin-bottom: 0; }
+.why-section .section-h em { color: var(--accent); }
+.why-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  margin-top: 56px;
+}
+@media (max-width: 960px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .why-grid { grid-template-columns: 1fr; } }
+.why-item {
+  padding: 2.5rem 2rem; border-top: 3px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  transition: border-top-color .25s, background .25s;
+}
+.why-item:hover { border-top-color: var(--accent); background: rgba(47,74,61,.35); }
+.why-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
+.why-num {
+  font-family: var(--serif); font-size: 3rem; font-weight: 300;
+  color: var(--accent); line-height: 1; margin-bottom: .5rem;
+}
+.why-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: .8rem; }
+.why-desc { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.75; }
+
+/* ── CERTS SECTION ── */
+.certs-section {
+  background: var(--dark); padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.certs-row {
+  display: flex; justify-content: center; align-items: center;
+  gap: 0; flex-wrap: wrap;
+}
+.cert-item {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 20px 32px; opacity: .65; transition: opacity .2s;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+.cert-item:last-child { border-right: none; }
+.cert-item:hover { opacity: 1; }
+.cert-icon { font-size: 1.8rem; }
+.cert-name {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--white); text-align: center;
+}
+@media (max-width: 768px) {
+  .cert-item { padding: 16px 20px; border-right: none; }
+  .certs-row { gap: 8px; }
+}
+
 </style>
 </head>
 <body>
@@ -421,6 +533,170 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
           <div class="story-stat-num">24</div>
           <div class="story-stat-lbl">Ay Garanti</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELLER -->
+<section class="models-section" id="modeller">
+  <div class="container">
+    <div class="models-header">
+      <div>
+        <div class="section-label-light reveal">Modellerimiz</div>
+        <h2 class="section-h-dark reveal reveal-delay-1">28 Model,<br><em>Bir Hayat.</em></h2>
+      </div>
+      <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-outline-primary reveal reveal-delay-1">Tüm Modelleri Gör →</a>
+    </div>
+    <div class="models-grid">
+
+      <div class="model-card reveal">
+        <div class="model-card-img">
+          <img src="https://piccolavita.com/assets/images/arte1.jpg" alt="Arte" loading="lazy">
+          <span class="model-badge">Tiny House</span>
+        </div>
+        <div class="model-card-body">
+          <h3 class="model-name">Arte</h3>
+          <p class="model-tagline">Loft katlı, teraslı kompakt yaşam</p>
+          <div class="model-meta"><span>26 m²</span><span>8 m uzunluk</span></div>
+          <a href="https://www.piccolavita.com/tiny-house/arte" target="_blank" rel="noopener" class="model-link">İncele →</a>
+        </div>
+      </div>
+
+      <div class="model-card reveal reveal-delay-1">
+        <div class="model-card-img">
+          <img src="https://piccolavita.com/assets/images/luna1.jpg" alt="Luna" loading="lazy">
+          <span class="model-badge">Tiny House</span>
+        </div>
+        <div class="model-card-body">
+          <h3 class="model-name">Luna</h3>
+          <p class="model-tagline">Piccola Vita'nın klasik serisi</p>
+          <div class="model-meta"><span>26 m²</span><span>8 m uzunluk</span></div>
+          <a href="https://www.piccolavita.com/tiny-house/luna" target="_blank" rel="noopener" class="model-link">İncele →</a>
+        </div>
+      </div>
+
+      <div class="model-card reveal reveal-delay-2">
+        <div class="model-card-img">
+          <img src="https://piccolavita.com/assets/images/centro1.jpg" alt="Centro" loading="lazy">
+          <span class="model-badge">Tiny House</span>
+        </div>
+        <div class="model-card-body">
+          <h3 class="model-name">Centro</h3>
+          <p class="model-tagline">İki loft katlı geniş aile evi</p>
+          <div class="model-meta"><span>29 m²</span><span>9 m uzunluk</span></div>
+          <a href="https://www.piccolavita.com/tiny-house/centro" target="_blank" rel="noopener" class="model-link">İncele →</a>
+        </div>
+      </div>
+
+      <div class="model-card reveal">
+        <div class="model-card-img">
+          <img src="https://piccolavita.com/assets/images/comfort1.jpg" alt="Comfort" loading="lazy">
+          <span class="model-badge">Tiny House</span>
+        </div>
+        <div class="model-card-body">
+          <h3 class="model-name">Comfort</h3>
+          <p class="model-tagline">Klasik düzen, geniş yaşam alanı</p>
+          <div class="model-meta"><span>20.4 m²</span><span>8 m uzunluk</span></div>
+          <a href="https://www.piccolavita.com/tiny-house/comfort" target="_blank" rel="noopener" class="model-link">İncele →</a>
+        </div>
+      </div>
+
+      <div class="model-card reveal reveal-delay-1">
+        <div class="model-card-img">
+          <img src="https://piccolavita.com/assets/images/Florin1.jpg" alt="Florin" loading="lazy">
+          <span class="model-badge">Tiny House</span>
+        </div>
+        <div class="model-card-body">
+          <h3 class="model-name">Florin</h3>
+          <p class="model-tagline">Loft katlı dört odalı düzen</p>
+          <div class="model-meta"><span>Teklif Alın</span><span>8 m uzunluk</span></div>
+          <a href="https://www.piccolavita.com/tiny-house/florin" target="_blank" rel="noopener" class="model-link">İncele →</a>
+        </div>
+      </div>
+
+      <div class="model-card reveal reveal-delay-2">
+        <div class="model-card-img">
+          <img src="https://piccolavita.com/assets/images/plain-render1.jpg" alt="Plain" loading="lazy">
+          <span class="model-badge">En Büyük</span>
+        </div>
+        <div class="model-card-body">
+          <h3 class="model-name">Plain</h3>
+          <p class="model-tagline">İki loft katlı en büyük model</p>
+          <div class="model-meta"><span>36.5 m²</span><span>10 m uzunluk</span></div>
+          <a href="https://www.piccolavita.com/tiny-house/plain" target="_blank" rel="noopener" class="model-link">İncele →</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="models-footer-cta reveal">
+      <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-primary">Tüm 28 Modeli İncele</a>
+      <a href="https://wa.me/905324521522?text=Merhaba%2C%20model%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-cta">Ücretsiz Danışma Al</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEDEN PİCCOLA VİTA -->
+<section class="why-section" id="neden">
+  <div class="container">
+    <div class="section-label reveal">Neden Piccola Vita</div>
+    <h2 class="section-h reveal reveal-delay-1">Fark,<br><em>Her Detayda.</em></h2>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-icon">🏆</div>
+        <div class="why-num">35</div>
+        <div class="why-title">Yıllık Üretim Deneyimi</div>
+        <div class="why-desc">1989'dan bu yana Denizli'de üretiyoruz. Sektördeki en köklü markalardan biri — her tiny house bir mirastır.</div>
+      </div>
+      <div class="why-item reveal reveal-delay-1">
+        <div class="why-icon">🇪🇺</div>
+        <div class="why-num">O2</div>
+        <div class="why-title">Avrupa Tip Onayı</div>
+        <div class="why-desc">2018/858 AB yönetmeliği uyumlu O2 tip onayı. ISO 9001, ISO 14001 ve TSE kalite sertifikaları mevcut.</div>
+      </div>
+      <div class="why-item reveal reveal-delay-2">
+        <div class="why-icon">🛡️</div>
+        <div class="why-num">24</div>
+        <div class="why-title">Ay Garanti</div>
+        <div class="why-desc">Teslimattan itibaren 2 yıl kapsamlı garanti. Satış sonrası teknik destek ve periyodik bakım hizmeti.</div>
+      </div>
+      <div class="why-item reveal reveal-delay-3">
+        <div class="why-icon">✨</div>
+        <div class="why-num">28</div>
+        <div class="why-title">Özelleştirilebilir Model</div>
+        <div class="why-desc">Her model tam özelleştirilebilir. Dış cephe, iç malzeme, mobilya, teknik donanım — hepsi sizin seçiminiz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERTİFİKALAR -->
+<section class="certs-section">
+  <div class="container">
+    <div class="certs-row">
+      <div class="cert-item">
+        <div class="cert-icon">🇪🇺</div>
+        <div class="cert-name">O2 Tip Onayı</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">✅</div>
+        <div class="cert-name">ISO 9001</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🌿</div>
+        <div class="cert-name">ISO 14001</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🔵</div>
+        <div class="cert-name">TSE Belgeli</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🏗️</div>
+        <div class="cert-name">2018/858 AB Uyumlu</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🔒</div>
+        <div class="cert-name">24 Ay Garanti</div>
       </div>
     </div>
   </div>

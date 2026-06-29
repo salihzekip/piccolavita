@@ -276,6 +276,51 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 @media (max-width: 480px) { .wa-float span { display: none; } .wa-float { padding: 14px; border-radius: 50%; } }
 
 
+/* ── PROCESS SECTION ── */
+.process-section { background: var(--bg); padding: 100px 0; }
+.process-header { max-width: 680px; margin-bottom: 64px; }
+.process-intro { font-size: 16px; color: var(--neutral-2); line-height: 1.8; margin-top: 20px; max-width: 560px; }
+
+.process-steps { display: flex; flex-direction: column; gap: 0; }
+.process-step {
+  display: grid; grid-template-columns: 72px 1fr; gap: 24px;
+  padding: 32px 0; border-bottom: 1px solid var(--neutral-1);
+  align-items: flex-start;
+  transition: background .2s;
+}
+.process-step:last-child { border-bottom: none; }
+.process-step:hover { background: rgba(47,74,61,.03); margin: 0 -24px; padding: 32px 24px; border-radius: 8px; }
+.step-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--primary); color: var(--accent);
+  font-family: var(--serif); font-size: 22px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 4px;
+}
+.step-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.step-desc { font-size: 15px; color: var(--neutral-2); line-height: 1.75; max-width: 600px; }
+
+.process-cta {
+  margin-top: 72px; background: var(--primary); border-radius: 12px;
+  padding: 48px 56px; display: flex; align-items: center;
+  justify-content: space-between; gap: 32px; flex-wrap: wrap;
+}
+.process-cta-text h3 {
+  font-family: var(--serif); font-size: 28px; font-weight: 700;
+  color: var(--white); margin-bottom: 8px;
+}
+.process-cta-text p { font-size: 15px; color: rgba(255,255,255,.65); }
+.process-cta-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.process-cta .btn-cta { background: #25D366; }
+.process-cta .btn-cta:hover { background: #1da851; }
+.process-cta .btn-primary { background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.4); color: var(--white); }
+.process-cta .btn-primary:hover { background: rgba(255,255,255,.25); }
+@media (max-width: 768px) {
+  .process-cta { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+  .process-step { grid-template-columns: 52px 1fr; gap: 16px; }
+  .step-num { width: 44px; height: 44px; font-size: 18px; }
+}
+
 /* ── MODELS SECTION ── */
 .models-section { padding: 100px 0; background: var(--bg); }
 .models-header {
@@ -699,6 +744,77 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
         <div class="cert-name">24 Ay Garanti</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SÜREÇ -->
+<section class="process-section" id="surec">
+  <div class="container">
+    <div class="process-header">
+      <div class="section-label-light reveal">Üretim Süreci</div>
+      <h2 class="section-h-dark reveal reveal-delay-1">Sipariş Verdiniz,<br><em>Gerisini Biz Hallederiz.</em></h2>
+      <p class="process-intro reveal reveal-delay-2">Küçük bir ev almak büyük bir güven meselesi. Paranızı ödedikten sonra ne olduğunu bilmemek kaygı yaratır. Biz bunu farklı yapıyoruz.</p>
+    </div>
+
+    <div class="process-steps">
+
+      <div class="process-step reveal">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Sözleşme</div>
+          <div class="step-desc">Karşılıklı sözleşme imzalanır. Model, teknik özellikler, teslimat tarihi ve ödeme planı kağıda dökülür.</div>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">WhatsApp Grubu</div>
+          <div class="step-desc">Sizinle özel bir WhatsApp grubu açıyoruz. Mimarlar, üretim ekibi ve siz — aynı grupta, anlık bilgi akışı.</div>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Mimari Çizim</div>
+          <div class="step-desc">Mimarlarımız size özel çizim hazırlar. Onayınız olmadan üretime başlamıyoruz.</div>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Üretim</div>
+          <div class="step-desc">Denizli fabrikamızda üretim başlar. Fotoğraf ve video paylaşımıyla süreci adım adım görüyorsunuz.</div>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">Teslimat ve Kurulum</div>
+          <div class="step-desc">Eviniz arazinize götürülür, teraziye alınır, kurulur. Anahtar elinize verilir. 45–60 gün, 300 km nakliye bizden.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA BUTONLARI -->
+    <div class="process-cta reveal">
+      <div class="process-cta-text">
+        <h3>Siparişinizi Konuşalım</h3>
+        <p>Sizi tanımadan teklif vermiyoruz. Önce ihtiyacınızı anlayalım.</p>
+      </div>
+      <div class="process-cta-btns">
+        <a href="https://wa.me/905324521522?text=Merhaba%2C%20tiny%20house%20teklifi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.36 4.91L2 22l5.31-1.39a9.87 9.87 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.83 14.04c-.25.7-1.45 1.34-2.01 1.42-.51.08-1.16.11-1.87-.12-.43-.13-.98-.31-1.7-.6-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.6-1.21-3.06s.76-2.16 1.03-2.46c.27-.3.6-.37.8-.37.2 0 .4.002.58.01.18.01.43-.07.67.51.25.6.84 2.06.91 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.45.51-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.05.18-.18.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.71.81 2 .96.3.15.49.22.56.34.07.13.07.71-.18 1.4z"/></svg>
+          WhatsApp'tan Ulaş
+        </a>
+        <a href="https://wa.me/905324521522?text=Merhaba%2C%20fiyat%20teklifi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-primary">Teklif Al</a>
+      </div>
+    </div>
+
   </div>
 </section>
 

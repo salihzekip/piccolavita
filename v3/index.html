@@ -113,10 +113,21 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   position: absolute; inset: 0;
   /* Geçici görsel — müşteri görseli buraya gelecek */
   background: url('https://www.piccolavita.com/assets/images/luna1.jpg') center/cover no-repeat;
-  transform: scale(1.06);
-  transition: transform 8s ease;
+  animation: kenburns 32s ease-in-out infinite alternate;
+  will-change: transform;
 }
-.hero.loaded .hero-bg { transform: scale(1); }
+@keyframes kenburns {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.14) translate(-1.8%, 1.2%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg { animation: none; transform: scale(1.04); }
+}
+.hero-grain {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  opacity: .14; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(155deg, rgba(13,26,16,.88) 0%, rgba(13,26,16,.6) 55%, rgba(13,26,16,.38) 100%);
@@ -159,7 +170,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .cta-bar {
   background: var(--white); border-bottom: 1px solid var(--neutral-1);
   padding: 16px 0;
-  position: sticky; top: 0; z-index: 90;
+  position: sticky; top: 79px; z-index: 90;
   box-shadow: 0 2px 12px rgba(47,74,61,.08);
 }
 .cta-bar .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
@@ -473,6 +484,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-content">
       <div class="hero-eyebrow">35 Yıllık Usta Üretim</div>
@@ -875,9 +887,6 @@ window.addEventListener('scroll', () => {
 // Mobile menu
 function openMobile() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
-
-// Hero parallax load
-document.querySelector('.hero').classList.add('loaded');
 
 // Scroll reveal
 const observer = new IntersectionObserver((entries) => {

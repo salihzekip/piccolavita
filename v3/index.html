@@ -361,10 +361,10 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   box-shadow: 0 2px 16px rgba(47,74,61,.07);
   transition: transform .25s, box-shadow .25s;
 }
-.model-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(47,74,61,.14); }
+.model-card:hover { transform: translateY(-6px) rotate(-.4deg); box-shadow: 0 12px 40px rgba(47,74,61,.14); }
 .model-card-img { position: relative; overflow: hidden; aspect-ratio: 4/3; }
-.model-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-.model-card:hover .model-card-img img { transform: scale(1.05); }
+.model-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.22,.61,.36,1); }
+.model-card:hover .model-card-img img { transform: scale(1.06); }
 .model-badge {
   position: absolute; top: 14px; left: 14px;
   background: var(--accent); color: var(--primary);
@@ -388,6 +388,46 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .models-footer-cta {
   display: flex; justify-content: center; gap: 16px;
   margin-top: 56px; flex-wrap: wrap;
+}
+
+/* ── PRICING ── */
+.pricing-section { background: var(--white); padding: 100px 0; }
+.pricing-header { max-width: 680px; margin-bottom: 56px; }
+.pricing-table-wrap { overflow-x: auto; }
+.pricing-table { width: 100%; border-collapse: collapse; }
+.pricing-table th {
+  font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--neutral-2); text-align: left; padding: 14px 16px;
+  border-bottom: 2px solid var(--primary);
+}
+.pricing-table td { padding: 20px 16px; border-bottom: 1px solid var(--neutral-1); vertical-align: middle; }
+.pricing-table tr:hover td { background: rgba(47,74,61,.03); }
+.pt-model { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+.pt-model .pt-badge {
+  display: inline-block; margin-left: 10px; vertical-align: middle;
+  background: var(--accent); color: var(--primary);
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 20px;
+}
+.pt-size { font-size: 15px; font-weight: 600; color: var(--neutral-2); white-space: nowrap; }
+.pt-price { font-size: 16px; font-weight: 700; color: var(--secondary); white-space: nowrap; }
+.pt-time { font-size: 14px; color: var(--neutral-2); white-space: nowrap; }
+.pt-cta { text-align: right; }
+.pt-cta a { font-size: 13px; font-weight: 700; color: var(--primary); letter-spacing: .04em; transition: color .2s; white-space: nowrap; }
+.pt-cta a:hover { color: var(--secondary); }
+.pricing-note { font-size: 13px; color: var(--neutral-2); margin-top: 20px; line-height: 1.6; }
+@media (max-width: 700px) {
+  .pricing-table thead { display: none; }
+  .pricing-table, .pricing-table tbody, .pricing-table tr, .pricing-table td { display: block; width: 100%; }
+  .pricing-table tr { border: 1px solid var(--neutral-1); border-radius: 10px; margin-bottom: 14px; padding: 8px 0; }
+  .pricing-table td { border-bottom: none; padding: 8px 18px; }
+  .pricing-table td[data-label]::before {
+    content: attr(data-label);
+    display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--neutral-2); margin-bottom: 2px;
+  }
+  .pt-cta { text-align: left; padding-bottom: 14px; }
 }
 
 /* ── WHY SECTION ── */
@@ -589,6 +629,54 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .lightbox-nav:hover { color: var(--white); }
 .lightbox-prev { left: 12px; }
 .lightbox-next { right: 12px; }
+
+/* ── KONUM / HARİTA ── */
+.map-section { background: var(--bg); padding: 100px 0 0; }
+.map-head { max-width: 680px; margin-bottom: 56px; }
+.map-sub { font-size: 15px; color: var(--neutral-2); margin-top: 20px; line-height: 1.7; }
+.map-embed { width: 100%; height: 440px; background: var(--neutral-1); }
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(.2); }
+@media (max-width: 700px) { .map-embed { height: 320px; } }
+
+/* ── KELİME KELİME BAŞLIK ANİMASYONU ── */
+.wsplit .w { display: inline-block; opacity: 0; transform: translateY(.5em); transition: opacity .6s ease, transform .6s ease; }
+.wsplit.win .w { opacity: 1; transform: translateY(0); }
+
+/* ── ÖZEL İMLEÇ (modeller bölümünde "İncele") ── */
+.cursor-tag {
+  position: fixed; top: 0; left: 0; z-index: 3000; width: 84px; height: 84px; border-radius: 50%;
+  background: var(--accent); color: var(--primary);
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; opacity: 0; transform: translate(-50%,-50%) scale(.5);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.cursor-tag.on { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+@media (hover: none), (pointer: coarse) { .cursor-tag { display: none; } }
+
+/* ── FOOTER OUTLINE YAZI ── */
+.footer-outline {
+  font-family: var(--serif); font-weight: 700; line-height: 1; text-align: center;
+  font-size: clamp(44px, 10.5vw, 160px); letter-spacing: .05em; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.13);
+  user-select: none; margin-bottom: 56px; overflow: hidden;
+}
+
+/* ── LENIS ── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+/* ── BÖLÜM BOŞLUKLARI (masaüstü ≥1100px: min 160px dikey) ── */
+@media (min-width: 1100px) {
+  .process-section, .models-section, .pricing-section, .why-section,
+  .projects-section, .testimonials-section, .faq-section, .contact-section { padding: 160px 0; }
+  .map-section { padding: 160px 0 0; }
+}
+
+/* ── HAREKET AZALTMA ── */
+@media (prefers-reduced-motion: reduce) {
+  .wsplit .w, .reveal { opacity: 1; transform: none; transition: none; }
+}
 
 </style>
 </head>
@@ -837,6 +925,75 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
       <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-primary">Tüm 28 Modeli İncele</a>
       <a href="https://wa.me/905324521522?text=Merhaba%2C%20model%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-cta">Ücretsiz Danışma Al</a>
     </div>
+  </div>
+</section>
+
+<!-- FİYATLAR -->
+<section class="pricing-section" id="fiyatlar">
+  <div class="container">
+    <div class="pricing-header">
+      <div class="section-label-light reveal">Fiyatlar</div>
+      <h2 class="section-h-dark reveal reveal-delay-1">Sürpriz Yok,<br><em>Şeffaf Fiyat.</em></h2>
+      <p class="process-intro reveal reveal-delay-2">Başlangıç fiyatları standart donanımı kapsar; seçtiğiniz malzeme ve özelleştirmelere göre netleşir. Kesin fiyat için ücretsiz teklif alın.</p>
+    </div>
+    <div class="pricing-table-wrap reveal">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Büyüklük</th>
+            <th>Başlangıç Fiyatı</th>
+            <th>Teslim Süresi</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pt-model" data-label="Model">Comfort</td>
+            <td class="pt-size" data-label="Büyüklük">20.4 m² · 8 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">800.000 TL'den itibaren</td>
+            <td class="pt-time" data-label="Teslim Süresi">45 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Comfort%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
+            <td class="pt-model" data-label="Model">Luna<span class="pt-badge">En Popüler</span></td>
+            <td class="pt-size" data-label="Büyüklük">26 m² · 8 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">950.000 TL'den itibaren</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Luna%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
+            <td class="pt-model" data-label="Model">Arte</td>
+            <td class="pt-size" data-label="Büyüklük">26 m² · 8 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">950.000 TL'den itibaren</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Arte%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
+            <td class="pt-model" data-label="Model">Centro</td>
+            <td class="pt-size" data-label="Büyüklük">29 m² · 9 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.100.000 TL'den itibaren</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Centro%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
+            <td class="pt-model" data-label="Model">Florin</td>
+            <td class="pt-size" data-label="Büyüklük">8 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">Teklif alın</td>
+            <td class="pt-time" data-label="Teslim Süresi">60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Florin%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
+            <td class="pt-model" data-label="Model">Plain</td>
+            <td class="pt-size" data-label="Büyüklük">36.5 m² · 10 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.250.000 TL'den itibaren</td>
+            <td class="pt-time" data-label="Teslim Süresi">60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Plain%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pricing-note reveal">Fiyatlar standart donanım içindir; %50 sözleşmede, %50 teslimatta ödenir. İlk 300 km nakliye ücretsizdir. Güncel fiyat listesi için <a href="https://wa.me/905324521522" target="_blank" rel="noopener" style="color:var(--secondary);font-weight:700;">WhatsApp'tan ulaşın</a>.</p>
   </div>
 </section>
 
@@ -1250,9 +1407,24 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   </div>
 </section>
 
+<!-- KONUM -->
+<section class="map-section" id="konum">
+  <div class="container">
+    <div class="map-head">
+      <div class="section-label reveal">Konum</div>
+      <h2 class="section-h-dark reveal reveal-delay-1">Denizli Atölyemize<br><em>Bekleriz.</em></h2>
+      <p class="map-sub reveal reveal-delay-2">Hacıeyüplü Mah. 3166/2 Sok. No:2, Merkezefendi / DENİZLİ<br>Üretimi yerinde görmek için önceden randevu almanız yeterli.</p>
+    </div>
+  </div>
+  <div class="map-embed">
+    <iframe src="https://maps.google.com/maps?q=PiccolaVita+Tiny+House+Merkezefendi+Denizli&z=15&output=embed" title="Piccola Vita atölye konumu — Google Haritalar" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
+    <div class="footer-outline" aria-hidden="true">PICCOLAVITA</div>
     <div class="footer-grid">
       <div>
         <div class="footer-logo">PICCOLAVITA</div>
@@ -1295,6 +1467,10 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   <span>Hemen Yaz</span>
 </a>
 
+<!-- ÖZEL İMLEÇ -->
+<div class="cursor-tag" id="cursorTag" aria-hidden="true">İncele</div>
+
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
 <script>
 // NAV scroll effect
 const navbar = document.getElementById('navbar');
@@ -1371,6 +1547,61 @@ document.querySelectorAll('.faq-item').forEach(item => {
 // Form basari mesaji (FormSubmit _next donusu)
 if (new URLSearchParams(location.search).has('gonderildi')) {
   document.getElementById('formSuccess').classList.add('show');
+}
+
+// Kelime kelime başlık animasyonu (section başlıkları)
+document.querySelectorAll('.section-h, .section-h-dark').forEach(h => {
+  h.classList.remove('reveal', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3');
+  (function split(node) {
+    [...node.childNodes].forEach(child => {
+      if (child.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); }
+          else { const s = document.createElement('span'); s.className = 'w'; s.textContent = part; frag.appendChild(s); }
+        });
+        node.replaceChild(frag, child);
+      } else if (child.nodeType === 1 && child.tagName !== 'BR') { split(child); }
+    });
+  })(h);
+  h.querySelectorAll('.w').forEach((w, i) => w.style.transitionDelay = (i * .07) + 's');
+  h.classList.add('wsplit');
+});
+const wObs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('win'); wObs.unobserve(e.target); }
+}), { threshold: .3 });
+document.querySelectorAll('.wsplit').forEach(h => wObs.observe(h));
+
+// Özel imleç — model kartlarında "İncele"
+const cursorTag = document.getElementById('cursorTag');
+if (cursorTag && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  window.addEventListener('mousemove', e => {
+    cursorTag.style.left = e.clientX + 'px';
+    cursorTag.style.top = e.clientY + 'px';
+  }, { passive: true });
+  document.querySelectorAll('.model-card').forEach(c => {
+    c.addEventListener('mouseenter', () => cursorTag.classList.add('on'));
+    c.addEventListener('mouseleave', () => cursorTag.classList.remove('on'));
+  });
+}
+
+// Lenis smooth scroll
+if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const lenis = new Lenis({ duration: 1.1 });
+  requestAnimationFrame(function raf(t) { lenis.raf(t); requestAnimationFrame(raf); });
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') { e.preventDefault(); lenis.scrollTo(0); return; }
+      const target = document.querySelector(id);
+      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -64 }); }
+    });
+  });
+  // Mobil menü / lightbox açıkken kaydırmayı durdur
+  new MutationObserver(() => {
+    if (document.body.style.overflow === 'hidden') { lenis.stop(); } else { lenis.start(); }
+  }).observe(document.body, { attributes: true, attributeFilter: ['style'] });
 }
 
 // Scroll reveal

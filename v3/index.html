@@ -469,6 +469,27 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .project-model { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--white); }
 .project-loc { font-size: 11px; font-weight: 600; letter-spacing: .08em; color: rgba(255,255,255,.75); text-transform: uppercase; white-space: nowrap; }
 
+/* ── FAQ ── */
+.faq-section { background: var(--bg); padding: 100px 0; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; }
+@media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; gap: 40px; } }
+.faq-intro-col { position: sticky; top: 180px; }
+@media (max-width: 900px) { .faq-intro-col { position: static; } }
+.faq-intro-col .process-intro { margin-top: 20px; }
+.faq-item { border-bottom: 1px solid var(--neutral-1); }
+.faq-item:first-child { border-top: 1px solid var(--neutral-1); }
+.faq-q {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; padding: 22px 0; text-align: left;
+  font-size: 16px; font-weight: 600; color: var(--primary);
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--secondary); }
+.faq-q svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--secondary); transition: transform .3s; }
+.faq-item.open .faq-q svg { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-a p { padding: 0 36px 22px 0; font-size: 15px; color: var(--neutral-2); line-height: 1.75; }
+
 /* ── TESTIMONIALS ── */
 .testimonials-section { background: var(--forest); padding: 100px 0; }
 .testimonials-header {
@@ -903,7 +924,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
         <div class="section-label reveal">Müşteri Yorumları</div>
         <h2 class="section-h reveal reveal-delay-1">Onlar Anlatsın,<br><em>Biz Üretelim.</em></h2>
       </div>
-      <a href="https://www.google.com/maps/search/Piccola+Vita+Tiny+House+Denizli" target="_blank" rel="noopener" class="btn btn-secondary reveal reveal-delay-1">Google Yorumları →</a>
+      <a href="https://www.google.com/maps/place/PiccolaVita+Tiny+House/@37.8351471,29.0455026,17z/data=!4m8!3m7!1s0x14c73fa3e18224e3:0xef96f019d8d5b3e5!8m2!3d37.8351471!4d29.0455026!9m1!1b1!16s%2Fg%2F11t2y5hht5" target="_blank" rel="noopener" class="btn btn-secondary reveal reveal-delay-1">Google Yorumları →</a>
     </div>
 
     <div class="testi-slider reveal">
@@ -1035,6 +1056,79 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   </div>
 </section>
 
+<!-- SSS -->
+<section class="faq-section" id="sss">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-intro-col">
+        <div class="section-label-light reveal">Sıkça Sorulan Sorular</div>
+        <h2 class="section-h-dark reveal reveal-delay-1">Aklınızda<br><em>Ne Varsa.</em></h2>
+        <p class="process-intro reveal reveal-delay-2">Cevabını bulamadığınız her soru için WhatsApp'tan bize yazabilirsiniz — mesai saatleri içinde dakikalar içinde dönüyoruz.</p>
+        <a href="https://wa.me/905324521522?text=Merhaba%2C%20bir%20sorum%20olacak." target="_blank" rel="noopener" class="btn btn-cta reveal reveal-delay-2" style="margin-top:28px;">Soru Sor</a>
+      </div>
+      <div class="faq-list reveal reveal-delay-1">
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Tiny house için ruhsat gerekir mi?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>Piccola Vita tiny house'ları şasi üzerine, O2 tip onaylı römork statüsünde üretilir. Yapı değil araç sınıfında olduğu için imar ruhsatı gerekmez; çekme belgesiyle kayıt edilir. Arazinizin bulunduğu bölgeye göre belediye uygulamaları farklılık gösterebilir — sözleşme öncesinde sizi detaylıca bilgilendiriyoruz.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Nereye kurabilirim?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>Kendi arazinize, kiralık araziye, hobi bahçenize veya kamp ve karavan alanlarına kurabilirsiniz. Tekerlekli olduğu için sabit yapı izni gerektirmez. Kurulum için düz bir zemin ve araç girişine uygun bir yol yeterlidir.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Kışın yaşanabilir mi?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>Evet. Duvar, taban ve çatıda tam yalıtım; ısı yalıtımlı çift camlar ve buhar bariyeri standarttır. Müşterilerimiz eksi sıcaklıklarda yalnızca klimayla konforlu şekilde yaşıyor. Talebe göre soba ve şömine bacası da ekliyoruz.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Elektrik ve su bağlantısı nasıl olur?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>Evler şebekeye hazır tesisatla teslim edilir: dış elektrik bağlantısı, temiz su girişi ve atık su çıkışı standarttır. Şebekenin olmadığı arazilerde güneş paneli, su deposu ve foseptik çözümleri için proje desteği veriyoruz.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Ödeme planı nasıl?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>%50 sözleşmede, %50 teslimatta. Ara ödeme talep etmiyoruz; üretim boyunca size özel WhatsApp grubundan süreci şeffaf şekilde takip ediyorsunuz.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Teslimat süresi ne kadar?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>Sözleşme ve mimari çizim onayından sonra ortalama 45–60 gün. İlk 300 km nakliye bizden; Türkiye'nin 81 iline teslimat yapıyoruz.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Garanti kapsamı nedir?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>Teslimattan itibaren 24 ay kapsamlı garanti: taşıyıcı şasi, su geçirmezlik, elektrik ve su tesisatı dahildir. Satış sonrası teknik destek ve periyodik bakım hizmeti sunuyoruz.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Modelimi özelleştirebilir miyim?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>28 modelin tamamı özelleştirilebilir: dış cephe kaplaması, iç malzemeler, mobilya, teknik donanım ve oda düzeni sizin seçiminize göre şekillenir. Mimarlarımız onayınız olmadan üretime başlamaz.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
@@ -1133,6 +1227,25 @@ function goTesti(i) {
 function stepTesti(d) { goTesti(testiIndex + d); resetTestiTimer(); }
 let testiTimer = setInterval(() => goTesti(testiIndex + 1), 7000);
 function resetTestiTimer() { clearInterval(testiTimer); testiTimer = setInterval(() => goTesti(testiIndex + 1), 7000); }
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.faq-a').style.maxHeight = null;
+      other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+      q.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
 
 // Scroll reveal
 const observer = new IntersectionObserver((entries) => {

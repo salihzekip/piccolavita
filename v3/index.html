@@ -397,7 +397,8 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   transition: border-top-color .25s, background .25s;
 }
 .why-item:hover { border-top-color: var(--accent); background: rgba(47,74,61,.35); }
-.why-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
+.why-icon { color: var(--accent); margin-bottom: 1.2rem; }
+.why-icon svg { width: 34px; height: 34px; display: block; }
 .why-num {
   font-family: var(--serif); font-size: 3rem; font-weight: 300;
   color: var(--accent); line-height: 1; margin-bottom: .5rem;
@@ -422,7 +423,8 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 }
 .cert-item:last-child { border-right: none; }
 .cert-item:hover { opacity: 1; }
-.cert-icon { font-size: 1.8rem; }
+.cert-icon { color: var(--accent); }
+.cert-icon svg { width: 26px; height: 26px; display: block; }
 .cert-name {
   font-size: 11px; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase; color: var(--white); text-align: center;
@@ -688,25 +690,25 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
     <h2 class="section-h reveal reveal-delay-1">Fark,<br><em>Her Detayda.</em></h2>
     <div class="why-grid">
       <div class="why-item reveal">
-        <div class="why-icon">🏆</div>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 3.5h10v6.5a5 5 0 0 1-10 0V3.5z"/><path d="M7 5.5H4.5a2.5 2.5 0 0 0 2.5 4.5M17 5.5h2.5A2.5 2.5 0 0 1 17 10"/></svg></div>
         <div class="why-num">35</div>
         <div class="why-title">Yıllık Üretim Deneyimi</div>
         <div class="why-desc">1989'dan bu yana Denizli'de üretiyoruz. Sektördeki en köklü markalardan biri — her tiny house bir mirastır.</div>
       </div>
       <div class="why-item reveal reveal-delay-1">
-        <div class="why-icon">🇪🇺</div>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="M9.3 13.8 7.8 21l4.2-2.3L16.2 21l-1.5-7.2"/></svg></div>
         <div class="why-num">O2</div>
         <div class="why-title">Avrupa Tip Onayı</div>
         <div class="why-desc">2018/858 AB yönetmeliği uyumlu O2 tip onayı. ISO 9001, ISO 14001 ve TSE kalite sertifikaları mevcut.</div>
       </div>
       <div class="why-item reveal reveal-delay-2">
-        <div class="why-icon">🛡️</div>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.8v5.4c0 4.4-2.9 7.4-7 9-4.1-1.6-7-4.6-7-9V5.8L12 3z"/><path d="M9 12l2.2 2.2L15.5 9.7"/></svg></div>
         <div class="why-num">24</div>
         <div class="why-title">Ay Garanti</div>
         <div class="why-desc">Teslimattan itibaren 2 yıl kapsamlı garanti. Satış sonrası teknik destek ve periyodik bakım hizmeti.</div>
       </div>
       <div class="why-item reveal reveal-delay-3">
-        <div class="why-icon">✨</div>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h9M19 8h1M4 16h1M11 16h9"/><circle cx="16" cy="8" r="2.2"/><circle cx="8" cy="16" r="2.2"/></svg></div>
         <div class="why-num">28</div>
         <div class="why-title">Özelleştirilebilir Model</div>
         <div class="why-desc">Her model tam özelleştirilebilir. Dış cephe, iç malzeme, mobilya, teknik donanım — hepsi sizin seçiminiz.</div>
@@ -720,27 +722,27 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   <div class="container">
     <div class="certs-row">
       <div class="cert-item">
-        <div class="cert-icon">🇪🇺</div>
+        <div class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="M9.3 13.8 7.8 21l4.2-2.3L16.2 21l-1.5-7.2"/></svg></div>
         <div class="cert-name">O2 Tip Onayı</div>
       </div>
       <div class="cert-item">
-        <div class="cert-icon">✅</div>
+        <div class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.3l2.4 2.4 4.6-5.2"/></svg></div>
         <div class="cert-name">ISO 9001</div>
       </div>
       <div class="cert-item">
-        <div class="cert-icon">🌿</div>
+        <div class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 18.5C5.5 11 10.5 5.5 19 5c-.5 8.5-6 13.5-13.5 13.5z"/><path d="M5.5 18.5C8 14 11.5 10.5 15 8.5"/></svg></div>
         <div class="cert-name">ISO 14001</div>
       </div>
       <div class="cert-item">
-        <div class="cert-icon">🔵</div>
+        <div class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l7.8 4.5v9.4L12 21.2l-7.8-4.5V7.3L12 2.8z"/><path d="M9 12.2l2.2 2.2 4-4.6"/></svg></div>
         <div class="cert-name">TSE Belgeli</div>
       </div>
       <div class="cert-item">
-        <div class="cert-icon">🏗️</div>
+        <div class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8.5L19 7.5V21H6V3z"/><path d="M14.5 3v4.5H19"/><path d="M9.5 12.5h5.5M9.5 16.5h5.5"/></svg></div>
         <div class="cert-name">2018/858 AB Uyumlu</div>
       </div>
       <div class="cert-item">
-        <div class="cert-icon">🔒</div>
+        <div class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/><path d="M12 14.5v2"/></svg></div>
         <div class="cert-name">24 Ay Garanti</div>
       </div>
     </div>

@@ -80,6 +80,56 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 }
 .navbar.solid .navbar-links a { color: var(--primary); }
 .navbar-links a:hover { border-bottom-color: var(--secondary); }
+
+/* ── MODELLER DROPDOWN ── */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: inline-flex; align-items: center; gap: 5px; }
+.nav-dropdown > a::after {
+  content: ''; width: 6px; height: 6px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px); transition: transform .2s;
+}
+.nav-dropdown.open > a::after { transform: rotate(225deg) translateY(2px); }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 18px); left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 230px; background: var(--white); border-radius: 6px;
+  box-shadow: 0 16px 48px rgba(13,26,16,.18);
+  padding: 10px; list-style: none;
+  opacity: 0; visibility: hidden;
+  transition: opacity .2s, transform .2s, visibility .2s;
+}
+.nav-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.nav-dropdown-menu > li { position: relative; }
+.nav-dropdown-menu > li > a,
+.nav-dropdown-sub-label {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 11px 14px; border-radius: 4px;
+  font-size: 14px; font-weight: 600; color: var(--primary);
+  border-bottom: none; cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.nav-dropdown-menu > li > a:hover,
+.nav-dropdown-sub:hover > .nav-dropdown-sub-label {
+  background: var(--bg); color: var(--secondary);
+}
+.nav-dropdown-sub-label::after { content: '›'; font-size: 16px; color: var(--neutral-2); line-height: 1; }
+.nav-dropdown-flyout {
+  position: absolute; top: 0; left: 100%; margin-left: 6px;
+  min-width: 190px; background: var(--white); border-radius: 6px;
+  box-shadow: 0 16px 48px rgba(13,26,16,.18);
+  padding: 10px; list-style: none;
+  opacity: 0; visibility: hidden; transform: translateX(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+}
+.nav-dropdown-sub:hover .nav-dropdown-flyout { opacity: 1; visibility: visible; transform: translateX(0); }
+.nav-dropdown-flyout a {
+  display: block; padding: 9px 14px; border-radius: 4px;
+  font-size: 13.5px; font-weight: 500; color: var(--primary);
+  border-bottom: none; white-space: nowrap;
+}
+.nav-dropdown-flyout a:hover { background: var(--bg); color: var(--secondary); }
+
 .navbar-cta { display: flex; align-items: center; gap: 16px; }
 .navbar-burger {
   display: none; flex-direction: column; gap: 5px;
@@ -102,6 +152,23 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .mobile-menu a { font-family: var(--serif); font-size: 28px; color: rgba(255,255,255,.85); transition: color .2s; }
 .mobile-menu a:hover { color: var(--accent); }
 .mobile-close { position: absolute; top: 24px; right: 28px; font-size: 36px; color: var(--white); cursor: pointer; }
+.mobile-menu details { width: 100%; max-width: 320px; text-align: center; }
+.mobile-menu summary {
+  font-family: var(--serif); font-size: 28px; color: rgba(255,255,255,.85);
+  cursor: pointer; list-style: none; transition: color .2s;
+}
+.mobile-menu summary::-webkit-details-marker { display: none; }
+.mobile-menu details[open] > summary { color: var(--accent); }
+.mobile-models-body { display: flex; flex-direction: column; align-items: center; gap: 18px; margin-top: 18px; }
+.mobile-models-body details { margin: 0; }
+.mobile-models-body summary { font-size: 18px; font-family: var(--sans); font-weight: 600; letter-spacing: .03em; }
+.mobile-models-body ul { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.mobile-models-body ul a, .mobile-sub-link {
+  font-family: var(--sans); font-size: 15px; font-weight: 500;
+  color: rgba(255,255,255,.65); transition: color .2s;
+}
+.mobile-models-body ul a:hover, .mobile-sub-link:hover { color: var(--accent); }
+.mobile-sub-link { display: block; margin-top: 6px; }
 
 /* ── HERO ── */
 .hero {
@@ -385,6 +452,19 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   letter-spacing: .04em; transition: color .2s;
 }
 .model-link:hover { color: var(--secondary); }
+.baz-models { margin-top: 56px; text-align: center; }
+.baz-models-label {
+  font-size: 12px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 18px;
+}
+.baz-models-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.baz-models-row a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 26px; border: 2px solid var(--primary); border-radius: 4px;
+  font-size: 14px; font-weight: 600; color: var(--primary);
+  transition: background .2s, color .2s;
+}
+.baz-models-row a:hover { background: var(--primary); color: var(--white); }
 .models-footer-cta {
   display: flex; justify-content: center; gap: 16px;
   margin-top: 56px; flex-wrap: wrap;
@@ -686,7 +766,33 @@ html.lenis, html.lenis body { height: auto; }
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMobile()">✕</button>
   <a href="#" onclick="closeMobile()">Ana Sayfa</a>
-  <a href="#modeller" onclick="closeMobile()">Modeller</a>
+  <details class="mobile-models">
+    <summary>Modeller</summary>
+    <div class="mobile-models-body">
+      <details>
+        <summary>Premium Modeller</summary>
+        <ul>
+          <li><a href="https://www.piccolavita.com/tiny-house/usak" onclick="closeMobile()">Uşak</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/foca" onclick="closeMobile()">Foça</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/bodrum" onclick="closeMobile()">Bodrum</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/milas" onclick="closeMobile()">Milas</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/nikfer" onclick="closeMobile()">Nikfer</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/tavas" onclick="closeMobile()">Tavas</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/honaz" onclick="closeMobile()">Honaz</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/inciralti" onclick="closeMobile()">İnciraltı</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Baz Modeller</summary>
+        <ul>
+          <li><a href="https://www.piccolavita.com/tiny-house/8-metre" onclick="closeMobile()">8 Metre</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/9-metre" onclick="closeMobile()">9 Metre</a></li>
+          <li><a href="https://www.piccolavita.com/tiny-house/10-metre" onclick="closeMobile()">10 Metre</a></li>
+        </ul>
+      </details>
+      <a href="https://www.piccolavita.com/tiny-house/ofis-ve-sabit-tiny" class="mobile-sub-link" onclick="closeMobile()">Ofis ve Sabit Tiny</a>
+    </div>
+  </details>
   <a href="#projeler" onclick="closeMobile()">Projeler</a>
   <a href="#hikaye" onclick="closeMobile()">Hakkımızda</a>
   <a href="#iletisim" onclick="closeMobile()">İletişim</a>
@@ -699,7 +805,33 @@ html.lenis, html.lenis body { height: auto; }
     <a href="#" class="navbar-logo">PICCOLAVITA</a>
     <ul class="navbar-links">
       <li><a href="#">Ana Sayfa</a></li>
-      <li><a href="#modeller">Modeller</a></li>
+      <li class="nav-dropdown">
+        <a href="#modeller" class="nav-dropdown-toggle">Modeller</a>
+        <ul class="nav-dropdown-menu">
+          <li class="nav-dropdown-sub">
+            <span class="nav-dropdown-sub-label">Premium Modeller</span>
+            <ul class="nav-dropdown-flyout">
+              <li><a href="https://www.piccolavita.com/tiny-house/usak" target="_blank" rel="noopener">Uşak</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/foca" target="_blank" rel="noopener">Foça</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/bodrum" target="_blank" rel="noopener">Bodrum</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/milas" target="_blank" rel="noopener">Milas</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/nikfer" target="_blank" rel="noopener">Nikfer</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/tavas" target="_blank" rel="noopener">Tavas</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/honaz" target="_blank" rel="noopener">Honaz</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/inciralti" target="_blank" rel="noopener">İnciraltı</a></li>
+            </ul>
+          </li>
+          <li class="nav-dropdown-sub">
+            <span class="nav-dropdown-sub-label">Baz Modeller</span>
+            <ul class="nav-dropdown-flyout">
+              <li><a href="https://www.piccolavita.com/tiny-house/8-metre" target="_blank" rel="noopener">8 Metre</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/9-metre" target="_blank" rel="noopener">9 Metre</a></li>
+              <li><a href="https://www.piccolavita.com/tiny-house/10-metre" target="_blank" rel="noopener">10 Metre</a></li>
+            </ul>
+          </li>
+          <li><a href="https://www.piccolavita.com/tiny-house/ofis-ve-sabit-tiny" target="_blank" rel="noopener">Ofis ve Sabit Tiny</a></li>
+        </ul>
+      </li>
       <li><a href="#projeler">Projeler</a></li>
       <li><a href="#hikaye">Hakkımızda</a></li>
       <li><a href="#iletisim">İletişim</a></li>
@@ -749,7 +881,7 @@ html.lenis, html.lenis body { height: auto; }
   <div class="ticker-inner" id="tickerInner">
     <span class="ticker-item"><span class="ticker-dot"></span>35 Yıllık Deneyim</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Avrupa Sertifikalı</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>28 Farklı Model</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>8 Premium, 3 Baz Model</span>
     <span class="ticker-item"><span class="ticker-dot"></span>24 Ay Garanti</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Türkiye Çapında Kurulum</span>
     <span class="ticker-item"><span class="ticker-dot"></span>O2 Tip Onayı</span>
@@ -759,7 +891,7 @@ html.lenis, html.lenis body { height: auto; }
     <!-- Tekrar (kesintisiz döngü) -->
     <span class="ticker-item"><span class="ticker-dot"></span>35 Yıllık Deneyim</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Avrupa Sertifikalı</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>28 Farklı Model</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>8 Premium, 3 Baz Model</span>
     <span class="ticker-item"><span class="ticker-dot"></span>24 Ay Garanti</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Türkiye Çapında Kurulum</span>
     <span class="ticker-item"><span class="ticker-dot"></span>O2 Tip Onayı</span>
@@ -836,7 +968,7 @@ html.lenis, html.lenis body { height: auto; }
     <div class="models-header">
       <div>
         <div class="section-label-light reveal">Modellerimiz</div>
-        <h2 class="section-h-dark reveal reveal-delay-1">28 Model,<br><em>Bir Hayat.</em></h2>
+        <h2 class="section-h-dark reveal reveal-delay-1">8 Premium, 3 Baz,<br><em>Sabit ve Ofis Modeli.</em></h2>
       </div>
       <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-outline-primary reveal reveal-delay-1">Tüm Modelleri Gör →</a>
     </div>
@@ -844,85 +976,108 @@ html.lenis, html.lenis body { height: auto; }
 
       <div class="model-card reveal">
         <div class="model-card-img">
-          <img src="https://piccolavita.com/assets/images/arte1.jpg" alt="Arte" loading="lazy">
-          <span class="model-badge">Tiny House</span>
+          <img src="https://piccolavita.com/assets/images/arte1.jpg" alt="Uşak" loading="lazy">
+          <span class="model-badge">Premium</span>
         </div>
         <div class="model-card-body">
-          <h3 class="model-name">Arte</h3>
+          <h3 class="model-name">Uşak</h3>
           <p class="model-tagline">Loft katlı, teraslı kompakt yaşam</p>
           <div class="model-meta"><span>26 m²</span><span>8 m uzunluk</span></div>
-          <a href="https://www.piccolavita.com/tiny-house/arte" target="_blank" rel="noopener" class="model-link">İncele →</a>
+          <a href="https://www.piccolavita.com/tiny-house/usak" target="_blank" rel="noopener" class="model-link">İncele →</a>
         </div>
       </div>
 
       <div class="model-card reveal reveal-delay-1">
         <div class="model-card-img">
-          <img src="https://piccolavita.com/assets/images/luna1.jpg" alt="Luna" loading="lazy">
-          <span class="model-badge">Tiny House</span>
+          <img src="https://piccolavita.com/assets/images/luna1.jpg" alt="Foça" loading="lazy">
+          <span class="model-badge">Premium</span>
         </div>
         <div class="model-card-body">
-          <h3 class="model-name">Luna</h3>
+          <h3 class="model-name">Foça</h3>
           <p class="model-tagline">Piccola Vita'nın klasik serisi</p>
           <div class="model-meta"><span>26 m²</span><span>8 m uzunluk</span></div>
-          <a href="https://www.piccolavita.com/tiny-house/luna" target="_blank" rel="noopener" class="model-link">İncele →</a>
+          <a href="https://www.piccolavita.com/tiny-house/foca" target="_blank" rel="noopener" class="model-link">İncele →</a>
         </div>
       </div>
 
       <div class="model-card reveal reveal-delay-2">
         <div class="model-card-img">
-          <img src="https://piccolavita.com/assets/images/centro1.jpg" alt="Centro" loading="lazy">
-          <span class="model-badge">Tiny House</span>
+          <img src="https://piccolavita.com/assets/images/centro1.jpg" alt="Bodrum" loading="lazy">
+          <span class="model-badge">Premium</span>
         </div>
         <div class="model-card-body">
-          <h3 class="model-name">Centro</h3>
+          <h3 class="model-name">Bodrum</h3>
           <p class="model-tagline">İki loft katlı geniş aile evi</p>
           <div class="model-meta"><span>29 m²</span><span>9 m uzunluk</span></div>
-          <a href="https://www.piccolavita.com/tiny-house/centro" target="_blank" rel="noopener" class="model-link">İncele →</a>
+          <a href="https://www.piccolavita.com/tiny-house/bodrum" target="_blank" rel="noopener" class="model-link">İncele →</a>
         </div>
       </div>
 
       <div class="model-card reveal">
         <div class="model-card-img">
-          <img src="https://piccolavita.com/assets/images/comfort1.jpg" alt="Comfort" loading="lazy">
-          <span class="model-badge">Tiny House</span>
+          <img src="https://piccolavita.com/assets/images/comfort1.jpg" alt="Milas" loading="lazy">
+          <span class="model-badge">Premium</span>
         </div>
         <div class="model-card-body">
-          <h3 class="model-name">Comfort</h3>
+          <h3 class="model-name">Milas</h3>
           <p class="model-tagline">Klasik düzen, geniş yaşam alanı</p>
           <div class="model-meta"><span>20.4 m²</span><span>8 m uzunluk</span></div>
-          <a href="https://www.piccolavita.com/tiny-house/comfort" target="_blank" rel="noopener" class="model-link">İncele →</a>
+          <a href="https://www.piccolavita.com/tiny-house/milas" target="_blank" rel="noopener" class="model-link">İncele →</a>
         </div>
       </div>
 
       <div class="model-card reveal reveal-delay-1">
         <div class="model-card-img">
-          <img src="https://piccolavita.com/assets/images/Florin1.jpg" alt="Florin" loading="lazy">
-          <span class="model-badge">Tiny House</span>
+          <img src="https://piccolavita.com/assets/images/Florin1.jpg" alt="Nikfer" loading="lazy">
+          <span class="model-badge">Premium</span>
         </div>
         <div class="model-card-body">
-          <h3 class="model-name">Florin</h3>
+          <h3 class="model-name">Nikfer</h3>
           <p class="model-tagline">Loft katlı dört odalı düzen</p>
           <div class="model-meta"><span>Teklif Alın</span><span>8 m uzunluk</span></div>
-          <a href="https://www.piccolavita.com/tiny-house/florin" target="_blank" rel="noopener" class="model-link">İncele →</a>
+          <a href="https://www.piccolavita.com/tiny-house/nikfer" target="_blank" rel="noopener" class="model-link">İncele →</a>
         </div>
       </div>
 
       <div class="model-card reveal reveal-delay-2">
         <div class="model-card-img">
-          <img src="https://piccolavita.com/assets/images/plain-render1.jpg" alt="Plain" loading="lazy">
-          <span class="model-badge">En Büyük</span>
+          <img src="https://piccolavita.com/assets/images/plain-render1.jpg" alt="Tavas" loading="lazy">
+          <span class="model-badge">Premium · En Büyük</span>
         </div>
         <div class="model-card-body">
-          <h3 class="model-name">Plain</h3>
+          <h3 class="model-name">Tavas</h3>
           <p class="model-tagline">İki loft katlı en büyük model</p>
           <div class="model-meta"><span>36.5 m²</span><span>10 m uzunluk</span></div>
-          <a href="https://www.piccolavita.com/tiny-house/plain" target="_blank" rel="noopener" class="model-link">İncele →</a>
+          <a href="https://www.piccolavita.com/tiny-house/tavas" target="_blank" rel="noopener" class="model-link">İncele →</a>
+        </div>
+      </div>
+
+      <div class="model-card reveal">
+        <div class="model-card-img">
+          <img src="assets/images/hero-tiny-house-sunset.jpg" alt="Ofis Model" loading="lazy">
+          <span class="model-badge">Ofis &amp; Sabit</span>
+        </div>
+        <div class="model-card-body">
+          <h3 class="model-name">Ofis Model</h3>
+          <p class="model-tagline">Sabit kurulum, ofis ve yaşam alanı çözümü</p>
+          <div class="model-meta"><span>Teklif Alın</span></div>
+          <a href="https://www.piccolavita.com/tiny-house/ofis-ve-sabit-tiny" target="_blank" rel="noopener" class="model-link">İncele →</a>
         </div>
       </div>
 
     </div>
+
+    <div class="baz-models reveal">
+      <div class="baz-models-label">Baz Modeller</div>
+      <div class="baz-models-row">
+        <a href="https://www.piccolavita.com/tiny-house/8-metre" target="_blank" rel="noopener">8 Metre</a>
+        <a href="https://www.piccolavita.com/tiny-house/9-metre" target="_blank" rel="noopener">9 Metre</a>
+        <a href="https://www.piccolavita.com/tiny-house/10-metre" target="_blank" rel="noopener">10 Metre</a>
+      </div>
+    </div>
+
     <div class="models-footer-cta reveal">
-      <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-primary">Tüm 28 Modeli İncele</a>
+      <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-primary">Tüm Modelleri İncele</a>
       <a href="https://wa.me/905324521522?text=Merhaba%2C%20model%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-cta">Ücretsiz Danışma Al</a>
     </div>
   </div>
@@ -1481,6 +1636,21 @@ window.addEventListener('scroll', () => {
 // Mobile menu
 function openMobile() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+// Modeller dropdown (navbar)
+document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+  const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+  toggle.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    dropdown.classList.toggle('open');
+  });
+});
+document.addEventListener('click', e => {
+  document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
+    if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+  });
+});
 
 // Lightbox
 const lbItems = [...document.querySelectorAll('.project-item')];

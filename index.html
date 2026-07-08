@@ -186,8 +186,8 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   will-change: transform;
 }
 @keyframes kenburns {
-  0%   { transform: scale(1.1) translateX(-3.5%); }
-  100% { transform: scale(1.1) translateX(3.5%); }
+  0%   { transform: scale(1.15) translateX(-6%); }
+  100% { transform: scale(1.15) translateX(6%); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-bg { animation: none; transform: scale(1); }
@@ -263,6 +263,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 }
 .ticker-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--dark); opacity: .4; }
 @keyframes ticker-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@media (max-width: 768px) { .ticker-inner { animation-duration: 14s; } }
 
 /* ── STATS / TRUST BAR ── */
 .trust { background: var(--primary); padding: 56px 0; }

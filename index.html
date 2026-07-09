@@ -445,11 +445,17 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   padding: 4px 10px; border-radius: 20px;
 }
 .mini-gallery { position: absolute; inset: 0; }
-.mini-gallery img {
+.mini-gallery img, .mini-gallery video {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0;
   transition: opacity .5s ease, transform 1s cubic-bezier(.22,.61,.36,1);
 }
-.mini-gallery img.mg-active { opacity: 1; z-index: 1; }
+.mini-gallery img.mg-active, .mini-gallery video.mg-active { opacity: 1; z-index: 1; }
+.mini-gallery .mg-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%; background: rgba(13,26,16,.55);
+  color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
 .mg-nav {
   position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
   width: 30px; height: 30px; border-radius: 50%; border: none;
@@ -1034,9 +1040,12 @@ html.lenis, html.lenis body { height: auto; }
           <img src="assets/images/foca/foca-08.jpg" alt="Foça" loading="lazy">
           <img src="assets/images/foca/foca-09.jpg" alt="Foça" loading="lazy">
           <img src="assets/images/foca/foca-10.jpg" alt="Foça" loading="lazy">
-          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
-          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
-          <span class="mg-counter">1/10</span>
+          <video src="assets/videos/foca/foca-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/foca/foca-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <span class="mg-play" style="display:none">▶</span>
+          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+          <span class="mg-counter">1/12</span>
         </div>
           <span class="model-badge">Premium</span>
         </div>
@@ -1104,9 +1113,20 @@ html.lenis, html.lenis body { height: auto; }
           <img src="assets/images/bodrum/bodrum-01.jpg" alt="Bodrum" loading="lazy" class="mg-active">
           <img src="assets/images/bodrum/bodrum-02.jpg" alt="Bodrum" loading="lazy">
           <img src="assets/images/bodrum/bodrum-03.jpg" alt="Bodrum" loading="lazy">
-          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
-          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
-          <span class="mg-counter">1/3</span>
+          <video src="assets/videos/bodrum/bodrum-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-03.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-04.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-05.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-06.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-07.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-08.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-09.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <video src="assets/videos/bodrum/bodrum-10.mp4#t=0.1" muted preload="metadata" playsinline></video>
+          <span class="mg-play" style="display:none">▶</span>
+          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+          <span class="mg-counter">1/13</span>
         </div>
           <span class="model-badge">Premium</span>
         </div>
@@ -1188,14 +1208,14 @@ html.lenis, html.lenis body { height: auto; }
             <td class="pt-model" data-label="Model">Milas</td>
             <td class="pt-size" data-label="Büyüklük">20.4 m² · 8 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">800.000 TL'den itibaren</td>
-            <td class="pt-time" data-label="Teslim Süresi">45 gün</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Milas%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
             <td class="pt-model" data-label="Model">Foça<span class="pt-badge">En Popüler</span></td>
             <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.850.000 TL</td>
-            <td class="pt-time" data-label="Teslim Süresi">60 gün</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Foça%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
@@ -1209,21 +1229,21 @@ html.lenis, html.lenis body { height: auto; }
             <td class="pt-model" data-label="Model">Nikfer</td>
             <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.750.000 TL'den itibaren</td>
-            <td class="pt-time" data-label="Teslim Süresi">60 gün</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Nikfer%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
             <td class="pt-model" data-label="Model">Bodrum</td>
             <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.850.000 TL</td>
-            <td class="pt-time" data-label="Teslim Süresi">60 gün</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Bodrum%20modeli%20i%C3%A7in%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
             <td class="pt-model" data-label="Model">Tavas</td>
             <td class="pt-size" data-label="Büyüklük">36.5 m² · 10 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.250.000 TL'den itibaren</td>
-            <td class="pt-time" data-label="Teslim Süresi">60 gün</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Tavas%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
         </tbody>
@@ -1322,10 +1342,13 @@ html.lenis, html.lenis body { height: auto; }
         <img src="assets/images/foca/foca-08.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
         <img src="assets/images/foca/foca-09.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
         <img src="assets/images/foca/foca-10.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
-        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
-        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
-        <span class="mg-counter">1/10</span>
-        <span class="model-badge" style="z-index:3">Foça</span>
+        <video src="assets/videos/foca/foca-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/foca/foca-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/12</span>
+        <span class="model-badge" style="z-index:3">Foça / İzmir</span>
       </div>
         <div class="project-info"><span class="project-model">Foça</span><span class="project-loc">İzmir, 2026</span></div>
       </div>
@@ -1367,9 +1390,20 @@ html.lenis, html.lenis body { height: auto; }
         <img src="assets/images/bodrum/bodrum-01.jpg" alt="Bodrum — Bodrum teslimatı" loading="lazy" class="mg-active">
         <img src="assets/images/bodrum/bodrum-02.jpg" alt="Bodrum — Bodrum teslimatı" loading="lazy">
         <img src="assets/images/bodrum/bodrum-03.jpg" alt="Bodrum — Bodrum teslimatı" loading="lazy">
-        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
-        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
-        <span class="mg-counter">1/3</span>
+        <video src="assets/videos/bodrum/bodrum-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-03.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-04.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-05.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-06.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-07.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-08.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-09.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/bodrum/bodrum-10.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/13</span>
         <span class="model-badge" style="z-index:3">Bodrum</span>
       </div>
         <div class="project-info"><span class="project-model">Bodrum</span><span class="project-loc">Bodrum / Muğla, 2026</span></div>
@@ -1665,12 +1699,15 @@ html.lenis, html.lenis body { height: auto; }
             <label for="fModel">İlgilendiğiniz Model</label>
             <select id="fModel" name="Model">
               <option value="Kararsızım" selected>Kararsızım / Fikir almak istiyorum</option>
-              <option value="Arte">Arte — 26 m²</option>
-              <option value="Luna">Luna — 26 m²</option>
-              <option value="Centro">Centro — 29 m²</option>
-              <option value="Comfort">Comfort — 20.4 m²</option>
-              <option value="Florin">Florin</option>
-              <option value="Plain">Plain — 36.5 m²</option>
+              <option value="Uşak">Uşak — 26 m²</option>
+              <option value="Foça">Foça — 40 m²</option>
+              <option value="Milas">Milas — 20.4 m²</option>
+              <option value="Nikfer">Nikfer — 40 m²</option>
+              <option value="Bodrum">Bodrum — 40 m²</option>
+              <option value="Tavas">Tavas — 36.5 m²</option>
+              <option value="Sabit Tiny">Sabit Tiny</option>
+              <option value="Ofis Tiny">Ofis Tiny</option>
+              <option value="Baz Model">Baz Model</option>
               <option value="Diğer">Diğer bir model</option>
             </select>
           </div>
@@ -1781,12 +1818,14 @@ document.addEventListener('click', e => {
 function mgStep(e, btn, dir) {
   e.stopPropagation();
   const gallery = btn.closest('.mini-gallery');
-  const imgs = gallery.querySelectorAll('img');
-  const idx = (parseInt(gallery.dataset.idx || '0', 10) + dir + imgs.length) % imgs.length;
-  imgs.forEach((im, i) => im.classList.toggle('mg-active', i === idx));
+  const items = gallery.querySelectorAll('img, video');
+  const idx = (parseInt(gallery.dataset.idx || '0', 10) + dir + items.length) % items.length;
+  items.forEach((im, i) => im.classList.toggle('mg-active', i === idx));
   gallery.dataset.idx = idx;
   const counter = gallery.querySelector('.mg-counter');
-  if (counter) counter.textContent = (idx + 1) + '/' + imgs.length;
+  if (counter) counter.textContent = (idx + 1) + '/' + items.length;
+  const play = gallery.querySelector('.mg-play');
+  if (play) play.style.display = items[idx].tagName === 'VIDEO' ? 'flex' : 'none';
 }
 
 // Lightbox

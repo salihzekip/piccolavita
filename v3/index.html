@@ -800,7 +800,7 @@ html.lenis, html.lenis body { height: auto; }
         <summary>Premium Modeller</summary>
         <ul>
           <li><a href="https://www.piccolavita.com/tiny-house/usak" onclick="closeMobile()">Uşak</a></li>
-          <li><a href="https://www.piccolavita.com/tiny-house/foca" onclick="closeMobile()">Foça</a></li>
+          <li><a href="#model-foca" onclick="closeMobile()">Foça</a></li>
           <li><a href="https://www.piccolavita.com/tiny-house/milas" onclick="closeMobile()">Milas</a></li>
           <li><a href="#model-nikfer" onclick="closeMobile()">Nikfer</a></li>
           <li><a href="#model-bodrum" onclick="closeMobile()">Bodrum</a></li>
@@ -839,7 +839,7 @@ html.lenis, html.lenis body { height: auto; }
             <span class="nav-dropdown-sub-label">Premium Modeller</span>
             <ul class="nav-dropdown-flyout">
               <li><a href="https://www.piccolavita.com/tiny-house/usak" target="_blank" rel="noopener">Uşak</a></li>
-              <li><a href="https://www.piccolavita.com/tiny-house/foca" target="_blank" rel="noopener">Foça</a></li>
+              <li><a href="#model-foca">Foça</a></li>
               <li><a href="https://www.piccolavita.com/tiny-house/milas" target="_blank" rel="noopener">Milas</a></li>
               <li><a href="#model-nikfer">Nikfer</a></li>
               <li><a href="#model-bodrum">Bodrum</a></li>
@@ -1015,17 +1015,31 @@ html.lenis, html.lenis body { height: auto; }
         </div>
       </div>
 
-      <div class="model-card reveal reveal-delay-1">
+      <div class="model-card reveal reveal-delay-1" id="model-foca">
         <div class="model-card-img">
-          <img src="https://piccolavita.com/assets/images/luna1.jpg" alt="Foça" loading="lazy">
+        <div class="mini-gallery" data-idx="0" onclick="location.href='../foca-galeri.html'" style="cursor:pointer">
+          <img src="../assets/images/foca/foca-01.png" alt="Foça" loading="lazy" class="mg-active">
+          <img src="../assets/images/foca/foca-02.jpg" alt="Foça" loading="lazy">
+          <img src="../assets/images/foca/foca-03.jpg" alt="Foça" loading="lazy">
+          <img src="../assets/images/foca/foca-04.jpg" alt="Foça" loading="lazy">
+          <img src="../assets/images/foca/foca-05.jpg" alt="Foça" loading="lazy">
+          <img src="../assets/images/foca/foca-06.jpg" alt="Foça" loading="lazy">
+          <img src="../assets/images/foca/foca-07.jpg" alt="Foça" loading="lazy">
+          <img src="../assets/images/foca/foca-08.jpg" alt="Foça" loading="lazy">
+          <img src="../assets/images/foca/foca-09.jpg" alt="Foça" loading="lazy">
+          <img src="../assets/images/foca/foca-10.jpg" alt="Foça" loading="lazy">
+          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
+          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
+          <span class="mg-counter">1/10</span>
+        </div>
           <span class="model-badge">Premium</span>
         </div>
         <div class="model-card-body">
           <h3 class="model-name">Foça</h3>
-          <p class="model-tagline">Piccola Vita'nın klasik serisi</p>
-          <div class="model-meta"><span>26 m²</span><span>8 m uzunluk</span></div>
-          <p class="model-rooms">Mekanlar: <strong>Mutfak + Salon + Loft Kat + Banyo-WC</strong></p>
-          <a href="https://www.piccolavita.com/tiny-house/foca" target="_blank" rel="noopener" class="model-link">İncele →</a>
+          <p class="model-tagline">1 yatak odalı, 2 loft katlı</p>
+          <div class="model-meta"><span>40 m²</span><span>10 m uzunluk</span></div>
+          <p class="model-rooms">Mekanlar: <strong>Mutfak + Yatak Odası + 2 Loft Kat + Banyo-WC</strong></p>
+          <a href="../foca-galeri.html" class="model-link">İncele →</a>
         </div>
       </div>
 
@@ -1173,9 +1187,9 @@ html.lenis, html.lenis body { height: auto; }
           </tr>
           <tr>
             <td class="pt-model" data-label="Model">Foça<span class="pt-badge">En Popüler</span></td>
-            <td class="pt-size" data-label="Büyüklük">26 m² · 8 m</td>
-            <td class="pt-price" data-label="Başlangıç Fiyatı">950.000 TL'den itibaren</td>
-            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
+            <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.850.000 TL</td>
+            <td class="pt-time" data-label="Teslim Süresi">60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Foça%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
@@ -1290,9 +1304,24 @@ html.lenis, html.lenis body { height: auto; }
       <p class="process-intro reveal reveal-delay-1" style="max-width:380px;margin:0;">Türkiye'nin dört bir yanına kurduğumuz evlerden bir seçki. Fotoğraflara tıklayarak büyütebilirsiniz.</p>
     </div>
     <div class="projects-grid">
-      <div class="project-item reveal" data-model="Foça" data-loc="Muğla, 2025">
-        <img src="https://piccolavita.com/assets/images/luna1.jpg" alt="Foça — Muğla teslimatı" loading="lazy">
-        <div class="project-info"><span class="project-model">Foça</span><span class="project-loc">Muğla, 2025</span></div>
+      <div class="project-item reveal" data-model="Foça" data-loc="İzmir, 2026">
+      <div class="mini-gallery" data-idx="0">
+        <img src="../assets/images/foca/foca-01.png" alt="Foça — İzmir teslimatı" loading="lazy" class="mg-active">
+        <img src="../assets/images/foca/foca-02.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <img src="../assets/images/foca/foca-03.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <img src="../assets/images/foca/foca-04.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <img src="../assets/images/foca/foca-05.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <img src="../assets/images/foca/foca-06.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <img src="../assets/images/foca/foca-07.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <img src="../assets/images/foca/foca-08.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <img src="../assets/images/foca/foca-09.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <img src="../assets/images/foca/foca-10.jpg" alt="Foça — İzmir teslimatı" loading="lazy">
+        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
+        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
+        <span class="mg-counter">1/10</span>
+        <span class="model-badge" style="z-index:3">Foça</span>
+      </div>
+        <div class="project-info"><span class="project-model">Foça</span><span class="project-loc">İzmir, 2026</span></div>
       </div>
       <div class="project-item reveal reveal-delay-1" data-model="Uşak" data-loc="Sapanca, 2025">
         <img src="https://piccolavita.com/assets/images/arte1.jpg" alt="Uşak — Sapanca teslimatı" loading="lazy">
@@ -1775,6 +1804,9 @@ lbItems.forEach((el, i) => {
   } else if (el.dataset.model === 'Bodrum') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = '../bodrum-galeri.html'; });
+  } else if (el.dataset.model === 'Foça') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = '../foca-galeri.html'; });
   } else {
     el.addEventListener('click', () => openLightbox(i));
   }

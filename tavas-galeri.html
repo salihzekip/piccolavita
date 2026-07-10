@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tavas — Fotoğraf ve Video Galerisi | Piccola Vita</title>
+<meta name="description" content="Piccola Vita Tavas modeli — teslim edilen projeden gerçek fotoğraf ve videolar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:   #2F4A3D;
+  --secondary: #8A5A3B;
+  --accent:    #C8A36A;
+  --forest:    #111c11;
+  --white:     #ffffff;
+  --serif:     'Playfair Display', Georgia, serif;
+  --sans:      'Montserrat', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans); background: var(--forest); color: var(--white);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  display: flex; flex-direction: column; min-height: 100vh;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--sans); cursor: pointer; border: none; background: none; color: inherit; }
+
+.gtop {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 28px; flex-shrink: 0;
+}
+.gtop-logo { font-family: var(--serif); font-weight: 700; font-size: 20px; letter-spacing: .03em; color: var(--white); }
+.gtop-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.75);
+  padding: 8px 16px; border: 1px solid rgba(255,255,255,.25); border-radius: 30px;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.gtop-back:hover { color: var(--white); border-color: var(--accent); background: rgba(255,255,255,.06); }
+
+.gmain {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: relative; padding: 0 70px 24px;
+}
+.gstage { position: relative; width: 100%; max-width: 1200px; }
+.gstage img, .gstage video {
+  display: block; width: 100%; max-height: 68vh; object-fit: contain;
+  border-radius: 10px; background: #000; margin: 0 auto;
+}
+.gnav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2);
+  color: var(--white); font-size: 22px; display: flex; align-items: center; justify-content: center;
+  transition: background .2s, border-color .2s; z-index: 2;
+}
+.gnav:hover { background: rgba(255,255,255,.18); border-color: var(--accent); }
+.gprev { left: -64px; } .gnext { right: -64px; }
+@media (max-width: 900px) {
+  .gmain { padding: 0 16px 20px; }
+  .gprev { left: 6px; } .gnext { right: 6px; }
+  .gnav { width: 38px; height: 38px; font-size: 18px; background: rgba(0,0,0,.35); }
+}
+
+.gcaption { text-align: center; margin-top: 22px; }
+.gcaption h1 { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--white); }
+.gcaption h1 em { font-style: italic; color: var(--accent); }
+.gcounter { margin-top: 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: rgba(255,255,255,.5); }
+
+.gspecs {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  max-width: 900px; margin: 22px auto 0; padding: 0 20px;
+}
+.gspec {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 10px; padding: 10px 18px; text-align: center; min-width: 88px;
+}
+.gspec-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent);
+}
+.gspec-value { font-size: 15px; font-weight: 700; color: var(--white); margin-top: 3px; }
+.grooms {
+  max-width: 700px; margin: 18px auto 0; padding: 0 20px;
+  text-align: center; font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.6;
+}
+.grooms strong { color: var(--white); font-weight: 700; }
+
+.gthumbs {
+  display: flex; gap: 8px; overflow-x: auto; padding: 0 28px 24px; flex-shrink: 0;
+  scrollbar-width: thin;
+}
+.gthumbs .gthumb {
+  position: relative; width: 68px; height: 52px; border-radius: 6px; cursor: pointer;
+  opacity: .45; transition: opacity .2s, outline .2s; flex-shrink: 0;
+  outline: 2px solid transparent; overflow: hidden;
+}
+.gthumbs .gthumb img, .gthumbs .gthumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gthumbs .gthumb:hover { opacity: .8; }
+.gthumbs .gthumb.gt-active { opacity: 1; outline-color: var(--accent); }
+.gthumb-play {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.25); color: #fff; font-size: 16px; pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div class="gtop">
+  <a href="index.html" class="gtop-logo">PICCOLAVITA</a>
+  <a href="index.html#modeller" class="gtop-back">← Modellere Dön</a>
+</div>
+
+<div class="gmain">
+  <div class="gstage">
+    <button class="gnav gprev" onclick="gStep(-1)" aria-label="Önceki">‹</button>
+    <img id="gImg" src="" alt="Tavas">
+    <video id="gVideo" controls playsinline style="display:none"></video>
+    <button class="gnav gnext" onclick="gStep(1)" aria-label="Sonraki">›</button>
+  </div>
+  <div class="gcaption">
+    <h1>Tavas <em>· Çeşme / İzmir</em></h1>
+    <div class="gcounter" id="gCounter">1 / 33</div>
+  </div>
+  <div class="gspecs">
+    <div class="gspec"><div class="gspec-label">En</div><div class="gspec-value">2,55 m</div></div>
+    <div class="gspec"><div class="gspec-label">Uzunluk</div><div class="gspec-value">10 m</div></div>
+    <div class="gspec"><div class="gspec-label">Yükseklik</div><div class="gspec-value">4 m</div></div>
+    <div class="gspec"><div class="gspec-label">Alan</div><div class="gspec-value">40 m²</div></div>
+    <div class="gspec"><div class="gspec-label">Fiyat</div><div class="gspec-value">1.600.000 TL</div></div>
+    <div class="gspec"><div class="gspec-label">Garanti</div><div class="gspec-value">24 ay</div></div>
+    <div class="gspec"><div class="gspec-label">Römork</div><div class="gspec-value">3500 kg</div></div>
+  </div>
+  <div class="grooms">Mekanlar: <strong>Mutfak + Salon + 2 Loft Kat + Banyo-WC</strong></div>
+</div>
+
+<div class="gthumbs" id="gThumbs"></div>
+
+<script>
+const media = [
+  { type: 'img', src: 'assets/images/tavas/tavas-01.png' },
+  { type: 'img', src: 'assets/images/tavas/tavas-02.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-03.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-04.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-05.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-06.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-07.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-08.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-09.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-10.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-11.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-12.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-13.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-14.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-15.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-16.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-17.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-18.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-19.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-20.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-21.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-22.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-23.jpg' },
+  { type: 'img', src: 'assets/images/tavas/tavas-24.jpg' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-01.mp4' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-02.mp4' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-03.mp4' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-04.mp4' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-05.mp4' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-06.mp4' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-07.mp4' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-08.mp4' },
+  { type: 'video', src: 'assets/videos/tavas/tavas-09.mp4' },
+];
+const total = media.length;
+let idx = 0;
+
+const gImg = document.getElementById('gImg');
+const gVideo = document.getElementById('gVideo');
+
+function render() {
+  const item = media[idx];
+  gVideo.pause();
+  if (item.type === 'img') {
+    gImg.src = item.src;
+    gImg.style.display = '';
+    gVideo.style.display = 'none';
+    gVideo.removeAttribute('src');
+  } else {
+    gVideo.src = item.src;
+    gVideo.style.display = '';
+    gImg.style.display = 'none';
+    gImg.removeAttribute('src');
+  }
+  document.getElementById('gCounter').textContent = (idx + 1) + ' / ' + total;
+  document.querySelectorAll('.gthumb').forEach((el, i) => el.classList.toggle('gt-active', i === idx));
+  const active = document.querySelector('.gthumb.gt-active');
+  if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+function gStep(d) { idx = (idx + d + total) % total; render(); }
+
+const thumbs = document.getElementById('gThumbs');
+media.forEach((item, i) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'gthumb';
+  if (item.type === 'img') {
+    const im = document.createElement('img');
+    im.src = item.src;
+    im.alt = 'Tavas fotoğraf ' + (i + 1);
+    im.loading = 'lazy';
+    wrap.appendChild(im);
+  } else {
+    const vid = document.createElement('video');
+    vid.src = item.src + '#t=0.1';
+    vid.muted = true;
+    vid.preload = 'metadata';
+    vid.playsInline = true;
+    wrap.appendChild(vid);
+    const play = document.createElement('span');
+    play.className = 'gthumb-play';
+    play.textContent = '▶';
+    wrap.appendChild(play);
+  }
+  wrap.addEventListener('click', () => { idx = i; render(); });
+  thumbs.appendChild(wrap);
+});
+render();
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') gStep(-1);
+  if (e.key === 'ArrowRight') gStep(1);
+  if (e.key === 'Escape') window.location.href = 'index.html#modeller';
+});
+</script>
+
+</body>
+</html>

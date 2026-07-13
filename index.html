@@ -440,7 +440,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .model-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.22,.61,.36,1); }
 .model-card:hover .model-card-img img { transform: scale(1.06); }
 .model-badge {
-  position: absolute; top: 14px; left: 14px;
+  position: absolute; top: 14px; left: 14px; z-index: 4;
   background: var(--accent); color: var(--primary);
   font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
   padding: 4px 10px; border-radius: 20px;
@@ -985,14 +985,14 @@ html.lenis, html.lenis body { height: auto; }
           <div class="story-stat-num">35+</div>
           <div class="story-stat-lbl">Yıllık Deneyim</div>
         </div>
-        <div>
+        <a href="#modeller" style="cursor:pointer">
           <div class="story-stat-num">13</div>
           <div class="story-stat-lbl">Farklı Model</div>
-        </div>
-        <div>
+        </a>
+        <a href="#projeler" style="cursor:pointer">
           <div class="story-stat-num">50+</div>
           <div class="story-stat-lbl">Tamamlanan Proje</div>
-        </div>
+        </a>
         <div>
           <div class="story-stat-num">24</div>
           <div class="story-stat-lbl">Ay Garanti</div>
@@ -1015,7 +1015,7 @@ html.lenis, html.lenis body { height: auto; }
     <div class="models-grid">
 
       <div class="model-card reveal">
-        <div class="model-card-img">
+        <div class="model-card-img" onclick="window.open('https://www.piccolavita.com/tiny-house/usak','_blank')" style="cursor:pointer">
           <img src="https://piccolavita.com/assets/images/arte1.jpg" alt="Uşak" loading="lazy">
           <span class="model-badge">Premium</span>
         </div>
@@ -1044,8 +1044,8 @@ html.lenis, html.lenis body { height: auto; }
           <video src="assets/videos/foca/foca-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/foca/foca-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <span class="mg-play" style="display:none">▶</span>
-          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+          <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+          <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
           <span class="mg-counter">1/12</span>
         </div>
           <span class="model-badge">Premium</span>
@@ -1099,8 +1099,8 @@ html.lenis, html.lenis body { height: auto; }
           <video src="assets/videos/milas/milas-11.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/milas/milas-12.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <span class="mg-play" style="display:none">▶</span>
-          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+          <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+          <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
           <span class="mg-counter">1/35</span>
         </div>
           <span class="model-badge">Premium</span>
@@ -1133,8 +1133,8 @@ html.lenis, html.lenis body { height: auto; }
           <img src="assets/images/nikfer/nikfer-14.jpg" alt="Nikfer" loading="lazy">
           <img src="assets/images/nikfer/nikfer-15.jpg" alt="Nikfer" loading="lazy">
           <img src="assets/images/nikfer/nikfer-16.jpg" alt="Nikfer" loading="lazy">
-          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
-          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
+          <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
+          <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
           <span class="mg-counter">1/16</span>
         </div>
           <span class="model-badge">Premium</span>
@@ -1166,8 +1166,8 @@ html.lenis, html.lenis body { height: auto; }
           <video src="assets/videos/bodrum/bodrum-09.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/bodrum/bodrum-10.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <span class="mg-play" style="display:none">▶</span>
-          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+          <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+          <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
           <span class="mg-counter">1/14</span>
         </div>
           <span class="model-badge">Premium</span>
@@ -1218,8 +1218,8 @@ html.lenis, html.lenis body { height: auto; }
           <video src="assets/videos/tavas/tavas-08.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/tavas/tavas-09.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <span class="mg-play" style="display:none">▶</span>
-          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+          <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+          <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
           <span class="mg-counter">1/33</span>
         </div>
           <span class="model-badge">Premium</span>
@@ -1236,7 +1236,7 @@ html.lenis, html.lenis body { height: auto; }
       <div class="model-card reveal reveal-delay-3" id="model-honaz">
         <div class="model-card-img">
         <div class="mini-gallery" data-idx="0" onclick="location.href='honaz-galeri.html'" style="cursor:pointer">
-          <img src="assets/images/honaz/honaz-01.jpg" alt="Honaz" class="mg-active">
+          <img src="assets/images/honaz/honaz-01.png" alt="Honaz" class="mg-active">
           <img src="assets/images/honaz/honaz-02.jpg" alt="Honaz" loading="lazy">
           <img src="assets/images/honaz/honaz-03.jpg" alt="Honaz" loading="lazy">
           <img src="assets/images/honaz/honaz-04.jpg" alt="Honaz" loading="lazy">
@@ -1258,6 +1258,7 @@ html.lenis, html.lenis body { height: auto; }
           <img src="assets/images/honaz/honaz-20.jpg" alt="Honaz" loading="lazy">
           <img src="assets/images/honaz/honaz-21.jpg" alt="Honaz" loading="lazy">
           <img src="assets/images/honaz/honaz-22.jpg" alt="Honaz" loading="lazy">
+          <img src="assets/images/honaz/honaz-23.jpg" alt="Honaz" loading="lazy">
           <video src="assets/videos/honaz/honaz-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/honaz/honaz-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/honaz/honaz-03.mp4#t=0.1" muted preload="metadata" playsinline></video>
@@ -1266,9 +1267,9 @@ html.lenis, html.lenis body { height: auto; }
           <video src="assets/videos/honaz/honaz-06.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/honaz/honaz-07.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <span class="mg-play" style="display:none">▶</span>
-          <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-          <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
-          <span class="mg-counter">1/29</span>
+          <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+          <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+          <span class="mg-counter">1/30</span>
         </div>
           <span class="model-badge">Premium</span>
         </div>
@@ -1282,7 +1283,7 @@ html.lenis, html.lenis body { height: auto; }
       </div>
 
       <div class="model-card reveal">
-        <div class="model-card-img">
+        <div class="model-card-img" onclick="window.open('https://www.piccolavita.com/tiny-house/ofis-ve-sabit-tiny','_blank')" style="cursor:pointer">
           <img src="https://piccolavita.com/assets/images/Florin1.jpg" alt="Ofis Model" loading="lazy">
           <span class="model-badge">Ofis &amp; Sabit</span>
         </div>
@@ -1370,7 +1371,7 @@ html.lenis, html.lenis body { height: auto; }
           <tr>
             <td class="pt-model" data-label="Model">Tavas</td>
             <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
-            <td class="pt-price" data-label="Başlangıç Fiyatı">1.600.000 TL</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.650.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Tavas%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
@@ -1480,8 +1481,8 @@ html.lenis, html.lenis body { height: auto; }
         <video src="assets/videos/foca/foca-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/foca/foca-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <span class="mg-play" style="display:none">▶</span>
-        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
         <span class="mg-counter">1/12</span>
         <span class="model-badge" style="z-index:3">Foça / İzmir</span>
       </div>
@@ -1529,8 +1530,8 @@ html.lenis, html.lenis body { height: auto; }
         <video src="assets/videos/milas/milas-11.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/milas/milas-12.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <span class="mg-play" style="display:none">▶</span>
-        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
         <span class="mg-counter">1/35</span>
         <span class="model-badge" style="z-index:3">Milas / Muğla</span>
       </div>
@@ -1554,8 +1555,8 @@ html.lenis, html.lenis body { height: auto; }
         <img src="assets/images/nikfer/nikfer-14.jpg" alt="Nikfer — Tavas teslimatı" loading="lazy">
         <img src="assets/images/nikfer/nikfer-15.jpg" alt="Nikfer — Tavas teslimatı" loading="lazy">
         <img src="assets/images/nikfer/nikfer-16.jpg" alt="Nikfer — Tavas teslimatı" loading="lazy">
-        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
-        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki fotoğraf">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki fotoğraf">›</button>
         <span class="mg-counter">1/16</span>
         <span class="model-badge" style="z-index:3">Nikfer / Tavas</span>
       </div>
@@ -1578,8 +1579,8 @@ html.lenis, html.lenis body { height: auto; }
         <video src="assets/videos/bodrum/bodrum-09.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/bodrum/bodrum-10.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <span class="mg-play" style="display:none">▶</span>
-        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
         <span class="mg-counter">1/14</span>
         <span class="model-badge" style="z-index:3">Bodrum</span>
       </div>
@@ -1621,12 +1622,52 @@ html.lenis, html.lenis body { height: auto; }
         <video src="assets/videos/tavas/tavas-08.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/tavas/tavas-09.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <span class="mg-play" style="display:none">▶</span>
-        <button class="mg-nav mg-prev" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
-        <button class="mg-nav mg-next" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
         <span class="mg-counter">1/33</span>
         <span class="model-badge" style="z-index:3">Tavas</span>
       </div>
         <div class="project-info"><span class="project-model">Tavas</span><span class="project-loc">2023</span></div>
+      </div>
+      <div class="project-item reveal reveal-delay-3" data-model="Honaz" data-loc="Honaz / Denizli, 2026">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/honaz/honaz-01.png" alt="Honaz — Denizli teslimatı" class="mg-active">
+        <img src="assets/images/honaz/honaz-02.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-03.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-04.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-05.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-06.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-07.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-08.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-09.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-10.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-11.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-12.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-13.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-14.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-15.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-16.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-17.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-18.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-19.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-20.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-21.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-22.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <img src="assets/images/honaz/honaz-23.jpg" alt="Honaz — Denizli teslimatı" loading="lazy">
+        <video src="assets/videos/honaz/honaz-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honaz/honaz-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honaz/honaz-03.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honaz/honaz-04.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honaz/honaz-05.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honaz/honaz-06.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honaz/honaz-07.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/30</span>
+        <span class="model-badge" style="z-index:3">Honaz / Denizli</span>
+      </div>
+        <div class="project-info"><span class="project-model">Honaz</span><span class="project-loc">Honaz / Denizli, 2026</span></div>
       </div>
     </div>
   </div>
@@ -1634,14 +1675,14 @@ html.lenis, html.lenis body { height: auto; }
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Proje fotoğrafı">
-  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Kapat">✕</button>
-  <button class="lightbox-nav lightbox-prev" onclick="stepLb(-1)" aria-label="Önceki">‹</button>
+  <button class="lightbox-close" onmousedown="event.preventDefault()" onclick="closeLightbox()" aria-label="Kapat">✕</button>
+  <button class="lightbox-nav lightbox-prev" onmousedown="event.preventDefault()" onclick="stepLb(-1)" aria-label="Önceki">‹</button>
   <img id="lbImg" src="" alt="Proje fotoğrafı">
   <div class="lightbox-caption">
     <span class="project-model" id="lbModel"></span>
     <span class="project-loc" id="lbLoc"></span>
   </div>
-  <button class="lightbox-nav lightbox-next" onclick="stepLb(1)" aria-label="Sonraki">›</button>
+  <button class="lightbox-nav lightbox-next" onmousedown="event.preventDefault()" onclick="stepLb(1)" aria-label="Sonraki">›</button>
 </div>
 
 <!-- MÜŞTERİ YORUMLARI -->
@@ -2069,6 +2110,9 @@ lbItems.forEach((el, i) => {
   } else if (el.dataset.model === 'Foça') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'foca-galeri.html'; });
+  } else if (el.dataset.model === 'Honaz') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'honaz-galeri.html'; });
   } else {
     el.addEventListener('click', () => openLightbox(i));
   }

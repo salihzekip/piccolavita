@@ -143,3 +143,16 @@ Görev listesindeki tüm maddeler tamamlandı. Dışarıya bağımlı iki iş be
 
 1. **b) devamı** — hero'ya drone video (müşteriden video gelince)
 2. formsubmit.co'nun info@piccolavita.com için aktive edildiğinin teyidi (ilk gönderimde aktivasyon maili ister)
+
+---
+
+# PWA Dönüşümü (6 Temmuz 2026)
+
+Alternatif site telefona kurulabilir bir uygulamaya (PWA) dönüştürüldü — ayrıntılar
+`piccolavita-site/YAPILANLAR.md` dosyasında. Özet: vite-plugin-pwa + manifest +
+PV monogramlı uygulama ikonları + Workbox çevrimdışı önbelleği (site dosyaları,
+piccolavita.com fotoğrafları, Google Fonts). localhost'ta service worker doğrulandı.
+Yeni build `alternatif/` klasörüne kopyalandı; canlıya çıkması için commit + push gerekiyor.
+
+**Telefona kurulum (yayına alındıktan sonra):** siteyi telefonda aç →
+Android/Chrome: "Yükle" · iPhone/Safari: Paylaş → "Ana Ekrana Ekle".

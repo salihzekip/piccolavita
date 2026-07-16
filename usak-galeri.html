@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Banaz — Fotoğraf ve Video Galerisi | Piccola Vita</title>
-<meta name="description" content="Piccola Vita Banaz ofis modeli — gerçek fotoğraf ve videolar.">
+<title>Uşak — Fotoğraf ve Video Galerisi | Piccola Vita</title>
+<meta name="description" content="Piccola Vita Uşak modeli — teslim edilen projeden gerçek fotoğraf ve videolar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -111,20 +111,20 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 <div class="gmain">
   <div class="gstage">
     <button class="gnav gprev" onmousedown="event.preventDefault()" onclick="gStep(-1)" aria-label="Önceki">‹</button>
-    <img id="gImg" src="" alt="Banaz">
+    <img id="gImg" src="" alt="Uşak">
     <video id="gVideo" controls playsinline style="display:none"></video>
     <button class="gnav gnext" onmousedown="event.preventDefault()" onclick="gStep(1)" aria-label="Sonraki">›</button>
   </div>
   <div class="gcaption">
-    <h1>Banaz <em>· Ofis Modeli</em></h1>
-    <div class="gcounter" id="gCounter">1 / 3</div>
+    <h1>Uşak <em>· Tek Loftlu</em></h1>
+    <div class="gcounter" id="gCounter">1 / 23</div>
   </div>
   <div class="gspecs">
     <div class="gspec"><div class="gspec-label">En</div><div class="gspec-value">2,55 m</div></div>
-    <div class="gspec"><div class="gspec-label">Uzunluk</div><div class="gspec-value">8 m</div></div>
+    <div class="gspec"><div class="gspec-label">Uzunluk</div><div class="gspec-value">9 m</div></div>
     <div class="gspec"><div class="gspec-label">Yükseklik</div><div class="gspec-value">4 m</div></div>
-    <div class="gspec"><div class="gspec-label">Alan</div><div class="gspec-value">20 m²</div></div>
-    <div class="gspec"><div class="gspec-label">Fiyat</div><div class="gspec-value">900.000 TL</div></div>
+    <div class="gspec"><div class="gspec-label">Alan</div><div class="gspec-value">30 m²</div></div>
+    <div class="gspec"><div class="gspec-label">Fiyat</div><div class="gspec-value">1.450.000 TL</div></div>
     <div class="gspec"><div class="gspec-label">Garanti</div><div class="gspec-value">24 ay</div></div>
     <div class="gspec"><div class="gspec-label">Römork</div><div class="gspec-value">3500 kg</div></div>
   </div>
@@ -134,9 +134,29 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 
 <script>
 const media = [
-  { type: 'img', src: 'assets/images/banaz/banaz-01.jpg' },
-  { type: 'img', src: 'assets/images/banaz/banaz-02.jpg' },
-  { type: 'video', src: 'assets/videos/banaz/banaz-01.mp4' },
+  { type: 'img', src: 'assets/images/usak/usak-01.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-02.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-03.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-04.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-05.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-06.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-07.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-08.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-09.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-10.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-11.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-12.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-13.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-14.jpg' },
+  { type: 'img', src: 'assets/images/usak/usak-15.jpg' },
+  { type: 'video', src: 'assets/videos/usak/usak-01.mp4' },
+  { type: 'video', src: 'assets/videos/usak/usak-02.mp4' },
+  { type: 'video', src: 'assets/videos/usak/usak-03.mp4' },
+  { type: 'video', src: 'assets/videos/usak/usak-04.mp4' },
+  { type: 'video', src: 'assets/videos/usak/usak-05.mp4' },
+  { type: 'video', src: 'assets/videos/usak/usak-06.mp4' },
+  { type: 'video', src: 'assets/videos/usak/usak-07.mp4' },
+  { type: 'video', src: 'assets/videos/usak/usak-08.mp4' },
 ];
 const total = media.length;
 let idx = 0;
@@ -172,7 +192,7 @@ media.forEach((item, i) => {
   if (item.type === 'img') {
     const im = document.createElement('img');
     im.src = item.src;
-    im.alt = 'Banaz fotoğraf ' + (i + 1);
+    im.alt = 'Uşak fotoğraf ' + (i + 1);
     im.loading = 'lazy';
     wrap.appendChild(im);
   } else {

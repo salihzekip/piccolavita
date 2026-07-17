@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Comfort — Fotoğraf ve Video Galerisi | Piccola Vita</title>
-<meta name="description" content="Piccola Vita Comfort modeli — teslim edilen projeden gerçek fotoğraf ve videolar.">
+<title>Üretim Aşamaları — Fotoğraf ve Video Galerisi | Piccola Vita</title>
+<meta name="description" content="Piccola Vita tiny house üretim süreci — şaseden teslimata kadar tüm aşamalar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 }
 .gstage { position: relative; width: 100%; max-width: 1200px; }
 .gstage img, .gstage video {
-  display: block; width: 100%; max-height: 68vh; object-fit: contain;
+  display: block; width: 100%; max-height: 62vh; object-fit: contain;
   border-radius: 10px; background: #000; margin: 0 auto;
 }
 .gnav {
@@ -64,24 +64,14 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   .gnav { width: 38px; height: 38px; font-size: 18px; background: rgba(0,0,0,.35); }
 }
 
-.gcaption { text-align: center; margin-top: 22px; }
+.gcaption { text-align: center; margin-top: 22px; max-width: 700px; }
 .gcaption h1 { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--white); }
 .gcaption h1 em { font-style: italic; color: var(--accent); }
-.gcounter { margin-top: 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: rgba(255,255,255,.5); }
-
-.gspecs {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-  max-width: 900px; margin: 22px auto 0; padding: 0 20px;
+.gstep-caption {
+  margin-top: 10px; font-size: 17px; font-weight: 600; color: rgba(255,255,255,.88);
+  min-height: 24px;
 }
-.gspec {
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
-  border-radius: 10px; padding: 10px 18px; text-align: center; min-width: 88px;
-}
-.gspec-label {
-  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--accent);
-}
-.gspec-value { font-size: 15px; font-weight: 700; color: var(--white); margin-top: 3px; }
+.gcounter { margin-top: 8px; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: rgba(255,255,255,.5); }
 
 .gthumbs {
   display: flex; gap: 8px; overflow-x: auto; padding: 0 28px 24px; flex-shrink: 0;
@@ -105,28 +95,20 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 
 <div class="gtop">
   <a href="index.html" class="gtop-logo">PICCOLAVITA</a>
-  <a href="index.html#modeller" class="gtop-back">← Modellere Dön</a>
+  <a href="index.html#uretim" class="gtop-back">← Ana Sayfaya Dön</a>
 </div>
 
 <div class="gmain">
   <div class="gstage">
     <button class="gnav gprev" onclick="gStep(-1)" aria-label="Önceki">‹</button>
-    <img id="gImg" src="" alt="Comfort">
+    <img id="gImg" src="" alt="Üretim Aşaması">
     <video id="gVideo" controls playsinline style="display:none"></video>
     <button class="gnav gnext" onclick="gStep(1)" aria-label="Sonraki">›</button>
   </div>
   <div class="gcaption">
-    <h1>Comfort</h1>
-    <div class="gcounter" id="gCounter">1 / 35</div>
-  </div>
-  <div class="gspecs">
-    <div class="gspec"><div class="gspec-label">En</div><div class="gspec-value">2,55 m</div></div>
-    <div class="gspec"><div class="gspec-label">Uzunluk</div><div class="gspec-value">8 m</div></div>
-    <div class="gspec"><div class="gspec-label">Yükseklik</div><div class="gspec-value">4 m</div></div>
-    <div class="gspec"><div class="gspec-label">Alan</div><div class="gspec-value">20 m²</div></div>
-    <div class="gspec"><div class="gspec-label">Fiyat</div><div class="gspec-value">1.450.000 TL</div></div>
-    <div class="gspec"><div class="gspec-label">Garanti</div><div class="gspec-value">24 ay</div></div>
-    <div class="gspec"><div class="gspec-label">Römork</div><div class="gspec-value">3500 kg</div></div>
+    <h1>Üretim <em>Aşamaları</em></h1>
+    <div class="gstep-caption" id="gStepCaption"></div>
+    <div class="gcounter" id="gCounter">1 / 37</div>
   </div>
 </div>
 
@@ -134,47 +116,50 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 
 <script>
 const media = [
-  { type: 'img', src: 'assets/images/comfort/comfort-01.png' },
-  { type: 'img', src: 'assets/images/comfort/comfort-02.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-05.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-06.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-07.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-08.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-09.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-10.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-11.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-12.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-13.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-15.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-18.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-21.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-22.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-24.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-25.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-26.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-27.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-28.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-29.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-36.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-37.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-42.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-43.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-46.jpg' },
-  { type: 'img', src: 'assets/images/comfort/comfort-49.jpg' },
-  { type: 'video', src: 'assets/videos/comfort/comfort-01.mp4' },
-  { type: 'video', src: 'assets/videos/comfort/comfort-02.mp4' },
-  { type: 'video', src: 'assets/videos/comfort/comfort-03.mp4' },
-  { type: 'video', src: 'assets/videos/comfort/comfort-04.mp4' },
-  { type: 'video', src: 'assets/videos/comfort/comfort-05.mp4' },
-  { type: 'video', src: 'assets/videos/comfort/comfort-06.mp4' },
-  { type: 'video', src: 'assets/videos/comfort/comfort-07.mp4' },
-  { type: 'video', src: 'assets/videos/comfort/comfort-08.mp4' },
+  { type: 'img', src: 'assets/images/uretim/uretim-01.jpg', caption: 'Şasemiz' },
+  { type: 'img', src: 'assets/images/uretim/uretim-02.jpg', caption: 'Demir karkasımız' },
+  { type: 'img', src: 'assets/images/uretim/uretim-03.jpg', caption: 'Karkasımız şaseye monte ediliyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-04.jpg', caption: '' },
+  { type: 'video', src: 'assets/videos/uretim/uretim-01.mp4', caption: 'Karkas montajı' },
+  { type: 'img', src: 'assets/images/uretim/uretim-05.jpg', caption: 'Karkas bitmek üzere' },
+  { type: 'img', src: 'assets/images/uretim/uretim-06.jpg', caption: '' },
+  { type: 'img', src: 'assets/images/uretim/uretim-07.jpg', caption: 'OSB ve playwood montajı' },
+  { type: 'img', src: 'assets/images/uretim/uretim-08.jpg', caption: 'OSB montajı bitti' },
+  { type: 'img', src: 'assets/images/uretim/uretim-09.jpg', caption: 'Elektrik tesisatı döşeniyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-10.jpg', caption: 'Elektrik tesisatı bitti' },
+  { type: 'img', src: 'assets/images/uretim/uretim-11.jpg', caption: 'Tyvek döşeniyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-12.jpg', caption: '' },
+  { type: 'img', src: 'assets/images/uretim/uretim-13.jpg', caption: 'Bir yandan da içeride taş yünler döşeniyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-14.jpg', caption: '' },
+  { type: 'img', src: 'assets/images/uretim/uretim-15.jpg', caption: 'İç duvarlarımız MDF lambrilerimiz döşeniyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-16.jpg', caption: 'Tyvekler bitti' },
+  { type: 'img', src: 'assets/images/uretim/uretim-17.jpg', caption: 'Tyvek ve lambri döşemelerden örnekler' },
+  { type: 'img', src: 'assets/images/uretim/uretim-18.jpg', caption: 'Banyo WC işlemleri başladı' },
+  { type: 'img', src: 'assets/images/uretim/uretim-19.jpg', caption: 'Pencere, kapı sövelerimiz takılıyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-20.jpg', caption: 'Lambri döşememiz bitti' },
+  { type: 'img', src: 'assets/images/uretim/uretim-21.jpg', caption: 'Islak zemin için ctp döşeniyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-22.jpg', caption: 'Kompozit paneller döşenmeye başlandı' },
+  { type: 'img', src: 'assets/images/uretim/uretim-23.jpg', caption: 'Boya işleri başladı' },
+  { type: 'img', src: 'assets/images/uretim/uretim-24.jpg', caption: 'Thermowoodlar döşendi' },
+  { type: 'img', src: 'assets/images/uretim/uretim-25.jpg', caption: 'Doğramalarımız takıldı' },
+  { type: 'img', src: 'assets/images/uretim/uretim-26.jpg', caption: 'Dolaplarımız, saklama alanları takılıyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-27.jpg', caption: 'Boya bitti, parkeler döşeniyor' },
+  { type: 'img', src: 'assets/images/uretim/uretim-28.jpg', caption: 'Mutfak dolapları da tamam' },
+  { type: 'img', src: 'assets/images/uretim/uretim-29.jpg', caption: 'Loft katımız ve döşenen parkeler' },
+  { type: 'img', src: 'assets/images/uretim/uretim-30.jpg', caption: 'Kendini belli eden bölümlerimiz' },
+  { type: 'img', src: 'assets/images/uretim/uretim-31.jpg', caption: 'Apliklerimiz de tamam' },
+  { type: 'img', src: 'assets/images/uretim/uretim-32.jpg', caption: 'Veranda ve pergole hazırlığı' },
+  { type: 'img', src: 'assets/images/uretim/uretim-33.jpg', caption: 'Sahibine kavuşan tinymiz' },
+  { type: 'img', src: 'assets/images/uretim/uretim-34.jpg', caption: 'Yerleştik' },
+  { type: 'img', src: 'assets/images/uretim/uretim-35.jpg', caption: 'Çatımız da hazır' },
+  { type: 'img', src: 'assets/images/uretim/uretim-36.jpg', caption: 'Tavana da taşyün döşendi' },
 ];
 const total = media.length;
 let idx = 0;
 
 const gImg = document.getElementById('gImg');
 const gVideo = document.getElementById('gVideo');
+const gStepCaption = document.getElementById('gStepCaption');
 
 function render() {
   const item = media[idx];
@@ -190,6 +175,7 @@ function render() {
     gImg.style.display = 'none';
     gImg.removeAttribute('src');
   }
+  gStepCaption.textContent = item.caption || '';
   document.getElementById('gCounter').textContent = (idx + 1) + ' / ' + total;
   document.querySelectorAll('.gthumb').forEach((el, i) => el.classList.toggle('gt-active', i === idx));
   const active = document.querySelector('.gthumb.gt-active');
@@ -204,7 +190,7 @@ media.forEach((item, i) => {
   if (item.type === 'img') {
     const im = document.createElement('img');
     im.src = item.src;
-    im.alt = 'Comfort fotoğraf ' + (i + 1);
+    im.alt = item.caption || ('Üretim aşaması ' + (i + 1));
     im.loading = 'lazy';
     wrap.appendChild(im);
   } else {
@@ -227,7 +213,7 @@ render();
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') gStep(-1);
   if (e.key === 'ArrowRight') gStep(1);
-  if (e.key === 'Escape') window.location.href = 'index.html#modeller';
+  if (e.key === 'Escape') window.location.href = 'index.html#uretim';
 });
 </script>
 

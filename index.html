@@ -406,6 +406,29 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   .step-num { width: 44px; height: 44px; font-size: 18px; }
 }
 
+.production-teaser { margin-top: 64px; }
+.production-teaser-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.production-teaser-head h3 { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--primary); }
+.production-teaser-link { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--secondary); transition: color .2s; }
+.production-teaser-link:hover { color: var(--primary); }
+.production-teaser-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px) { .production-teaser-grid { grid-template-columns: repeat(2, 1fr); } }
+.production-teaser-item {
+  position: relative; overflow: hidden; border-radius: 10px;
+  aspect-ratio: 4/3; background: var(--neutral-1);
+  box-shadow: 0 2px 16px rgba(47,74,61,.07);
+}
+.production-teaser-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.production-teaser-item:hover img { transform: scale(1.06); }
+.production-teaser-item span {
+  position: absolute; inset: auto 0 0 0; padding: 30px 14px 12px;
+  background: linear-gradient(to top, rgba(13,26,16,.85), transparent);
+  font-size: 12.5px; font-weight: 600; color: var(--white); line-height: 1.3;
+}
+
 /* ── MODELS SECTION ── */
 .models-section { padding: 100px 0; background: var(--bg); }
 .models-header {
@@ -1362,8 +1385,6 @@ html.lenis, html.lenis body { height: auto; }
         <div class="mini-gallery" data-idx="0" onclick="location.href='comfort-galeri.html'" style="cursor:pointer">
           <img src="assets/images/comfort/comfort-01.png" alt="Comfort" class="mg-active">
           <img src="assets/images/comfort/comfort-02.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-03.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-04.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-05.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-06.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-07.jpg" alt="Comfort" loading="lazy">
@@ -1373,43 +1394,22 @@ html.lenis, html.lenis body { height: auto; }
           <img src="assets/images/comfort/comfort-11.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-12.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-13.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-14.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-15.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-16.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-17.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-18.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-19.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-20.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-21.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-22.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-23.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-24.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-25.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-26.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-27.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-28.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-29.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-30.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-31.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-32.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-33.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-34.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-35.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-36.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-37.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-38.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-39.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-40.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-41.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-42.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-43.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-44.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-45.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-46.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-47.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-48.jpg" alt="Comfort" loading="lazy">
           <img src="assets/images/comfort/comfort-49.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-50.jpg" alt="Comfort" loading="lazy">
           <video src="assets/videos/comfort/comfort-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/comfort/comfort-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/comfort/comfort-03.mp4#t=0.1" muted preload="metadata" playsinline></video>
@@ -1418,11 +1418,10 @@ html.lenis, html.lenis body { height: auto; }
           <video src="assets/videos/comfort/comfort-06.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/comfort/comfort-07.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/comfort/comfort-08.mp4#t=0.1" muted preload="metadata" playsinline></video>
-          <video src="assets/videos/comfort/comfort-09.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <span class="mg-play" style="display:none">▶</span>
           <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
           <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
-          <span class="mg-counter">1/59</span>
+          <span class="mg-counter">1/35</span>
         </div>
           <span class="model-badge">Premium</span>
         </div>
@@ -2034,8 +2033,6 @@ html.lenis, html.lenis body { height: auto; }
       <div class="mini-gallery" data-idx="0">
         <img src="assets/images/comfort/comfort-01.png" alt="Comfort teslimatı" class="mg-active">
         <img src="assets/images/comfort/comfort-02.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-03.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-04.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-05.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-06.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-07.jpg" alt="Comfort teslimatı" loading="lazy">
@@ -2045,43 +2042,22 @@ html.lenis, html.lenis body { height: auto; }
         <img src="assets/images/comfort/comfort-11.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-12.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-13.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-14.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-15.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-16.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-17.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-18.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-19.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-20.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-21.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-22.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-23.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-24.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-25.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-26.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-27.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-28.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-29.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-30.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-31.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-32.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-33.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-34.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-35.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-36.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-37.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-38.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-39.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-40.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-41.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-42.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-43.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-44.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-45.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-46.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-47.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-48.jpg" alt="Comfort teslimatı" loading="lazy">
         <img src="assets/images/comfort/comfort-49.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-50.jpg" alt="Comfort teslimatı" loading="lazy">
         <video src="assets/videos/comfort/comfort-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/comfort/comfort-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/comfort/comfort-03.mp4#t=0.1" muted preload="metadata" playsinline></video>
@@ -2090,11 +2066,10 @@ html.lenis, html.lenis body { height: auto; }
         <video src="assets/videos/comfort/comfort-06.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/comfort/comfort-07.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/comfort/comfort-08.mp4#t=0.1" muted preload="metadata" playsinline></video>
-        <video src="assets/videos/comfort/comfort-09.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <span class="mg-play" style="display:none">▶</span>
         <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
         <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
-        <span class="mg-counter">1/59</span>
+        <span class="mg-counter">1/35</span>
         <span class="model-badge" style="z-index:3">Comfort</span>
       </div>
         <div class="project-info"><span class="project-model">Comfort</span><span class="project-loc">2023</span></div>
@@ -2277,6 +2252,32 @@ html.lenis, html.lenis body { height: auto; }
         </div>
       </div>
 
+    </div>
+
+    <!-- ÜRETİM AŞAMALARI TEASER -->
+    <div class="production-teaser reveal" id="uretim">
+      <div class="production-teaser-head">
+        <h3>Adım Adım Üretim</h3>
+        <a href="uretim-galeri.html" class="production-teaser-link">Tüm süreci izle (37 fotoğraf/video) →</a>
+      </div>
+      <div class="production-teaser-grid">
+        <a href="uretim-galeri.html" class="production-teaser-item">
+          <img src="assets/images/uretim/uretim-01.jpg" alt="Şasemiz" loading="lazy">
+          <span>Şasemiz</span>
+        </a>
+        <a href="uretim-galeri.html" class="production-teaser-item">
+          <img src="assets/images/uretim/uretim-15.jpg" alt="İç duvarlarımız MDF lambrilerimiz döşeniyor" loading="lazy">
+          <span>İç duvarlarımız döşeniyor</span>
+        </a>
+        <a href="uretim-galeri.html" class="production-teaser-item">
+          <img src="assets/images/uretim/uretim-27.jpg" alt="Boya bitti, parkeler döşeniyor" loading="lazy">
+          <span>Boya bitti, parkeler döşeniyor</span>
+        </a>
+        <a href="uretim-galeri.html" class="production-teaser-item">
+          <img src="assets/images/uretim/uretim-33.jpg" alt="Sahibine kavuşan tinymiz" loading="lazy">
+          <span>Sahibine kavuşan tinymiz</span>
+        </a>
+      </div>
     </div>
 
     <!-- CTA BUTONLARI -->

@@ -193,7 +193,15 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') gStep(1);
   if (e.key === 'Escape') window.location.href = 'index.html#modeller';
 });
+
+window.PVGallery = {
+  get idx() { return idx; },
+  setIdx(v) { idx = ((v % total) + total) % total; render(); },
+  get total() { return total; },
+  getItem(i) { return media[i]; },
+};
 </script>
+<script src="assets/js/gallery-lightbox.js" defer></script>
 
 </body>
 </html>

@@ -216,16 +216,17 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 }
 .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--white); background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,221,158,.5); border-radius: 999px;
-  padding: 6px 14px; text-decoration: none;
-  backdrop-filter: blur(4px);
-  transition: background .2s ease, border-color .2s ease;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--dark); background: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px;
+  padding: 9px 18px 9px 14px; text-decoration: none;
+  box-shadow: 0 4px 16px rgba(200,163,106,.5);
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
 }
-.hero-badge::after { content: '›'; font-size: 14px; line-height: 1; color: var(--accent); }
-.hero-badge:hover { background: rgba(255,221,158,.16); border-color: var(--accent); }
+.hero-badge svg { width: 15px; height: 15px; flex-shrink: 0; }
+.hero-badge::after { content: '›'; font-size: 15px; line-height: 1; }
+.hero-badge:hover { background: #dab77f; box-shadow: 0 6px 20px rgba(200,163,106,.65); transform: translateY(-1px); }
 .hero h1 {
   font-family: var(--serif); font-weight: 700;
   font-size: clamp(2.4rem, 5.4vw, 4.8rem); line-height: .95; letter-spacing: -.02em;
@@ -264,6 +265,16 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .cta-bar-text strong { color: var(--secondary); }
 .cta-bar-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
+/* Mobilde sticky navbar + cta-bar üst üste binip arka plan görselini kapatıyordu:
+   bar'ı daralt ve yarı saydam/bulanık yap ki arkası görünsün. */
+@media (max-width: 768px) {
+  .cta-bar { padding: 8px 0; background: rgba(255,255,255,.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .cta-bar-text { display: none; }
+  .cta-bar .container { justify-content: center; }
+  .cta-bar-actions { gap: 8px; width: 100%; justify-content: center; }
+  .cta-bar-actions .btn { padding: 9px 14px; font-size: 12.5px; }
+}
+
 /* ── TICKER ── */
 .ticker { background: var(--accent); padding: 13px 0; overflow: hidden; }
 .ticker-inner {
@@ -298,6 +309,40 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .story-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
 .story-img:hover img { transform: scale(1.04); }
 .story-img video { width: 100%; height: 100%; object-fit: contain; background: var(--forest); }
+.story-slider { position: relative; width: 100%; height: 100%; }
+.story-slide {
+  position: absolute; inset: 0; opacity: 0; visibility: hidden; z-index: 1;
+  transition: opacity .5s ease;
+}
+.story-slide.ss-active { opacity: 1; visibility: visible; z-index: 2; }
+.story-slide video { width: 100%; height: 100%; object-fit: contain; background: var(--forest); }
+.story-slide-label {
+  position: absolute; top: 18px; left: 18px; z-index: 3; pointer-events: none;
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--white); background: rgba(13,26,16,.55); backdrop-filter: blur(4px);
+  padding: 6px 14px; border-radius: 999px;
+}
+.story-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
+  width: 40px; height: 40px; border-radius: 50%; border: none;
+  background: rgba(13,26,16,.55); color: #fff; font-size: 20px; line-height: 1;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: background .2s;
+}
+.story-nav:hover { background: rgba(200,163,106,.85); }
+.story-prev { left: 16px; } .story-next { right: 16px; }
+.story-dots {
+  position: absolute; top: 18px; right: 18px; z-index: 4;
+  display: flex; gap: 8px;
+  background: rgba(13,26,16,.55); backdrop-filter: blur(4px);
+  padding: 8px 10px; border-radius: 999px;
+}
+.story-dot {
+  width: 8px; height: 8px; border-radius: 50%; border: none;
+  background: rgba(255,255,255,.4); cursor: pointer; padding: 0;
+  transition: background .2s, transform .2s;
+}
+.story-dot.ss-active { background: var(--accent); transform: scale(1.35); }
 .story-text {
   background: var(--forest); padding: 6rem 5rem;
   display: flex; flex-direction: column; justify-content: center;
@@ -325,6 +370,8 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   .story { grid-template-columns: 1fr; }
   .story-img { min-height: 50vh; }
   .story-text { padding: 4rem 2.5rem; }
+  .story-nav { width: 34px; height: 34px; font-size: 17px; }
+  .story-slide-label { font-size: 10px; padding: 5px 11px; }
 }
 
 /* ── SCROLL REVEAL ── */
@@ -938,7 +985,7 @@ html.lenis, html.lenis body { height: auto; }
     <div class="hero-content">
       <div class="hero-top-row">
         <div class="hero-eyebrow">35 Yıllık Usta Üretim</div>
-        <a href="uretim-galeri.html" class="hero-badge">Adım Adım Üretim</a>
+        <a href="uretim-galeri.html" class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z"/><path d="M4 12l8 4.5 8-4.5"/><path d="M4 16.5l8 4.5 8-4.5"/></svg>Adım Adım Üretim</a>
       </div>
       <h1>Özgürlüğünüzü<br><em>Tasarlayın.</em></h1>
       <p class="hero-price"><strong>800.000 TL'den</strong> başlayan fiyatlarla</p>
@@ -1019,7 +1066,37 @@ html.lenis, html.lenis body { height: auto; }
 <section id="hikaye">
   <div class="story">
     <div class="story-img">
-      <video src="assets/videos/hikaye/hikaye-klip.mp4" poster="assets/images/hikaye/hikaye-poster.jpg" controls playsinline preload="metadata"></video>
+      <div class="story-slider" data-idx="0">
+        <div class="story-slide ss-active">
+          <video src="assets/videos/hikaye/hikaye-klip.mp4" poster="assets/images/hikaye/hikaye-poster.jpg" controls playsinline preload="metadata"></video>
+          <span class="story-slide-label">Hikayemiz</span>
+        </div>
+        <div class="story-slide">
+          <video src="assets/videos/hikaye/honaz-dikey.mp4" poster="assets/images/hikaye/honaz-dikey-poster.jpg" controls playsinline preload="metadata"></video>
+          <span class="story-slide-label">Honaz Tiny — Teslimat</span>
+        </div>
+        <div class="story-slide">
+          <video src="assets/videos/hikaye/honaz-yatay.mp4" poster="assets/images/hikaye/honaz-yatay-poster.jpg" controls playsinline preload="metadata"></video>
+          <span class="story-slide-label">Honaz Tiny — Tanıtım</span>
+        </div>
+        <div class="story-slide">
+          <video src="assets/videos/hikaye/izmir-tanitim.mp4" poster="assets/images/hikaye/izmir-tanitim-poster.jpg" controls playsinline preload="metadata"></video>
+          <span class="story-slide-label">İzmir — İlk Gösterim</span>
+        </div>
+        <div class="story-slide">
+          <video src="assets/videos/hikaye/usak-muzikli.mp4" poster="assets/images/hikaye/usak-muzikli-poster.jpg" controls playsinline preload="metadata"></video>
+          <span class="story-slide-label">Uşak — Tanıtım</span>
+        </div>
+        <button class="story-nav story-prev" onclick="storySlideStep(-1)" aria-label="Önceki video">‹</button>
+        <button class="story-nav story-next" onclick="storySlideStep(1)" aria-label="Sonraki video">›</button>
+        <div class="story-dots">
+          <button class="story-dot ss-active" onclick="storySlideGo(0)" aria-label="Video 1"></button>
+          <button class="story-dot" onclick="storySlideGo(1)" aria-label="Video 2"></button>
+          <button class="story-dot" onclick="storySlideGo(2)" aria-label="Video 3"></button>
+          <button class="story-dot" onclick="storySlideGo(3)" aria-label="Video 4"></button>
+          <button class="story-dot" onclick="storySlideGo(4)" aria-label="Video 5"></button>
+        </div>
+      </div>
     </div>
     <div class="story-text">
       <div class="section-label reveal">Hikayemiz</div>
@@ -2234,6 +2311,266 @@ html.lenis, html.lenis body { height: auto; }
       </div>
         <div class="project-info"><span class="project-model">Luna</span><span class="project-loc">2022</span></div>
       </div>
+      <div class="project-item reveal" data-model="Kuşadası" data-loc="8m, Tek Loft, 2025">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/kusadasi/kusadasi-01.jpg" alt="Kuşadası — 8m tek loft teslimatı" class="mg-active">
+        <img src="assets/images/kusadasi/kusadasi-02.jpg" alt="Kuşadası — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/kusadasi/kusadasi-03.jpg" alt="Kuşadası — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/kusadasi/kusadasi-04.jpg" alt="Kuşadası — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/kusadasi/kusadasi-05.jpg" alt="Kuşadası — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/kusadasi/kusadasi-06.jpg" alt="Kuşadası — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/kusadasi/kusadasi-07.jpg" alt="Kuşadası — 8m tek loft teslimatı" loading="lazy">
+        <video src="assets/videos/kusadasi/kusadasi-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/kusadasi/kusadasi-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/9</span>
+        <span class="model-badge" style="z-index:3">Kuşadası / 8m Tek Loft</span>
+      </div>
+        <div class="project-info"><span class="project-model">Kuşadası</span><span class="project-loc">8m, Tek Loft, 2025</span></div>
+      </div>
+      <div class="project-item reveal reveal-delay-1" data-model="Tekke" data-loc="9m, 2 Loft, Tavas / Denizli, 2026">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/tekke/tekke-01.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" class="mg-active">
+        <img src="assets/images/tekke/tekke-02.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-03.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-04.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-05.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-06.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-07.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-08.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-09.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-10.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-11.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/tekke/tekke-12.jpg" alt="Tekke — Tavas 9m 2 loft teslimatı" loading="lazy">
+        <video src="assets/videos/tekke/tekke-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/13</span>
+        <span class="model-badge" style="z-index:3">Tekke / Tavas</span>
+      </div>
+        <div class="project-info"><span class="project-model">Tekke</span><span class="project-loc">9m, 2 Loft, Tavas / Denizli, 2026</span></div>
+      </div>
+      <div class="project-item reveal reveal-delay-2" data-model="Çameli" data-loc="8m, Tek Loft, 2023">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/cameli/cameli-01.jpg" alt="Çameli — 8m tek loft teslimatı" class="mg-active">
+        <img src="assets/images/cameli/cameli-02.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-03.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-04.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-05.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-06.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-07.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-08.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-09.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-10.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-11.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-12.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-13.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-14.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-15.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-16.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-17.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-18.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-19.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-20.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-21.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-22.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-23.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-24.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-25.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <img src="assets/images/cameli/cameli-26.jpg" alt="Çameli — 8m tek loft teslimatı" loading="lazy">
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/26</span>
+        <span class="model-badge" style="z-index:3">Çameli / 8m Tek Loft</span>
+      </div>
+        <div class="project-info"><span class="project-model">Çameli</span><span class="project-loc">8m, Tek Loft, 2023</span></div>
+      </div>
+      <div class="project-item reveal reveal-delay-3" data-model="Akyaka" data-loc="9m, 1 Loft, 1 Yatak Odası, 2023">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/akyaka/akyaka-01.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" class="mg-active">
+        <img src="assets/images/akyaka/akyaka-02.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-03.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-04.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-05.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-06.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-07.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-08.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-09.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-10.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-11.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-12.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-13.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-14.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-15.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-16.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-17.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-18.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/akyaka/akyaka-19.jpg" alt="Akyaka — 9m 1 loft 1 yatak odalı teslimatı" loading="lazy">
+        <video src="assets/videos/akyaka/akyaka-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/20</span>
+        <span class="model-badge" style="z-index:3">Akyaka / 9m 1 Loft</span>
+      </div>
+        <div class="project-info"><span class="project-model">Akyaka</span><span class="project-loc">9m, 1 Loft, 1 Yatak Odası, 2023</span></div>
+      </div>
+      <div class="project-item reveal" data-model="Urla" data-loc="8m, Tek Yatak Odası, 2023">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/urla/urla-01.jpg" alt="Urla — 8m tek yatak odalı teslimatı" class="mg-active">
+        <img src="assets/images/urla/urla-02.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-03.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-04.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-05.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-06.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-07.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-08.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-09.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-10.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-11.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-12.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-13.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-14.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-15.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-16.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-17.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-18.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-19.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-20.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-21.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-22.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-23.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <img src="assets/images/urla/urla-24.jpg" alt="Urla — 8m tek yatak odalı teslimatı" loading="lazy">
+        <video src="assets/videos/urla/urla-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/25</span>
+        <span class="model-badge" style="z-index:3">Urla / 8m</span>
+      </div>
+        <div class="project-info"><span class="project-model">Urla</span><span class="project-loc">8m, Tek Yatak Odası, 2023</span></div>
+      </div>
+      <div class="project-item reveal reveal-delay-1" data-model="İzmir Urla" data-loc="8m, Tek Loft, 2024">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/izmirurla/izmirurla-01.jpg" alt="İzmir Urla teslimatı" class="mg-active">
+        <img src="assets/images/izmirurla/izmirurla-02.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-03.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-04.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-05.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-06.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-07.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-08.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-09.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-10.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-11.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-12.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-13.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-14.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-15.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-16.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <img src="assets/images/izmirurla/izmirurla-17.jpg" alt="İzmir Urla teslimatı" loading="lazy">
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/17</span>
+        <span class="model-badge" style="z-index:3">İzmir Urla / 8m Tek Loft</span>
+      </div>
+        <div class="project-info"><span class="project-model">İzmir Urla</span><span class="project-loc">8m, Tek Loft, 2024</span></div>
+      </div>
+      <div class="project-item reveal reveal-delay-2" data-model="Acıpayam" data-loc="2023">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/acipayam/acipayam-01.jpg" alt="Acıpayam teslimatı" class="mg-active">
+        <img src="assets/images/acipayam/acipayam-02.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-03.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-04.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-05.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-06.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-07.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-08.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-09.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-10.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-11.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-12.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-13.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-14.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-15.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-16.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-17.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-18.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-19.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-20.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-21.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-22.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-23.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-24.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-25.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-26.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-27.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-28.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-29.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-30.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-31.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-32.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-33.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-34.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-35.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-36.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-37.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-38.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-39.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-40.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-41.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-42.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-43.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-44.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-45.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <img src="assets/images/acipayam/acipayam-46.jpg" alt="Acıpayam teslimatı" loading="lazy">
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/46</span>
+        <span class="model-badge" style="z-index:3">Acıpayam</span>
+      </div>
+        <div class="project-info"><span class="project-model">Acıpayam</span><span class="project-loc">2023</span></div>
+      </div>
+      <div class="project-item reveal reveal-delay-3" data-model="Çeşme" data-loc="2023">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/cesme/cesme-01.jpg" alt="Çeşme teslimatı" class="mg-active">
+        <img src="assets/images/cesme/cesme-02.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-03.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-04.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-05.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-06.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-07.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-08.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-09.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-10.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-11.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-12.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-13.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-14.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-15.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-16.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-17.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-18.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-19.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-20.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-21.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-22.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <img src="assets/images/cesme/cesme-23.jpg" alt="Çeşme teslimatı" loading="lazy">
+        <video src="assets/videos/cesme/cesme-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/24</span>
+        <span class="model-badge" style="z-index:3">Çeşme</span>
+      </div>
+        <div class="project-info"><span class="project-model">Çeşme</span><span class="project-loc">2023</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -2572,6 +2909,25 @@ document.addEventListener('click', e => {
   });
 });
 
+// Hikayemiz video slider
+function storySlideGo(i) {
+  const slider = document.querySelector('.story-slider');
+  const slides = slider.querySelectorAll('.story-slide');
+  slides.forEach((s, idx) => {
+    const active = idx === i;
+    s.classList.toggle('ss-active', active);
+    if (!active) { const v = s.querySelector('video'); if (v) v.pause(); }
+  });
+  slider.querySelectorAll('.story-dot').forEach((d, idx) => d.classList.toggle('ss-active', idx === i));
+  slider.dataset.idx = i;
+}
+function storySlideStep(dir) {
+  const slider = document.querySelector('.story-slider');
+  const count = slider.querySelectorAll('.story-slide').length;
+  const idx = (parseInt(slider.dataset.idx || '0', 10) + dir + count) % count;
+  storySlideGo(idx);
+}
+
 // Mini gallery (model cards + project cards with multiple photos)
 function mgStep(e, btn, dir) {
   e.stopPropagation();
@@ -2587,20 +2943,30 @@ function mgStep(e, btn, dir) {
 }
 
 // Lightbox
-const lbItems = [...document.querySelectorAll('.project-item')];
+const projectItems = [...document.querySelectorAll('.project-item')];
 const lightbox = document.getElementById('lightbox');
+let lbItems = [];
 let lbIndex = 0;
+let lbModel = '';
+let lbLoc = '';
 function renderLb() {
-  const el = lbItems[lbIndex];
-  const activeImg = el.querySelector('img.mg-active') || el.querySelector('img');
-  document.getElementById('lbImg').src = activeImg.src;
-  document.getElementById('lbModel').textContent = el.dataset.model;
-  document.getElementById('lbLoc').textContent = el.dataset.loc;
+  document.getElementById('lbImg').src = lbItems[lbIndex].src;
+  document.getElementById('lbModel').textContent = lbModel;
+  document.getElementById('lbLoc').textContent = lbLoc;
 }
-function openLightbox(i) { lbIndex = i; renderLb(); lightbox.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function openLightbox(el) {
+  lbItems = [...el.querySelectorAll('.mini-gallery img')];
+  const activeIdx = lbItems.findIndex(im => im.classList.contains('mg-active'));
+  lbIndex = activeIdx >= 0 ? activeIdx : 0;
+  lbModel = el.dataset.model;
+  lbLoc = el.dataset.loc;
+  renderLb();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
 function stepLb(d) { lbIndex = (lbIndex + d + lbItems.length) % lbItems.length; renderLb(); }
-lbItems.forEach((el, i) => {
+projectItems.forEach((el) => {
   if (el.dataset.model === 'Uşak') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'usak-galeri.html'; });
@@ -2629,7 +2995,7 @@ lbItems.forEach((el, i) => {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'luna-galeri.html'; });
   } else {
-    el.addEventListener('click', () => openLightbox(i));
+    el.addEventListener('click', () => openLightbox(el));
   }
 });
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });

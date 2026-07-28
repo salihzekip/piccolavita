@@ -902,7 +902,7 @@ html.lenis, html.lenis body { height: auto; }
           <li><a href="#model-milas" onclick="closeMobile()">Milas</a></li>
           <li><a href="#model-nikfer" onclick="closeMobile()">Nikfer</a></li>
           <li><a href="#model-bodrum" onclick="closeMobile()">Bodrum</a></li>
-          <li><a href="https://www.piccolavita.com/tiny-house/tavas" onclick="closeMobile()">Tavas</a></li>
+          <li><a href="#model-tavas" onclick="closeMobile()">Tavas</a></li>
           <li><a href="#model-honaz" onclick="closeMobile()">Honaz</a></li>
           <li><a href="#model-inciralti" onclick="closeMobile()">İnciraltı</a></li>
           <li><a href="#model-comfort" onclick="closeMobile()">Comfort</a></li>
@@ -917,7 +917,7 @@ html.lenis, html.lenis body { height: auto; }
           <li><a href="https://www.piccolavita.com/tiny-house/10-metre" onclick="closeMobile()">10 Metre</a></li>
         </ul>
       </details>
-      <a href="https://www.piccolavita.com/tiny-house/ofis-ve-sabit-tiny" class="mobile-sub-link" onclick="closeMobile()">Ofis ve Sabit Tiny</a>
+      <a href="#model-banaz" class="mobile-sub-link" onclick="closeMobile()">Ofis ve Sabit Tiny</a>
       <a href="uretim-galeri.html" class="mobile-sub-link" onclick="closeMobile()">Adım Adım Üretim</a>
     </div>
   </details>
@@ -944,7 +944,7 @@ html.lenis, html.lenis body { height: auto; }
               <li><a href="#model-milas">Milas</a></li>
               <li><a href="#model-nikfer">Nikfer</a></li>
               <li><a href="#model-bodrum">Bodrum</a></li>
-              <li><a href="https://www.piccolavita.com/tiny-house/tavas" target="_blank" rel="noopener">Tavas</a></li>
+              <li><a href="#model-tavas">Tavas</a></li>
               <li><a href="#model-honaz">Honaz</a></li>
               <li><a href="#model-inciralti">İnciraltı</a></li>
               <li><a href="#model-comfort">Comfort</a></li>
@@ -959,7 +959,7 @@ html.lenis, html.lenis body { height: auto; }
               <li><a href="https://www.piccolavita.com/tiny-house/10-metre" target="_blank" rel="noopener">10 Metre</a></li>
             </ul>
           </li>
-          <li><a href="https://www.piccolavita.com/tiny-house/ofis-ve-sabit-tiny" target="_blank" rel="noopener">Ofis ve Sabit Tiny</a></li>
+          <li><a href="#model-banaz">Ofis ve Sabit Tiny</a></li>
           <li><a href="uretim-galeri.html">Adım Adım Üretim</a></li>
         </ul>
       </li>
@@ -2766,7 +2766,7 @@ html.lenis, html.lenis body { height: auto; }
         <input type="hidden" name="_subject" value="Web sitesi teklif formu — yeni mesaj">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://salihzekip.github.io/piccolavita/?gonderildi=1#iletisim">
+        <input type="hidden" name="_next" value="https://piccolavita.netlify.app/?gonderildi=1#iletisim">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="form-row">
           <div class="form-group">
@@ -2970,6 +2970,12 @@ projectItems.forEach((el) => {
   if (el.dataset.model === 'Uşak') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'usak-galeri.html'; });
+  } else if (el.dataset.model === 'Milas') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'milas-galeri.html'; });
+  } else if (el.dataset.model === 'Tavas') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'tavas-galeri.html'; });
   } else if (el.dataset.model === 'Nikfer') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'nikfer-galeri.html'; });

@@ -124,13 +124,17 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   opacity: 0; visibility: hidden; transform: translateX(-6px);
   transition: opacity .18s, transform .18s, visibility .18s;
 }
-.nav-dropdown-sub:hover .nav-dropdown-flyout { opacity: 1; visibility: visible; transform: translateX(0); }
+.nav-dropdown-sub:hover > .nav-dropdown-flyout { opacity: 1; visibility: visible; transform: translateX(0); }
 .nav-dropdown-flyout a {
   display: block; padding: 9px 14px; border-radius: 4px;
   font-size: 13.5px; font-weight: 500; color: var(--primary);
   border-bottom: none; white-space: nowrap;
 }
 .nav-dropdown-flyout a:hover { background: var(--bg); color: var(--secondary); }
+.nav-dropdown-flyout > li { position: relative; }
+.nav-dropdown-flyout .nav-dropdown-sub-label {
+  padding: 9px 14px; font-size: 13.5px; font-weight: 500;
+}
 
 .navbar-cta { display: flex; align-items: center; gap: 16px; }
 .navbar-burger {
@@ -582,14 +586,29 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   font-size: 12px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 18px;
 }
+.baz-models-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: none; border: none; padding: 0; cursor: pointer;
+  font-family: inherit; color: var(--accent);
+}
+.baz-models-toggle::after {
+  content: ''; width: 6px; height: 6px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform .2s;
+}
+.baz-models-toggle.open::after { transform: rotate(225deg); }
 .baz-models-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
-.baz-models-row a {
+.baz-models-row[hidden] { display: none; }
+.baz-models-row + .baz-models-row { margin-top: 14px; }
+.baz-models-row a, .baz-models-row button {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 12px 26px; border: 2px solid var(--primary); border-radius: 4px;
   font-size: 14px; font-weight: 600; color: var(--primary);
+  background: transparent; cursor: pointer; font-family: inherit;
   transition: background .2s, color .2s;
 }
-.baz-models-row a:hover { background: var(--primary); color: var(--white); }
+.baz-models-row a:hover, .baz-models-row button:hover { background: var(--primary); color: var(--white); }
+.baz-models-row button.active { background: var(--primary); color: var(--white); }
 .models-footer-cta {
   display: flex; justify-content: center; gap: 16px;
   margin-top: 56px; flex-wrap: wrap;
@@ -912,9 +931,17 @@ html.lenis, html.lenis body { height: auto; }
       <details>
         <summary>Baz Modeller</summary>
         <ul>
-          <li><a href="https://www.piccolavita.com/tiny-house/8-metre" onclick="closeMobile()">8 Metre</a></li>
-          <li><a href="https://www.piccolavita.com/tiny-house/9-metre" onclick="closeMobile()">9 Metre</a></li>
-          <li><a href="https://www.piccolavita.com/tiny-house/10-metre" onclick="closeMobile()">10 Metre</a></li>
+          <li>
+            <details>
+              <summary>Comfort</summary>
+              <ul>
+                <li><a href="8metre-comfort-galeri.html" onclick="closeMobile()">8 Metre</a></li>
+                <li><a href="9metre-comfort-galeri.html" onclick="closeMobile()">9 Metre</a></li>
+                <li><a href="10metre-comfort-galeri.html" onclick="closeMobile()">10 Metre</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="10metre-arte-galeri.html" onclick="closeMobile()">Arte</a></li>
         </ul>
       </details>
       <a href="#model-banaz" class="mobile-sub-link" onclick="closeMobile()">Ofis ve Sabit Tiny</a>
@@ -954,9 +981,15 @@ html.lenis, html.lenis body { height: auto; }
           <li class="nav-dropdown-sub">
             <span class="nav-dropdown-sub-label">Baz Modeller</span>
             <ul class="nav-dropdown-flyout">
-              <li><a href="https://www.piccolavita.com/tiny-house/8-metre" target="_blank" rel="noopener">8 Metre</a></li>
-              <li><a href="https://www.piccolavita.com/tiny-house/9-metre" target="_blank" rel="noopener">9 Metre</a></li>
-              <li><a href="https://www.piccolavita.com/tiny-house/10-metre" target="_blank" rel="noopener">10 Metre</a></li>
+              <li class="nav-dropdown-sub">
+                <span class="nav-dropdown-sub-label">Comfort</span>
+                <ul class="nav-dropdown-flyout">
+                  <li><a href="8metre-comfort-galeri.html">8 Metre</a></li>
+                  <li><a href="9metre-comfort-galeri.html">9 Metre</a></li>
+                  <li><a href="10metre-comfort-galeri.html">10 Metre</a></li>
+                </ul>
+              </li>
+              <li><a href="10metre-arte-galeri.html">Arte</a></li>
             </ul>
           </li>
           <li><a href="#model-banaz">Ofis ve Sabit Tiny</a></li>
@@ -1016,7 +1049,7 @@ html.lenis, html.lenis body { height: auto; }
   <div class="ticker-inner" id="tickerInner">
     <span class="ticker-item"><span class="ticker-dot"></span>35 Yıllık Deneyim</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Avrupa Sertifikalı</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 3 Baz Model</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 4 Baz Model</span>
     <span class="ticker-item"><span class="ticker-dot"></span>24 Ay Garanti</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Türkiye Çapında Kurulum</span>
     <span class="ticker-item"><span class="ticker-dot"></span>O2 Tip Onayı</span>
@@ -1026,7 +1059,7 @@ html.lenis, html.lenis body { height: auto; }
     <!-- Tekrar (kesintisiz döngü) -->
     <span class="ticker-item"><span class="ticker-dot"></span>35 Yıllık Deneyim</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Avrupa Sertifikalı</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 3 Baz Model</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 4 Baz Model</span>
     <span class="ticker-item"><span class="ticker-dot"></span>24 Ay Garanti</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Türkiye Çapında Kurulum</span>
     <span class="ticker-item"><span class="ticker-dot"></span>O2 Tip Onayı</span>
@@ -1640,11 +1673,15 @@ html.lenis, html.lenis body { height: auto; }
     </div>
 
     <div class="baz-models reveal">
-      <div class="baz-models-label">Baz Modeller</div>
-      <div class="baz-models-row">
-        <a href="https://www.piccolavita.com/tiny-house/8-metre" target="_blank" rel="noopener">8 Metre</a>
-        <a href="https://www.piccolavita.com/tiny-house/9-metre" target="_blank" rel="noopener">9 Metre</a>
-        <a href="https://www.piccolavita.com/tiny-house/10-metre" target="_blank" rel="noopener">10 Metre</a>
+      <button type="button" class="baz-models-label baz-models-toggle" id="bazModelsToggle" aria-expanded="false" aria-controls="bazStepType">Baz Modeller</button>
+      <div class="baz-models-row" id="bazStepType" hidden>
+        <button type="button" class="baz-step-btn" id="bazBtnComfort" aria-expanded="false" aria-controls="bazStepComfort">Comfort</button>
+        <a href="10metre-arte-galeri.html">Arte</a>
+      </div>
+      <div class="baz-models-row" id="bazStepComfort" hidden>
+        <a href="8metre-comfort-galeri.html">8 Metre</a>
+        <a href="9metre-comfort-galeri.html">9 Metre</a>
+        <a href="10metre-comfort-galeri.html">10 Metre</a>
       </div>
     </div>
 
@@ -1796,7 +1833,7 @@ html.lenis, html.lenis body { height: auto; }
           <tr>
             <td class="pt-model" data-label="Model">Nikfer</td>
             <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
-            <td class="pt-price" data-label="Başlangıç Fiyatı">1.750.000 TL'den itibaren</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.750.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Nikfer%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
@@ -1850,9 +1887,37 @@ html.lenis, html.lenis body { height: auto; }
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Luna%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
+            <td class="pt-model" data-label="Model">8 Metre Comfort <span class="pt-badge">Baz Model</span></td>
+            <td class="pt-size" data-label="Büyüklük">20 m² · 8 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.250.000 TL</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%208%20Metre%20Comfort%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
+            <td class="pt-model" data-label="Model">9 Metre Comfort <span class="pt-badge">Baz Model</span></td>
+            <td class="pt-size" data-label="Büyüklük">30 m² · 9 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.450.000 TL</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%209%20Metre%20Comfort%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
+            <td class="pt-model" data-label="Model">10 Metre Comfort <span class="pt-badge">Baz Model</span></td>
+            <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.650.000 TL</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%2010%20Metre%20Comfort%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
+            <td class="pt-model" data-label="Model">10 Metre Arte <span class="pt-badge">Baz Model</span></td>
+            <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">1.650.000 TL</td>
+            <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%2010%20Metre%20Arte%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+          </tr>
+          <tr>
             <td class="pt-model" data-label="Model">Sabit <span class="pt-badge">3+1</span></td>
             <td class="pt-size" data-label="Büyüklük">90 m² · 11 m</td>
-            <td class="pt-price" data-label="Başlangıç Fiyatı">3.500.000 TL</td>
+            <td class="pt-price" data-label="Başlangıç Fiyatı">4.000.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Sabit%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
@@ -2794,7 +2859,11 @@ html.lenis, html.lenis body { height: auto; }
               <option value="Luna">Luna — 30 m²</option>
               <option value="Banaz">Banaz — 20 m² (Ofis)</option>
               <option value="Sabit">Sabit — 90 m² (3+1)</option>
-              <option value="Baz Model">Baz Model</option>
+              <option value="8 Metre Comfort">8 Metre Comfort — 20 m²</option>
+              <option value="9 Metre Comfort">9 Metre Comfort — 30 m²</option>
+              <option value="10 Metre Comfort">10 Metre Comfort — 40 m²</option>
+              <option value="10 Metre Arte">10 Metre Arte — 40 m²</option>
+              <option value="Baz Model">Diğer Baz Model</option>
               <option value="Diğer">Diğer bir model</option>
             </select>
           </div>
@@ -2903,6 +2972,34 @@ document.addEventListener('click', e => {
     if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
   });
 });
+
+// Baz Modeller — kademeli açılır (Baz Modeller > Comfort/Arte > 8-9-10 Metre)
+(function () {
+  const toggle = document.getElementById('bazModelsToggle');
+  const stepType = document.getElementById('bazStepType');
+  const btnComfort = document.getElementById('bazBtnComfort');
+  const stepComfort = document.getElementById('bazStepComfort');
+  if (!toggle || !stepType || !btnComfort || !stepComfort) return;
+
+  toggle.addEventListener('click', () => {
+    const willOpen = stepType.hidden;
+    stepType.hidden = !willOpen;
+    toggle.classList.toggle('open', willOpen);
+    toggle.setAttribute('aria-expanded', String(willOpen));
+    if (!willOpen) {
+      stepComfort.hidden = true;
+      btnComfort.classList.remove('active');
+      btnComfort.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  btnComfort.addEventListener('click', () => {
+    const willOpen = stepComfort.hidden;
+    stepComfort.hidden = !willOpen;
+    btnComfort.classList.toggle('active', willOpen);
+    btnComfort.setAttribute('aria-expanded', String(willOpen));
+  });
+})();
 
 // Hikayemiz video slider
 function storySlideGo(i) {

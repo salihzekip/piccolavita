@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nikfer — Fotoğraf Galerisi | Piccola Vita</title>
-<meta name="description" content="Piccola Vita Nikfer modeli — teslim edilen projeden gerçek fotoğraflar.">
+<title>Nikfer — Fotoğraf ve Video Galerisi | Piccola Vita</title>
+<meta name="description" content="Piccola Vita Nikfer modeli — teslim edilen projeden gerçek fotoğraf ve videolar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   flex: 1; min-height: 0;
   display: flex; align-items: center; justify-content: center;
 }
-.gstage img {
+.gstage img, .gstage video {
   display: block; max-width: 100%; max-height: 68vh; width: auto; height: auto;
   object-fit: contain; border-radius: 10px; background: #000;
 }
@@ -96,13 +96,18 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   display: flex; gap: 8px; overflow-x: auto; padding: 0 28px 24px; flex-shrink: 0;
   scrollbar-width: thin;
 }
-.gthumbs img {
-  width: 68px; height: 52px; object-fit: cover; border-radius: 6px; cursor: pointer;
+.gthumbs .gthumb {
+  position: relative; width: 68px; height: 52px; border-radius: 6px; cursor: pointer;
   opacity: .45; transition: opacity .2s, outline .2s; flex-shrink: 0;
-  outline: 2px solid transparent;
+  outline: 2px solid transparent; overflow: hidden;
 }
-.gthumbs img:hover { opacity: .8; }
-.gthumbs img.gt-active { opacity: 1; outline-color: var(--accent); }
+.gthumbs .gthumb img, .gthumbs .gthumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gthumbs .gthumb:hover { opacity: .8; }
+.gthumbs .gthumb.gt-active { opacity: 1; outline-color: var(--accent); }
+.gthumb-play {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.25); color: #fff; font-size: 16px; pointer-events: none;
+}
 
 .gtop-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .gwa {
@@ -135,13 +140,14 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 
 <div class="gmain">
   <div class="gstage">
-    <button class="gnav gprev" onclick="gStep(-1)" aria-label="Önceki fotoğraf">‹</button>
+    <button class="gnav gprev" onclick="gStep(-1)" aria-label="Önceki">‹</button>
     <img id="gImg" src="" alt="Nikfer">
-    <button class="gnav gnext" onclick="gStep(1)" aria-label="Sonraki fotoğraf">›</button>
+    <video id="gVideo" controls playsinline style="display:none"></video>
+    <button class="gnav gnext" onclick="gStep(1)" aria-label="Sonraki">›</button>
   </div>
   <div class="gcaption">
     <h1>Nikfer <em>· Tavas / Denizli</em></h1>
-    <div class="gcounter" id="gCounter">1 / 18</div>
+    <div class="gcounter" id="gCounter">1 / 19</div>
   </div>
   <div class="gspecs">
     <div class="gspec"><div class="gspec-label">En</div><div class="gspec-value">2,55 m</div></div>
@@ -161,31 +167,79 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 </div>
 
 <script>
-const total = 18;
-const base = 'assets/images/nikfer/nikfer-';
+const media = [
+  { type: 'img', src: 'assets/images/nikfer/nikfer-01.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-02.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-03.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-04.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-05.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-06.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-07.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-08.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-09.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-10.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-11.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-12.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-13.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-14.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-15.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-16.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-17.jpg' },
+  { type: 'img', src: 'assets/images/nikfer/nikfer-18.jpg' },
+  { type: 'video', src: 'assets/videos/nikfer/nikfer-01.mp4' },
+];
+const total = media.length;
 let idx = 0;
 
-function pad(n) { return n < 10 ? '0' + n : '' + n; }
-function src(n) { return base + pad(n) + '.jpg'; }
+const gImg = document.getElementById('gImg');
+const gVideo = document.getElementById('gVideo');
 
 function render() {
-  document.getElementById('gImg').src = src(idx + 1);
+  const item = media[idx];
+  gVideo.pause();
+  if (item.type === 'img') {
+    gImg.src = item.src;
+    gImg.style.display = '';
+    gVideo.style.display = 'none';
+    gVideo.removeAttribute('src');
+  } else {
+    gVideo.src = item.src;
+    gVideo.style.display = '';
+    gImg.style.display = 'none';
+    gImg.removeAttribute('src');
+  }
   document.getElementById('gCounter').textContent = (idx + 1) + ' / ' + total;
-  document.querySelectorAll('.gthumbs img').forEach((im, i) => im.classList.toggle('gt-active', i === idx));
-  const active = document.querySelector('.gthumbs img.gt-active');
+  document.querySelectorAll('.gthumb').forEach((el, i) => el.classList.toggle('gt-active', i === idx));
+  const active = document.querySelector('.gthumb.gt-active');
   if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 }
 function gStep(d) { idx = (idx + d + total) % total; render(); }
 
 const thumbs = document.getElementById('gThumbs');
-for (let i = 1; i <= total; i++) {
-  const im = document.createElement('img');
-  im.src = src(i);
-  im.alt = 'Nikfer fotoğraf ' + i;
-  im.loading = 'lazy';
-  im.addEventListener('click', () => { idx = i - 1; render(); });
-  thumbs.appendChild(im);
-}
+media.forEach((item, i) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'gthumb';
+  if (item.type === 'img') {
+    const im = document.createElement('img');
+    im.src = item.src;
+    im.alt = 'Nikfer fotoğraf ' + (i + 1);
+    im.loading = 'lazy';
+    wrap.appendChild(im);
+  } else {
+    const vid = document.createElement('video');
+    vid.src = item.src + '#t=0.1';
+    vid.muted = true;
+    vid.preload = 'metadata';
+    vid.playsInline = true;
+    wrap.appendChild(vid);
+    const play = document.createElement('span');
+    play.className = 'gthumb-play';
+    play.textContent = '▶';
+    wrap.appendChild(play);
+  }
+  wrap.addEventListener('click', () => { idx = i; render(); });
+  thumbs.appendChild(wrap);
+});
 render();
 
 document.addEventListener('keydown', e => {

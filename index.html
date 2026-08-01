@@ -296,7 +296,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 
 /* ── STATS / TRUST BAR ── */
 .trust { background: var(--primary); padding: 56px 0; }
-.trust .container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; text-align: center; }
+.trust .container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; text-align: center; }
 .trust-item .num {
   font-family: var(--serif); font-weight: 700; font-size: 36px;
   color: var(--accent); display: block; line-height: 1;
@@ -304,7 +304,6 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .trust-item .lbl { font-size: 13px; color: rgba(255,255,255,.75); margin-top: 8px; line-height: 1.4; }
 @media (max-width: 900px) {
   .trust .container { grid-template-columns: repeat(2, 1fr); }
-  .trust-item:last-child { grid-column: span 2; }
 }
 
 /* ── STORY ── */
@@ -425,6 +424,93 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .wa-float svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
 @keyframes wa-pulse { 0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.35)} 50%{box-shadow:0 8px 40px rgba(37,211,102,.55)} }
 @media (max-width: 480px) { .wa-float span { display: none; } .wa-float { padding: 14px; border-radius: 50%; } }
+
+/* ── PICCO AI ASİSTAN ── */
+.picco-float {
+  position: fixed; bottom: 92px; right: 24px; z-index: 99;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--primary); color: var(--white); border: none; border-radius: 50px;
+  padding: 14px 18px 14px 14px; cursor: pointer;
+  box-shadow: 0 8px 28px rgba(47,74,61,.4);
+  font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .04em;
+  transition: all .22s;
+}
+.picco-float:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(47,74,61,.5); }
+.picco-float .picco-avatar {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  background: var(--accent); color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-weight: 700; font-size: 13px;
+}
+@media (max-width: 480px) { .picco-float span:not(.picco-avatar) { display: none; } .picco-float { padding: 14px; border-radius: 50%; bottom: 88px; } }
+
+.picco-panel {
+  position: fixed; bottom: 24px; right: 24px; z-index: 200;
+  width: 360px; max-width: calc(100vw - 32px); height: 520px; max-height: calc(100vh - 48px);
+  background: var(--white); border-radius: 18px; overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,.28);
+  display: flex; flex-direction: column;
+  opacity: 0; transform: translateY(16px) scale(.98); pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+}
+.picco-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.picco-panel-header {
+  background: var(--primary); color: var(--white); padding: 16px 18px;
+  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+}
+.picco-panel-header .picco-avatar {
+  width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--primary);
+  display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; font-size: 16px; flex-shrink: 0;
+}
+.picco-panel-header .picco-title { font-weight: 700; font-size: 15px; line-height: 1.2; }
+.picco-panel-header .picco-subtitle { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 2px; }
+.picco-panel-close {
+  margin-left: auto; background: none; border: none; color: rgba(255,255,255,.8); cursor: pointer;
+  font-size: 22px; line-height: 1; padding: 4px 6px;
+}
+.picco-panel-close:hover { color: var(--white); }
+.picco-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #FAF7F2; }
+.picco-msg { max-width: 84%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
+.picco-msg.bot { align-self: flex-start; background: var(--white); color: var(--neutral-2); border: 1px solid var(--neutral-1); border-bottom-left-radius: 4px; }
+.picco-msg.user { align-self: flex-end; background: var(--primary); color: var(--white); border-bottom-right-radius: 4px; }
+.picco-typing { align-self: flex-start; display: flex; gap: 4px; padding: 12px 14px; }
+.picco-typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--neutral-2); opacity: .4; animation: picco-blink 1.2s infinite; }
+.picco-typing span:nth-child(2) { animation-delay: .2s; }
+.picco-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes picco-blink { 0%,80%,100%{opacity:.25} 40%{opacity:.8} }
+.picco-msg-cta { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.picco-msg-cta a {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 12px; border-radius: 20px; font-size: 13px; font-weight: 700;
+  text-decoration: none; transition: opacity .2s;
+}
+.picco-msg-cta a:hover { opacity: .85; }
+.picco-msg-cta a.picco-cta-tel { background: var(--primary); color: var(--white); }
+.picco-msg-cta a.picco-cta-wa { background: #25D366; color: var(--white); }
+.picco-shortcuts { flex-shrink: 0; padding: 10px 12px 0; display: flex; flex-wrap: wrap; gap: 6px; background: var(--white); border-top: 1px solid var(--neutral-1); }
+.picco-shortcut-btn {
+  background: #FAF7F2; border: 1px solid var(--neutral-1); color: var(--primary);
+  font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: .01em;
+  padding: 7px 12px; border-radius: 16px; cursor: pointer; transition: all .18s; margin-bottom: 8px;
+}
+.picco-shortcut-btn:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+.picco-panel-footer { border-top: 1px solid var(--neutral-1); padding: 10px; display: flex; gap: 8px; flex-shrink: 0; background: var(--white); }
+.picco-input {
+  flex: 1; border: 1px solid var(--neutral-1); border-radius: 24px; padding: 10px 16px;
+  font-family: inherit; font-size: 14px; outline: none; resize: none;
+}
+.picco-input:focus { border-color: var(--secondary); }
+.picco-send {
+  background: var(--primary); color: var(--white); border: none; border-radius: 50%;
+  width: 40px; height: 40px; flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.picco-send:hover { background: var(--secondary); }
+.picco-send:disabled { opacity: .5; cursor: default; }
+.picco-send svg { width: 18px; height: 18px; fill: currentColor; }
+@media (max-width: 480px) {
+  .picco-panel { right: 16px; bottom: 16px; width: calc(100vw - 32px); height: calc(100vh - 32px); max-height: none; }
+}
 
 
 /* ── PROCESS SECTION ── */
@@ -1049,7 +1135,7 @@ html.lenis, html.lenis body { height: auto; }
   <div class="ticker-inner" id="tickerInner">
     <span class="ticker-item"><span class="ticker-dot"></span>35 Yıllık Deneyim</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Avrupa Sertifikalı</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 6 Baz Model</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 2 Baz Model</span>
     <span class="ticker-item"><span class="ticker-dot"></span>24 Ay Garanti</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Türkiye Çapında Kurulum</span>
     <span class="ticker-item"><span class="ticker-dot"></span>O2 Tip Onayı</span>
@@ -1059,7 +1145,7 @@ html.lenis, html.lenis body { height: auto; }
     <!-- Tekrar (kesintisiz döngü) -->
     <span class="ticker-item"><span class="ticker-dot"></span>35 Yıllık Deneyim</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Avrupa Sertifikalı</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 6 Baz Model</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 2 Baz Model</span>
     <span class="ticker-item"><span class="ticker-dot"></span>24 Ay Garanti</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Türkiye Çapında Kurulum</span>
     <span class="ticker-item"><span class="ticker-dot"></span>O2 Tip Onayı</span>
@@ -1073,8 +1159,12 @@ html.lenis, html.lenis body { height: auto; }
 <section class="trust" id="neden-biz">
   <div class="container">
     <div class="trust-item reveal">
-      <span class="num">15</span>
-      <span class="lbl">Farklı Model</span>
+      <span class="num">14</span>
+      <span class="lbl">10 Premium, 2 Baz,<br>1 Sabit, 1 Ofis Model</span>
+    </div>
+    <div class="trust-item reveal reveal-delay-1">
+      <span class="num">150+</span>
+      <span class="lbl">Teslimat</span>
     </div>
     <div class="trust-item reveal reveal-delay-1">
       <span class="num">35+</span>
@@ -1139,11 +1229,11 @@ html.lenis, html.lenis body { height: auto; }
           <div class="story-stat-lbl">Yıllık Deneyim</div>
         </div>
         <a href="#modeller" style="cursor:pointer">
-          <div class="story-stat-num">15</div>
-          <div class="story-stat-lbl">Farklı Model</div>
+          <div class="story-stat-num">14</div>
+          <div class="story-stat-lbl">10 Premium, 2 Baz,<br>1 Sabit, 1 Ofis Model</div>
         </a>
         <a href="#projeler" style="cursor:pointer">
-          <div class="story-stat-num">50+</div>
+          <div class="story-stat-num">150+</div>
           <div class="story-stat-lbl">Tamamlanan Proje</div>
         </a>
         <div>
@@ -1161,7 +1251,7 @@ html.lenis, html.lenis body { height: auto; }
     <div class="models-header">
       <div>
         <div class="section-label-light reveal">Modellerimiz</div>
-        <h2 class="section-h-dark reveal reveal-delay-1">10 Premium, 6 Baz,<br><em>Sabit ve Ofis Modeli.</em></h2>
+        <h2 class="section-h-dark reveal reveal-delay-1">10 Premium, 2 Baz,<br><em>Sabit ve Ofis Modeli.</em></h2>
       </div>
       <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-outline-primary reveal reveal-delay-1">Tüm Modelleri Gör →</a>
     </div>
@@ -1934,9 +2024,9 @@ html.lenis, html.lenis body { height: auto; }
       </div>
       <div class="why-item reveal reveal-delay-3">
         <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h9M19 8h1M4 16h1M11 16h9"/><circle cx="16" cy="8" r="2.2"/><circle cx="8" cy="16" r="2.2"/></svg></div>
-        <div class="why-num">15</div>
+        <div class="why-num">14</div>
         <div class="why-title">Özelleştirilebilir Model</div>
-        <div class="why-desc">Her model tam özelleştirilebilir. Dış cephe, iç malzeme, mobilya, teknik donanım — hepsi sizin seçiminiz.</div>
+        <div class="why-desc">10 Premium, 2 Baz, 1 Sabit, 1 Ofis model — her biri tam özelleştirilebilir. Dış cephe, iç malzeme, mobilya, teknik donanım hepsi sizin seçiminiz.</div>
       </div>
     </div>
   </div>
@@ -1980,7 +2070,7 @@ html.lenis, html.lenis body { height: auto; }
     <div class="projects-header">
       <div>
         <div class="section-label-light reveal">Tamamlanan Projeler</div>
-        <h2 class="section-h-dark reveal reveal-delay-1">50+ Teslimat,<br><em>50+ Mutlu Hikaye.</em></h2>
+        <h2 class="section-h-dark reveal reveal-delay-1">150+ Teslimat,<br><em>150+ Mutlu Müşteri.</em></h2>
       </div>
       <p class="process-intro reveal reveal-delay-1" style="max-width:380px;margin:0;">Türkiye'nin dört bir yanına kurduğumuz evlerden bir seçki. Fotoğraflara tıklayarak büyütebilirsiniz.</p>
     </div>
@@ -2613,6 +2703,26 @@ html.lenis, html.lenis body { height: auto; }
       </div>
         <div class="project-info"><span class="project-model">Çeşme</span><span class="project-loc">2023</span></div>
       </div>
+      <div class="project-item reveal" data-model="Honaz Kızılyer" data-loc="10m, 2 Loft, 40 m², 2025">
+      <div class="mini-gallery" data-idx="0">
+        <img src="assets/images/honazkizilyer/honazkizilyer-01.jpg" alt="Honaz Kızılyer — 10m 2 loft teslimatı" class="mg-active">
+        <img src="assets/images/honazkizilyer/honazkizilyer-02.jpg" alt="Honaz Kızılyer — 10m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/honazkizilyer/honazkizilyer-03.jpg" alt="Honaz Kızılyer — 10m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/honazkizilyer/honazkizilyer-04.jpg" alt="Honaz Kızılyer — 10m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/honazkizilyer/honazkizilyer-05.jpg" alt="Honaz Kızılyer — 10m 2 loft teslimatı" loading="lazy">
+        <img src="assets/images/honazkizilyer/honazkizilyer-06.jpg" alt="Honaz Kızılyer — 10m 2 loft teslimatı" loading="lazy">
+        <video src="assets/videos/honazkizilyer/honazkizilyer-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honazkizilyer/honazkizilyer-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honazkizilyer/honazkizilyer-03.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <video src="assets/videos/honazkizilyer/honazkizilyer-04.mp4#t=0.1" muted preload="metadata" playsinline></video>
+        <span class="mg-play" style="display:none">▶</span>
+        <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
+        <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
+        <span class="mg-counter">1/10</span>
+        <span class="model-badge" style="z-index:3">Honaz Kızılyer / 10m 2 Loft</span>
+      </div>
+        <div class="project-info"><span class="project-model">Honaz Kızılyer</span><span class="project-loc">10m, 2 Loft, 40 m², 2025</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -2763,7 +2873,7 @@ html.lenis, html.lenis body { height: auto; }
           <button class="faq-q" aria-expanded="false">Modelimi özelleştirebilir miyim?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>15 modelin tamamı özelleştirilebilir: dış cephe kaplaması, iç malzemeler, mobilya, teknik donanım ve oda düzeni sizin seçiminize göre şekillenir. Mimarlarımız onayınız olmadan üretime başlamaz.</p></div>
+          <div class="faq-a"><p>14 modelin tamamı özelleştirilebilir: dış cephe kaplaması, iç malzemeler, mobilya, teknik donanım ve oda düzeni sizin seçiminize göre şekillenir. Mimarlarımız onayınız olmadan üretime başlamaz.</p></div>
         </div>
 
       </div>
@@ -2924,6 +3034,31 @@ html.lenis, html.lenis body { height: auto; }
   <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.36 4.91L2 22l5.31-1.39a9.87 9.87 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.83 14.04c-.25.7-1.45 1.34-2.01 1.42-.51.08-1.16.11-1.87-.12-.43-.13-.98-.31-1.7-.6-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.6-1.21-3.06s.76-2.16 1.03-2.46c.27-.3.6-.37.8-.37.2 0 .4.002.58.01.18.01.43-.07.67.51.25.6.84 2.06.91 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.45.51-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.05.18-.18.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.71.81 2 .96.3.15.49.22.56.34.07.13.07.71-.18 1.4z"/></svg>
   <span>Hemen Yaz</span>
 </a>
+
+<!-- PICCO AI ASİSTAN -->
+<button type="button" class="picco-float" id="piccoFloatBtn" aria-label="Picco AI asistanla sohbet et">
+  <span class="picco-avatar" aria-hidden="true">P</span>
+  <span>Picco'ya Sor</span>
+</button>
+
+<div class="picco-panel" id="piccoPanel" role="dialog" aria-modal="false" aria-label="Picco AI asistan sohbeti">
+  <div class="picco-panel-header">
+    <span class="picco-avatar" aria-hidden="true">P</span>
+    <div>
+      <div class="picco-title">Picco</div>
+      <div class="picco-subtitle">Piccola Vita AI Asistanı</div>
+    </div>
+    <button type="button" class="picco-panel-close" id="piccoCloseBtn" aria-label="Sohbeti kapat">&times;</button>
+  </div>
+  <div class="picco-messages" id="piccoMessages"></div>
+  <div class="picco-shortcuts" id="piccoShortcuts"></div>
+  <div class="picco-panel-footer">
+    <textarea class="picco-input" id="piccoInput" rows="1" placeholder="Bir soru yazın…" aria-label="Mesajınız"></textarea>
+    <button type="button" class="picco-send" id="piccoSendBtn" aria-label="Gönder">
+      <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+    </button>
+  </div>
+</div>
 
 <!-- ÖZEL İMLEÇ -->
 <div class="cursor-tag" id="cursorTag" aria-hidden="true">İncele</div>
@@ -3194,6 +3329,200 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<script>
+(function () {
+  const floatBtn = document.getElementById('piccoFloatBtn');
+  const closeBtn = document.getElementById('piccoCloseBtn');
+  const panel = document.getElementById('piccoPanel');
+  const messagesEl = document.getElementById('piccoMessages');
+  const shortcutsEl = document.getElementById('piccoShortcuts');
+  const input = document.getElementById('piccoInput');
+  const sendBtn = document.getElementById('piccoSendBtn');
+  if (!floatBtn || !panel) return;
+
+  const GREETING = 'Merhaba! Ben Picco, Piccola Vita\'nın AI asistanıyım. Modeller, fiyatlar, teslimat süreci veya ödeme planı hakkında ne merak ediyorsanız sorabilirsiniz. Aşağıdaki kısa yollardan da hızlıca bilgi alabilirsiniz.';
+  const FALLBACK = 'Şu an bağlantı kuramıyorum. Hemen bilgi almak için WhatsApp\'tan yazabilirsiniz: 0532 452 15 22';
+  const TEL_HREF = 'tel:02582510021';
+  const TEL_LABEL = 'Telefon: 0258 251 00 21';
+
+  const SHORTCUTS = [
+    {
+      label: 'Modeller',
+      sectionId: 'modeller',
+      info: '14 modelimiz var: 10 Premium (Uşak, Foça, Milas, Nikfer, Tavas, Honaz, İnciraltı, Comfort, Luna, Sinpaş), 2 Baz model hattı (Comfort ve Arte — her biri 8m/9m/10m seçenekleriyle), 1 Sabit model (3+1, 90 m²) ve 1 Ofis modeli (Banaz). Tamamı özelleştirilebilir.',
+      wa: 'Merhaba, modeller hakkında bilgi almak istiyorum.',
+    },
+    {
+      label: 'Üretim Yeri',
+      sectionId: 'konum',
+      info: 'Atölyemiz Denizli\'de: Hacıeyüplü Mah. 3166/2 Sok. No:2, Merkezefendi / Denizli. Önceden randevu alarak üretimi yerinde görebilirsiniz.',
+      wa: 'Merhaba, üretim yerinizi ziyaret etmek istiyorum.',
+    },
+    {
+      label: 'Üretim Aşamaları',
+      sectionId: 'surec',
+      info: '5 adımda ilerliyoruz: 1) Sözleşme, 2) Size özel WhatsApp grubu, 3) Mimari çizim ve onayınız, 4) Denizli fabrikamızda üretim, 5) Teslimat ve kurulum. Sözleşmeden teslimata ortalama 45–60 gün, ilk 300 km nakliye bizden.',
+      wa: 'Merhaba, üretim süreciniz hakkında bilgi almak istiyorum.',
+    },
+    {
+      label: 'Üretim Malzemeleri',
+      sectionId: 'sss',
+      info: 'Duvar, taban ve çatıda tam yalıtım; ısı yalıtımlı çift camlar ve buhar bariyeri standarttır. Şasi O2 Avrupa tip onaylı römork statüsündedir. Dış cephe kaplaması ve iç malzemeler tamamen sizin seçiminize göre şekillenir.',
+      wa: 'Merhaba, üretimde kullandığınız malzemeler hakkında bilgi almak istiyorum.',
+    },
+    {
+      label: 'İletişim',
+      sectionId: 'iletisim',
+      info: 'Bize telefon, WhatsApp veya e-postadan (info@piccolavita.com) ulaşabilir, ya da Denizli\'deki atölyemize randevuyla gelebilirsiniz.',
+      wa: 'Merhaba, Piccola Vita hakkında bilgi almak istiyorum.',
+    },
+    {
+      label: 'Fiyatlar',
+      sectionId: 'fiyatlar',
+      info: 'Başlangıç fiyatları modele göre 900.000 TL (Banaz ofis) ile 4.000.000 TL (Sabit 3+1) arasında değişir. Ödeme %50 sözleşmede, %50 teslimatta alınır; ara ödeme yok. Kesin fiyat için ücretsiz teklif alabilirsiniz.',
+      wa: 'Merhaba, fiyat teklifi almak istiyorum.',
+    },
+  ];
+
+  let history = [];
+  let opened = false;
+  let sending = false;
+
+  function addBubble(role, text) {
+    const div = document.createElement('div');
+    div.className = 'picco-msg ' + (role === 'user' ? 'user' : 'bot');
+    div.textContent = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'picco-typing';
+    div.id = 'piccoTyping';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function hideTyping() {
+    const el = document.getElementById('piccoTyping');
+    if (el) el.remove();
+  }
+
+  function addCtaBubble(waText) {
+    const div = document.createElement('div');
+    div.className = 'picco-msg bot';
+    div.appendChild(document.createTextNode('Detaylı ve kesin bilgi için bize ulaşabilirsiniz:'));
+
+    const cta = document.createElement('div');
+    cta.className = 'picco-msg-cta';
+
+    const telLink = document.createElement('a');
+    telLink.className = 'picco-cta-tel';
+    telLink.href = TEL_HREF;
+    telLink.textContent = TEL_LABEL;
+    cta.appendChild(telLink);
+
+    const waLink = document.createElement('a');
+    waLink.className = 'picco-cta-wa';
+    waLink.href = 'https://wa.me/905324521522?text=' + encodeURIComponent(waText);
+    waLink.target = '_blank';
+    waLink.rel = 'noopener';
+    waLink.textContent = 'WhatsApp\'tan Yaz';
+    cta.appendChild(waLink);
+
+    div.appendChild(cta);
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function handleShortcut(shortcut) {
+    if (!opened) { openPanel(); }
+    addBubble('user', shortcut.label);
+    addBubble('bot', shortcut.info);
+    addCtaBubble(shortcut.wa);
+    const target = document.getElementById(shortcut.sectionId);
+    if (target) {
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    }
+  }
+
+  if (shortcutsEl) {
+    SHORTCUTS.forEach((s) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'picco-shortcut-btn';
+      btn.textContent = s.label;
+      btn.addEventListener('click', () => handleShortcut(s));
+      shortcutsEl.appendChild(btn);
+    });
+  }
+
+  function openPanel() {
+    panel.classList.add('open');
+    if (!opened) {
+      opened = true;
+      addBubble('bot', GREETING);
+    }
+    setTimeout(() => input.focus(), 200);
+  }
+
+  function closePanel() {
+    panel.classList.remove('open');
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text || sending) return;
+    sending = true;
+    sendBtn.disabled = true;
+    addBubble('user', text);
+    history.push({ role: 'user', content: text });
+    input.value = '';
+    input.style.height = 'auto';
+    showTyping();
+
+    try {
+      const res = await fetch('/.netlify/functions/picco-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
+      });
+      const data = await res.json().catch(() => null);
+      hideTyping();
+      const reply = (data && data.reply) ? data.reply : FALLBACK;
+      addBubble('bot', reply);
+      history.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      hideTyping();
+      addBubble('bot', FALLBACK);
+    } finally {
+      sending = false;
+      sendBtn.disabled = false;
+      input.focus();
+    }
+  }
+
+  floatBtn.addEventListener('click', () => {
+    if (panel.classList.contains('open')) { closePanel(); } else { openPanel(); }
+  });
+  closeBtn.addEventListener('click', closePanel);
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 96) + 'px';
+  });
+})();
 </script>
 </body>
 </html>

@@ -86,6 +86,11 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   color: var(--accent);
 }
 .gspec-value { font-size: 15px; font-weight: 700; color: var(--white); margin-top: 3px; }
+.grooms {
+  max-width: 700px; margin: 18px auto 0; padding: 0 20px;
+  text-align: center; font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.6;
+}
+.grooms strong { color: var(--white); font-weight: 700; }
 
 .gthumbs {
   display: flex; gap: 8px; overflow-x: auto; padding: 0 28px 24px; flex-shrink: 0;
@@ -141,7 +146,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
     <button class="gnav gnext" onmousedown="event.preventDefault()" onclick="gStep(1)" aria-label="Sonraki">›</button>
   </div>
   <div class="gcaption">
-    <h1>Uşak <em>· Tek Loftlu</em></h1>
+    <h1>Uşak</h1>
     <div class="gcounter" id="gCounter">1 / 24</div>
   </div>
   <div class="gspecs">
@@ -153,6 +158,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
     <div class="gspec"><div class="gspec-label">Garanti</div><div class="gspec-value">24 ay</div></div>
     <div class="gspec"><div class="gspec-label">Römork</div><div class="gspec-value">3500 kg</div></div>
   </div>
+  <div class="grooms">Mekanlar: <strong>Mutfak + Salon + Loft Kat + Banyo-WC</strong></div>
 </div>
 
 <div class="gthumbs" id="gThumbs"></div>

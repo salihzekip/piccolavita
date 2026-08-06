@@ -28,7 +28,7 @@ Premium modeller (büyüklük · başlangıç fiyatı · teslim süresi, hepsi 4
 - Tavas: 40 m² · 10m · 1.650.000 TL
 - Honaz: 40 m² · 10m · 1.550.000 TL
 - İnciraltı: 40 m² · 10m · 1.650.000 TL
-- Cankurtaran: 20 m² · 8m · 1.450.000 TL
+- Çeşme (Premium model, Eko Comfort ile karıştırılmasın): 20 m² · 8m · 1.450.000 TL
 - Didim: 30 m² · 8m · 1.450.000 TL
 - Sinpaş: 30 m² · 9m · 1.450.000 TL
 Eko modeller (Comfort ve Arte hattı, her biri 3 uzunlukta):
@@ -39,7 +39,7 @@ Eko modeller (Comfort ve Arte hattı, her biri 3 uzunlukta):
 Ofis modeli:
 - Banaz: 20 m² · 8m · 900.000 TL (ofis ve sabit yaşam alanı çözümü)
 Sabit model:
-- Sabit (3+1): 90 m² · 11m · 4.000.000 TL (sabit temel, iki katlı geniş yaşam alanı)
+- Sabit (3+1): 90 m² · 11m · 4.500.000 TL (sabit temel, iki katlı geniş yaşam alanı)
 
 Not: Ana sayfa hero'sunda genel "800.000 TL'den başlayan fiyatlarla" ifadesi kullanılıyor; kesin başlangıç fiyatı yukarıdaki tabloya göre modele bağlı değişir (en uygun: Banaz 900.000 TL). Fiyatlar standart donanım içindir, kesin fiyat için ücretsiz teklif önerilir.
 

@@ -19,7 +19,7 @@ FİRMA BİLGİLERİ
 - Garanti: teslimattan itibaren 24 ay kapsamlı garanti (taşıyıcı şasi, su geçirmezlik, elektrik/su tesisatı dahil). Satış sonrası teknik destek ve periyodik bakım var.
 - Özelleştirme: 14 modelin tamamı özelleştirilebilir — dış cephe kaplaması, iç malzemeler, mobilya, teknik donanım, oda düzeni. Mimarlar müşteri onayı olmadan üretime başlamaz.
 
-MODEL KATALOĞU (14 model: 10 Premium, 2 Baz [her biri 8m/9m/10m olmak üzere 3 uzunluk seçeneğiyle], 1 Sabit, 1 Ofis)
+MODEL KATALOĞU (14 model: 10 Premium, 2 Eko [her biri 8m/9m/10m olmak üzere 3 uzunluk seçeneğiyle], 1 Sabit, 1 Ofis)
 Premium modeller (büyüklük · başlangıç fiyatı · teslim süresi, hepsi 45-60 gün):
 - Milas: 26 m² · 8m · 1.250.000 TL
 - Foça (en popüler): 40 m² · 10m · 1.850.000 TL
@@ -28,10 +28,10 @@ Premium modeller (büyüklük · başlangıç fiyatı · teslim süresi, hepsi 4
 - Tavas: 40 m² · 10m · 1.650.000 TL
 - Honaz: 40 m² · 10m · 1.550.000 TL
 - İnciraltı: 40 m² · 10m · 1.650.000 TL
-- Comfort: 20 m² · 8m · 1.450.000 TL
-- Luna: 30 m² · 8m · 1.450.000 TL
+- Cankurtaran: 20 m² · 8m · 1.450.000 TL
+- Didim: 30 m² · 8m · 1.450.000 TL
 - Sinpaş: 30 m² · 9m · 1.450.000 TL
-Baz modeller (Comfort ve Arte hattı, her biri 3 uzunlukta):
+Eko modeller (Comfort ve Arte hattı, her biri 3 uzunlukta):
 - 8 Metre Comfort: 20 m² · 1.250.000 TL
 - 9 Metre Comfort: 30 m² · 1.450.000 TL
 - 10 Metre Comfort: 40 m² · 1.650.000 TL

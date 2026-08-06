@@ -795,6 +795,27 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   .certs-row { gap: 8px; }
 }
 
+/* ── KULLANILAN MALZEMELER ── */
+.materials-section { background: var(--bg); padding: 100px 0; }
+.materials-intro { max-width: 640px; margin: 0 0 48px; }
+.materials-intro p { font-size: 15px; color: var(--neutral-2); line-height: 1.7; margin-top: 16px; }
+.materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+@media (max-width: 960px) { .materials-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .materials-grid { grid-template-columns: 1fr; } }
+.material-card {
+  background: var(--white); border-radius: 12px; padding: 28px 26px;
+  box-shadow: 0 2px 16px rgba(47,74,61,.07);
+}
+.material-icon { color: var(--secondary); margin-bottom: 14px; }
+.material-icon svg { width: 30px; height: 30px; display: block; }
+.material-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 14px; }
+.material-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.material-list li { font-size: 13px; color: var(--neutral-2); line-height: 1.55; padding-left: 16px; position: relative; }
+.material-list li::before {
+  content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--accent);
+}
+
 /* ── PROJECTS GALLERY ── */
 .projects-section { background: var(--white); padding: 100px 0; }
 .projects-header {
@@ -1009,13 +1030,13 @@ html.lenis, html.lenis body { height: auto; }
           <li><a href="#model-tavas" onclick="closeMobile()">Tavas</a></li>
           <li><a href="#model-honaz" onclick="closeMobile()">Honaz</a></li>
           <li><a href="#model-inciralti" onclick="closeMobile()">İnciraltı</a></li>
-          <li><a href="#model-comfort" onclick="closeMobile()">Comfort</a></li>
-          <li><a href="#model-luna" onclick="closeMobile()">Luna</a></li>
+          <li><a href="#model-comfort" onclick="closeMobile()">Cankurtaran</a></li>
+          <li><a href="#model-luna" onclick="closeMobile()">Didim</a></li>
           <li><a href="#model-sinpas" onclick="closeMobile()">Sinpaş</a></li>
         </ul>
       </details>
       <details>
-        <summary>Baz Modeller</summary>
+        <summary>Eko Modeller</summary>
         <ul>
           <li>
             <details>
@@ -1059,13 +1080,13 @@ html.lenis, html.lenis body { height: auto; }
               <li><a href="#model-tavas">Tavas</a></li>
               <li><a href="#model-honaz">Honaz</a></li>
               <li><a href="#model-inciralti">İnciraltı</a></li>
-              <li><a href="#model-comfort">Comfort</a></li>
-              <li><a href="#model-luna">Luna</a></li>
+              <li><a href="#model-comfort">Cankurtaran</a></li>
+              <li><a href="#model-luna">Didim</a></li>
               <li><a href="#model-sinpas">Sinpaş</a></li>
             </ul>
           </li>
           <li class="nav-dropdown-sub">
-            <span class="nav-dropdown-sub-label">Baz Modeller</span>
+            <span class="nav-dropdown-sub-label">Eko Modeller</span>
             <ul class="nav-dropdown-flyout">
               <li class="nav-dropdown-sub">
                 <span class="nav-dropdown-sub-label">Comfort</span>
@@ -1135,7 +1156,7 @@ html.lenis, html.lenis body { height: auto; }
   <div class="ticker-inner" id="tickerInner">
     <span class="ticker-item"><span class="ticker-dot"></span>35 Yıllık Deneyim</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Avrupa Sertifikalı</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 2 Baz Model</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 2 Eko Model</span>
     <span class="ticker-item"><span class="ticker-dot"></span>24 Ay Garanti</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Türkiye Çapında Kurulum</span>
     <span class="ticker-item"><span class="ticker-dot"></span>O2 Tip Onayı</span>
@@ -1145,7 +1166,7 @@ html.lenis, html.lenis body { height: auto; }
     <!-- Tekrar (kesintisiz döngü) -->
     <span class="ticker-item"><span class="ticker-dot"></span>35 Yıllık Deneyim</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Avrupa Sertifikalı</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 2 Baz Model</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>10 Premium, 2 Eko Model</span>
     <span class="ticker-item"><span class="ticker-dot"></span>24 Ay Garanti</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Türkiye Çapında Kurulum</span>
     <span class="ticker-item"><span class="ticker-dot"></span>O2 Tip Onayı</span>
@@ -1160,7 +1181,7 @@ html.lenis, html.lenis body { height: auto; }
   <div class="container">
     <div class="trust-item reveal">
       <span class="num">14</span>
-      <span class="lbl">10 Premium, 2 Baz,<br>1 Sabit, 1 Ofis Model</span>
+      <span class="lbl">10 Premium, 2 Eko,<br>1 Sabit, 1 Ofis Model</span>
     </div>
     <div class="trust-item reveal reveal-delay-1">
       <span class="num">150+</span>
@@ -1230,7 +1251,7 @@ html.lenis, html.lenis body { height: auto; }
         </div>
         <a href="#modeller" style="cursor:pointer">
           <div class="story-stat-num">14</div>
-          <div class="story-stat-lbl">10 Premium, 2 Baz,<br>1 Sabit, 1 Ofis Model</div>
+          <div class="story-stat-lbl">10 Premium, 2 Eko,<br>1 Sabit, 1 Ofis Model</div>
         </a>
         <a href="#projeler" style="cursor:pointer">
           <div class="story-stat-num">150+</div>
@@ -1251,9 +1272,9 @@ html.lenis, html.lenis body { height: auto; }
     <div class="models-header">
       <div>
         <div class="section-label-light reveal">Modellerimiz</div>
-        <h2 class="section-h-dark reveal reveal-delay-1">10 Premium, 2 Baz,<br><em>Sabit ve Ofis Modeli.</em></h2>
+        <h2 class="section-h-dark reveal reveal-delay-1">10 Premium, 2 Eko,<br><em>Sabit ve Ofis Modeli.</em></h2>
       </div>
-      <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-outline-primary reveal reveal-delay-1">Tüm Modelleri Gör →</a>
+      <a href="tum-modeller.html" class="btn btn-outline-primary reveal reveal-delay-1">Tüm Modelleri Gör →</a>
     </div>
     <div class="models-grid">
 
@@ -1571,28 +1592,28 @@ html.lenis, html.lenis body { height: auto; }
       <div class="model-card reveal reveal-delay-2" id="model-comfort">
         <div class="model-card-img">
         <div class="mini-gallery" data-idx="0" onclick="location.href='comfort-galeri.html'" style="cursor:pointer">
-          <img src="assets/images/comfort/comfort-01.png" alt="Comfort" class="mg-active">
-          <img src="assets/images/comfort/comfort-22.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-25.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-26.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-05.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-06.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-07.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-08.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-09.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-10.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-11.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-12.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-13.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-15.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-18.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-21.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-24.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-28.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-02.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-42.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-46.jpg" alt="Comfort" loading="lazy">
-          <img src="assets/images/comfort/comfort-49.jpg" alt="Comfort" loading="lazy">
+          <img src="assets/images/comfort/comfort-01.png" alt="Cankurtaran" class="mg-active">
+          <img src="assets/images/comfort/comfort-22.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-25.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-26.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-05.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-06.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-07.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-08.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-09.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-10.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-11.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-12.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-13.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-15.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-18.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-21.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-24.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-28.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-02.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-42.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-46.jpg" alt="Cankurtaran" loading="lazy">
+          <img src="assets/images/comfort/comfort-49.jpg" alt="Cankurtaran" loading="lazy">
           <video src="assets/videos/comfort/comfort-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/comfort/comfort-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <video src="assets/videos/comfort/comfort-04.mp4#t=0.1" muted preload="metadata" playsinline></video>
@@ -1608,7 +1629,7 @@ html.lenis, html.lenis body { height: auto; }
           <span class="model-badge">Premium</span>
         </div>
         <div class="model-card-body">
-          <h3 class="model-name">Comfort</h3>
+          <h3 class="model-name">Cankurtaran</h3>
           <p class="model-tagline">Kompakt ve konforlu tiny house çözümü</p>
           <div class="model-meta"><span>20 m²</span><span>8 m uzunluk</span></div>
           <p class="model-rooms">Mekanlar: <strong>Mutfak + Salon + Loft Kat + Banyo-WC</strong></p>
@@ -1619,27 +1640,27 @@ html.lenis, html.lenis body { height: auto; }
       <div class="model-card reveal" id="model-luna">
         <div class="model-card-img">
         <div class="mini-gallery" data-idx="0" onclick="location.href='luna-galeri.html'" style="cursor:pointer">
-          <img src="assets/images/luna/luna-01.png" alt="Luna" class="mg-active">
-          <img src="assets/images/luna/luna-02.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-03.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-27.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-28.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-29.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-30.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-04.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-05.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-06.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-08.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-09.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-12.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-13.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-14.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-17.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-18.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-20.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-24.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-26.jpg" alt="Luna" loading="lazy">
-          <img src="assets/images/luna/luna-31.jpg" alt="Luna" loading="lazy">
+          <img src="assets/images/luna/luna-01.png" alt="Didim" class="mg-active">
+          <img src="assets/images/luna/luna-02.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-03.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-27.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-28.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-29.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-30.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-04.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-05.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-06.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-08.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-09.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-12.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-13.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-14.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-17.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-18.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-20.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-24.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-26.jpg" alt="Didim" loading="lazy">
+          <img src="assets/images/luna/luna-31.jpg" alt="Didim" loading="lazy">
           <video src="assets/videos/luna/luna-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
           <span class="mg-play" style="display:none">▶</span>
           <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
@@ -1649,7 +1670,7 @@ html.lenis, html.lenis body { height: auto; }
           <span class="model-badge">Premium</span>
         </div>
         <div class="model-card-body">
-          <h3 class="model-name">Luna</h3>
+          <h3 class="model-name">Didim</h3>
           <p class="model-tagline">Tek loftlu, kompakt yaşam alanı</p>
           <div class="model-meta"><span>30 m²</span><span>8 m uzunluk</span></div>
           <p class="model-rooms">Mekanlar: <strong>Mutfak + Salon + Loft Kat + Banyo-WC</strong></p>
@@ -1743,7 +1764,7 @@ html.lenis, html.lenis body { height: auto; }
     </div>
 
     <div class="baz-models reveal">
-      <button type="button" class="baz-models-label baz-models-toggle" id="bazModelsToggle" aria-expanded="false" aria-controls="bazStepType">Baz Modeller</button>
+      <button type="button" class="baz-models-label baz-models-toggle" id="bazModelsToggle" aria-expanded="false" aria-controls="bazStepType">Eko Modeller</button>
       <div class="baz-models-row" id="bazStepType" hidden>
         <button type="button" class="baz-step-btn" id="bazBtnComfort" aria-expanded="false" aria-controls="bazStepComfort">Comfort</button>
         <a href="10metre-arte-galeri.html">Arte</a>
@@ -1756,7 +1777,7 @@ html.lenis, html.lenis body { height: auto; }
     </div>
 
     <div class="models-footer-cta reveal">
-      <a href="https://www.piccolavita.com/tiny-house" target="_blank" rel="noopener" class="btn btn-primary">Tüm Modelleri İncele</a>
+      <a href="tum-modeller.html" class="btn btn-primary">Tüm Modelleri İncele</a>
       <a href="https://wa.me/905324521522?text=Merhaba%2C%20model%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-cta">Ücretsiz Danışma Al</a>
     </div>
   </div>
@@ -1936,18 +1957,18 @@ html.lenis, html.lenis body { height: auto; }
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Banaz%20ofis%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
-            <td class="pt-model" data-label="Model">Comfort</td>
+            <td class="pt-model" data-label="Model">Cankurtaran</td>
             <td class="pt-size" data-label="Büyüklük">20 m² · 8 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.450.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
-            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Comfort%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Cankurtaran%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
-            <td class="pt-model" data-label="Model">Luna</td>
+            <td class="pt-model" data-label="Model">Didim</td>
             <td class="pt-size" data-label="Büyüklük">30 m² · 8 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.450.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
-            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Luna%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
+            <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Didim%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
             <td class="pt-model" data-label="Model">Sinpaş</td>
@@ -1957,28 +1978,28 @@ html.lenis, html.lenis body { height: auto; }
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%20Sinpaş%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
-            <td class="pt-model" data-label="Model">8 Metre Comfort <span class="pt-badge">Baz Model</span></td>
+            <td class="pt-model" data-label="Model">8 Metre Comfort <span class="pt-badge">Eko Model</span></td>
             <td class="pt-size" data-label="Büyüklük">20 m² · 8 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.250.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%208%20Metre%20Comfort%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
-            <td class="pt-model" data-label="Model">9 Metre Comfort <span class="pt-badge">Baz Model</span></td>
+            <td class="pt-model" data-label="Model">9 Metre Comfort <span class="pt-badge">Eko Model</span></td>
             <td class="pt-size" data-label="Büyüklük">30 m² · 9 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.450.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%209%20Metre%20Comfort%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
-            <td class="pt-model" data-label="Model">10 Metre Comfort <span class="pt-badge">Baz Model</span></td>
+            <td class="pt-model" data-label="Model">10 Metre Comfort <span class="pt-badge">Eko Model</span></td>
             <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.650.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
             <td class="pt-cta"><a href="https://wa.me/905324521522?text=Merhaba%2C%2010%20Metre%20Comfort%20modeli%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al →</a></td>
           </tr>
           <tr>
-            <td class="pt-model" data-label="Model">10 Metre Arte <span class="pt-badge">Baz Model</span></td>
+            <td class="pt-model" data-label="Model">10 Metre Arte <span class="pt-badge">Eko Model</span></td>
             <td class="pt-size" data-label="Büyüklük">40 m² · 10 m</td>
             <td class="pt-price" data-label="Başlangıç Fiyatı">1.650.000 TL</td>
             <td class="pt-time" data-label="Teslim Süresi">45–60 gün</td>
@@ -2026,7 +2047,7 @@ html.lenis, html.lenis body { height: auto; }
         <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h9M19 8h1M4 16h1M11 16h9"/><circle cx="16" cy="8" r="2.2"/><circle cx="8" cy="16" r="2.2"/></svg></div>
         <div class="why-num">14</div>
         <div class="why-title">Özelleştirilebilir Model</div>
-        <div class="why-desc">10 Premium, 2 Baz, 1 Sabit, 1 Ofis model — her biri tam özelleştirilebilir. Dış cephe, iç malzeme, mobilya, teknik donanım hepsi sizin seçiminiz.</div>
+        <div class="why-desc">10 Premium, 2 Eko, 1 Sabit, 1 Ofis model — her biri tam özelleştirilebilir. Dış cephe, iç malzeme, mobilya, teknik donanım hepsi sizin seçiminiz.</div>
       </div>
     </div>
   </div>
@@ -2060,6 +2081,83 @@ html.lenis, html.lenis body { height: auto; }
         <div class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/><path d="M12 14.5v2"/></svg></div>
         <div class="cert-name">24 Ay Garanti</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- KULLANILAN MALZEMELER -->
+<section class="materials-section" id="malzemeler">
+  <div class="container">
+    <div class="materials-intro">
+      <div class="section-label-light reveal">Kalite ve Malzeme</div>
+      <h2 class="section-h-dark reveal reveal-delay-1">Kullanılan<br><em>Malzemeler.</em></h2>
+      <p class="reveal reveal-delay-1">Her tiny house'ta aynı teknik standart: sağlam bir şase, tam yalıtım, birinci sınıf iç mekan işçiliği ve eksiksiz mekanik/elektrik donanım. Evinizde kullandığımız malzemeler:</p>
+    </div>
+    <div class="materials-grid">
+
+      <div class="material-card reveal">
+        <div class="material-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="6" rx="1.5"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg></div>
+        <div class="material-title">Şase ve Taşıyıcı Sistem</div>
+        <ul class="material-list">
+          <li>1800 kg × 2 = 3600 kg tandem torsiyonlu dingil seti</li>
+          <li>Kaplin, fren, jant ve kriko seti (4 adet)</li>
+          <li>Performans çeliği şase</li>
+          <li>7 pin römork soketi ve LED elektrik sinyalizasyon komponentleri</li>
+        </ul>
+      </div>
+
+      <div class="material-card reveal reveal-delay-1">
+        <div class="material-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.8v5.4c0 4.4-2.9 7.4-7 9-4.1-1.6-7-4.6-7-9V5.8L12 3z"/></svg></div>
+        <div class="material-title">Yalıtım</div>
+        <ul class="material-list">
+          <li>Tüm cephelerde ve çatıda 100 mm sıkıştırılmış taş yünü</li>
+          <li>Isı ve nem koruması için Dupont Tyvek Solid membran</li>
+          <li>Zemin yalıtımında plywood</li>
+          <li>Çatıda sandviç panel kaplama ve sıvı geçirmez membran</li>
+          <li>PVC doğrama, buğulanmaya karşı korumalı solar low-e komfor cam</li>
+          <li>Duşakabin içinde CTP uygulaması</li>
+          <li>Dış cephede alüminyum kompozit panel ve thermowood</li>
+        </ul>
+      </div>
+
+      <div class="material-card reveal reveal-delay-2">
+        <div class="material-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12H4z"/><path d="M9 21v-6h6v6"/></svg></div>
+        <div class="material-title">İç Mekan</div>
+        <ul class="material-list">
+          <li>MDF lambri boyalı duvar kaplaması (isteğe bağlı renk)</li>
+          <li>Aşınma dayanımlı laminant parke</li>
+          <li>MDF LAM mobilya gövdeleri ve lake dolap kapakları</li>
+          <li>Çizilmez vernikli masif ahşap mutfak tezgahı</li>
+        </ul>
+      </div>
+
+      <div class="material-card reveal">
+        <div class="material-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20V10M12 20V4M17 20v-7"/></svg></div>
+        <div class="material-title">Mekanik Donanım</div>
+        <ul class="material-list">
+          <li>1. sınıf duşakabin ve duş ekipmanları</li>
+          <li>Konut tipi klasik rezervuarlı WC (1. sınıf)</li>
+          <li>Dolaplı banyo lavabosu</li>
+          <li>Konut tipi mekanik ekipmanlar (1. sınıf)</li>
+          <li>Temiz su ve atık su bağlantı noktaları</li>
+          <li>Granit eviye ve bataryası</li>
+          <li>Klima için elektrik altyapısı</li>
+          <li>Sıcak su temini için elektrikli termosifon altyapısı</li>
+        </ul>
+      </div>
+
+      <div class="material-card reveal reveal-delay-1">
+        <div class="material-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <div class="material-title">Elektrik</div>
+        <ul class="material-list">
+          <li>Halojen içermeyen (halogen free) 220V elektrik tesisatı</li>
+          <li>1. sınıf konut tipi elektrik ekipmanları</li>
+          <li>LED iç ve dış aydınlatma ekipmanları</li>
+          <li>Dış aplik ve donanımı</li>
+          <li>Merdivenler için sensörlü aydınlatma</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2359,30 +2457,30 @@ html.lenis, html.lenis body { height: auto; }
       </div>
         <div class="project-info"><span class="project-model">Banaz</span><span class="project-loc">Ofis Modeli, 2026</span></div>
       </div>
-      <div class="project-item reveal reveal-delay-3" data-model="Comfort" data-loc="2023">
+      <div class="project-item reveal reveal-delay-3" data-model="Cankurtaran" data-loc="2023">
       <div class="mini-gallery" data-idx="0">
-        <img src="assets/images/comfort/comfort-01.png" alt="Comfort teslimatı" class="mg-active">
-        <img src="assets/images/comfort/comfort-22.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-25.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-26.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-05.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-06.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-07.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-08.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-09.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-10.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-11.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-12.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-13.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-15.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-18.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-21.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-24.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-28.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-02.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-42.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-46.jpg" alt="Comfort teslimatı" loading="lazy">
-        <img src="assets/images/comfort/comfort-49.jpg" alt="Comfort teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-01.png" alt="Cankurtaran teslimatı" class="mg-active">
+        <img src="assets/images/comfort/comfort-22.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-25.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-26.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-05.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-06.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-07.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-08.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-09.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-10.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-11.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-12.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-13.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-15.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-18.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-21.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-24.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-28.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-02.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-42.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-46.jpg" alt="Cankurtaran teslimatı" loading="lazy">
+        <img src="assets/images/comfort/comfort-49.jpg" alt="Cankurtaran teslimatı" loading="lazy">
         <video src="assets/videos/comfort/comfort-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/comfort/comfort-02.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <video src="assets/videos/comfort/comfort-04.mp4#t=0.1" muted preload="metadata" playsinline></video>
@@ -2394,41 +2492,41 @@ html.lenis, html.lenis body { height: auto; }
         <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
         <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
         <span class="mg-counter">1/29</span>
-        <span class="model-badge" style="z-index:3">Comfort</span>
+        <span class="model-badge" style="z-index:3">Cankurtaran</span>
       </div>
-        <div class="project-info"><span class="project-model">Comfort</span><span class="project-loc">2023</span></div>
+        <div class="project-info"><span class="project-model">Cankurtaran</span><span class="project-loc">2023</span></div>
       </div>
-      <div class="project-item reveal reveal-delay-3" data-model="Luna" data-loc="2022">
+      <div class="project-item reveal reveal-delay-3" data-model="Didim" data-loc="2022">
       <div class="mini-gallery" data-idx="0">
-        <img src="assets/images/luna/luna-01.png" alt="Luna teslimatı" class="mg-active">
-        <img src="assets/images/luna/luna-02.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-03.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-27.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-28.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-29.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-30.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-04.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-05.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-06.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-08.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-09.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-12.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-13.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-14.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-17.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-18.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-20.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-24.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-26.jpg" alt="Luna teslimatı" loading="lazy">
-        <img src="assets/images/luna/luna-31.jpg" alt="Luna teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-01.png" alt="Didim teslimatı" class="mg-active">
+        <img src="assets/images/luna/luna-02.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-03.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-27.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-28.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-29.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-30.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-04.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-05.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-06.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-08.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-09.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-12.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-13.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-14.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-17.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-18.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-20.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-24.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-26.jpg" alt="Didim teslimatı" loading="lazy">
+        <img src="assets/images/luna/luna-31.jpg" alt="Didim teslimatı" loading="lazy">
         <video src="assets/videos/luna/luna-01.mp4#t=0.1" muted preload="metadata" playsinline></video>
         <span class="mg-play" style="display:none">▶</span>
         <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
         <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
         <span class="mg-counter">1/22</span>
-        <span class="model-badge" style="z-index:3">Luna</span>
+        <span class="model-badge" style="z-index:3">Didim</span>
       </div>
-        <div class="project-info"><span class="project-model">Luna</span><span class="project-loc">2022</span></div>
+        <div class="project-info"><span class="project-model">Didim</span><span class="project-loc">2022</span></div>
       </div>
       <div class="project-item reveal" data-model="Sinpaş" data-loc="2026">
       <div class="mini-gallery" data-idx="0">
@@ -2760,7 +2858,7 @@ html.lenis, html.lenis body { height: auto; }
             </div>
             <p class="testi-quote">"Sözleşmeden teslimata her adımı WhatsApp grubundan takip ettik. Söz verilen tarihte evimiz arazimizdeydi. Kış boyunca sobasız, sadece klimayla oturduk — yalıtım gerçekten anlattıkları gibi."</p>
             <div class="testi-name">Ayşe &amp; Mehmet K.</div>
-            <div class="testi-meta">Muğla · <em>Luna</em></div>
+            <div class="testi-meta">Muğla · <em>Didim</em></div>
           </div>
         </div>
 
@@ -2791,9 +2889,9 @@ html.lenis, html.lenis body { height: auto; }
             <div class="testi-stars" aria-label="5 üzerinden 5 yıldız">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9 2.9-6z"/></svg>
             </div>
-            <p class="testi-quote">"Pansiyon olarak kullanmak için iki Comfort aldık. %50 peşin %50 teslimde ödeme planı bizim için belirleyiciydi. İkinci sezonumuz doluluk %90'ın üzerinde — yatırımını çıkaran bir ev bu."</p>
+            <p class="testi-quote">"Pansiyon olarak kullanmak için iki Cankurtaran aldık. %50 peşin %50 teslimde ödeme planı bizim için belirleyiciydi. İkinci sezonumuz doluluk %90'ın üzerinde — yatırımını çıkaran bir ev bu."</p>
             <div class="testi-name">Murat &amp; Zeynep A.</div>
-            <div class="testi-meta">Kaş / Antalya · <em>Comfort</em></div>
+            <div class="testi-meta">Kaş / Antalya · <em>Cankurtaran</em></div>
           </div>
         </div>
 
@@ -2946,8 +3044,8 @@ html.lenis, html.lenis body { height: auto; }
               <option value="Tavas">Tavas — 40 m²</option>
               <option value="Honaz">Honaz — 40 m²</option>
               <option value="İnciraltı">İnciraltı — 40 m²</option>
-              <option value="Comfort">Comfort — 20 m²</option>
-              <option value="Luna">Luna — 30 m²</option>
+              <option value="Cankurtaran">Cankurtaran — 20 m²</option>
+              <option value="Didim">Didim — 30 m²</option>
               <option value="Sinpaş">Sinpaş — 30 m²</option>
               <option value="Banaz">Banaz — 20 m² (Ofis)</option>
               <option value="Sabit">Sabit — 90 m² (3+1)</option>
@@ -2955,7 +3053,7 @@ html.lenis, html.lenis body { height: auto; }
               <option value="9 Metre Comfort">9 Metre Comfort — 30 m²</option>
               <option value="10 Metre Comfort">10 Metre Comfort — 40 m²</option>
               <option value="10 Metre Arte">10 Metre Arte — 40 m²</option>
-              <option value="Baz Model">Diğer Baz Model</option>
+              <option value="Eko Model">Diğer Eko Model</option>
               <option value="Diğer">Diğer bir model</option>
             </select>
           </div>
@@ -3004,6 +3102,7 @@ html.lenis, html.lenis body { height: auto; }
         <h4>Sayfalar</h4>
         <ul>
           <li><a href="#modeller">Tiny House Modelleri</a></li>
+          <li><a href="#malzemeler">Kullanılan Malzemeler</a></li>
           <li><a href="#projeler">Projeler</a></li>
           <li><a href="#hikaye">Hakkımızda</a></li>
           <li><a href="#iletisim">İletişim</a></li>
@@ -3090,7 +3189,7 @@ document.addEventListener('click', e => {
   });
 });
 
-// Baz Modeller — kademeli açılır (Baz Modeller > Comfort/Arte > 8-9-10 Metre)
+// Eko Modeller — kademeli açılır (Eko Modeller > Comfort/Arte > 8-9-10 Metre)
 (function () {
   const toggle = document.getElementById('bazModelsToggle');
   const stepType = document.getElementById('bazStepType');
@@ -3203,10 +3302,10 @@ projectItems.forEach((el) => {
   } else if (el.dataset.model === 'Banaz') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'banaz-galeri.html'; });
-  } else if (el.dataset.model === 'Comfort') {
+  } else if (el.dataset.model === 'Cankurtaran') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'comfort-galeri.html'; });
-  } else if (el.dataset.model === 'Luna') {
+  } else if (el.dataset.model === 'Didim') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'luna-galeri.html'; });
   } else if (el.dataset.model === 'Sinpaş') {
@@ -3351,7 +3450,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     {
       label: 'Modeller',
       sectionId: 'modeller',
-      info: '14 modelimiz var: 10 Premium (Uşak, Foça, Milas, Nikfer, Tavas, Honaz, İnciraltı, Comfort, Luna, Sinpaş), 2 Baz model hattı (Comfort ve Arte — her biri 8m/9m/10m seçenekleriyle), 1 Sabit model (3+1, 90 m²) ve 1 Ofis modeli (Banaz). Tamamı özelleştirilebilir.',
+      info: '14 modelimiz var: 10 Premium (Uşak, Foça, Milas, Nikfer, Tavas, Honaz, İnciraltı, Cankurtaran, Didim, Sinpaş), 2 Eko model hattı (Comfort ve Arte — her biri 8m/9m/10m seçenekleriyle), 1 Sabit model (3+1, 90 m²) ve 1 Ofis modeli (Banaz). Tamamı özelleştirilebilir.',
       wa: 'Merhaba, modeller hakkında bilgi almak istiyorum.',
     },
     {

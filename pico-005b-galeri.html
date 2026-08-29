@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pico 005B — Fotoğraf Galerisi | Piccola Vita</title>
+<meta name="description" content="Piccola Vita Pico 005B modeli — 22,5 m², 9 metre, 1 zemin yatak odalı tiny house.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:   #2F4A3D;
+  --secondary: #8A5A3B;
+  --accent:    #C8A36A;
+  --forest:    #111c11;
+  --white:     #ffffff;
+  --serif:     'Playfair Display', Georgia, serif;
+  --sans:      'Montserrat', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans); background: var(--forest); color: var(--white);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  display: flex; flex-direction: column; min-height: 100vh;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--sans); cursor: pointer; border: none; background: none; color: inherit; }
+
+.gtop {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 28px; flex-shrink: 0;
+}
+.gtop-logo { font-family: var(--serif); font-weight: 700; font-size: 20px; letter-spacing: .03em; color: var(--white); }
+.gtop-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.75);
+  padding: 8px 16px; border: 1px solid rgba(255,255,255,.25); border-radius: 30px;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.gtop-back:hover { color: var(--white); border-color: var(--accent); background: rgba(255,255,255,.06); }
+
+.gmain {
+  flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center;
+  position: relative; padding: 0 70px 24px;
+}
+.gstage {
+  position: relative; width: 100%; max-width: 1200px;
+  flex: 1; min-height: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.gstage img, .gstage video {
+  display: block; max-width: 100%; max-height: 68vh; width: auto; height: auto;
+  object-fit: contain; border-radius: 10px; background: #000;
+}
+.gnav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2);
+  color: var(--white); font-size: 22px; display: flex; align-items: center; justify-content: center;
+  transition: background .2s, border-color .2s; z-index: 2;
+}
+.gnav:hover { background: rgba(255,255,255,.18); border-color: var(--accent); }
+.gprev { left: -64px; } .gnext { right: -64px; }
+@media (max-width: 900px) {
+  .gmain { padding: 0 16px 20px; }
+  .gprev { left: 6px; } .gnext { right: 6px; }
+  .gnav { width: 38px; height: 38px; font-size: 18px; background: rgba(0,0,0,.35); }
+}
+
+.gcaption { text-align: center; margin-top: 22px; }
+.gcaption h1 { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--white); }
+.gcaption h1 em { font-style: italic; color: var(--accent); }
+.gcounter { margin-top: 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: rgba(255,255,255,.5); }
+
+.gspecs {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  max-width: 900px; margin: 22px auto 0; padding: 0 20px;
+}
+.gspec {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 10px; padding: 10px 18px; text-align: center; min-width: 88px;
+}
+.gspec-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent);
+}
+.gspec-value { font-size: 15px; font-weight: 700; color: var(--white); margin-top: 3px; }
+.grooms {
+  max-width: 700px; margin: 18px auto 0; padding: 0 20px;
+  text-align: center; font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.6;
+}
+.grooms strong { color: var(--white); font-weight: 700; }
+
+.gthumbs {
+  display: flex; gap: 8px; overflow-x: auto; padding: 0 28px 24px; flex-shrink: 0;
+  scrollbar-width: thin;
+}
+.gthumbs .gthumb {
+  position: relative; width: 68px; height: 52px; border-radius: 6px; cursor: pointer;
+  opacity: .45; transition: opacity .2s, outline .2s; flex-shrink: 0;
+  outline: 2px solid transparent; overflow: hidden;
+}
+.gthumbs .gthumb img, .gthumbs .gthumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gthumbs .gthumb:hover { opacity: .8; }
+.gthumbs .gthumb.gt-active { opacity: 1; outline-color: var(--accent); }
+.gthumb-play {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.25); color: #fff; font-size: 16px; pointer-events: none;
+}
+
+.gtop-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.gwa {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #25D366; color: #fff; font-size: 13px; font-weight: 700;
+  letter-spacing: .03em; padding: 9px 18px; border-radius: 30px;
+  transition: background .2s, transform .2s; white-space: nowrap;
+}
+.gwa:hover { background: #1da851; transform: translateY(-2px); }
+.gwa svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+.gbottom-cta { display: flex; justify-content: center; padding: 8px 28px 40px; flex-shrink: 0; }
+.gwa-lg { padding: 13px 28px; font-size: 14px; }
+@media (max-width: 640px) {
+  .gtop { padding: 14px 16px; flex-wrap: wrap; gap: 10px; }
+  .gtop-right { gap: 8px; }
+  .gwa { padding: 7px 14px; font-size: 12px; }
+  .gtop-back { padding: 7px 12px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="gtop">
+  <a href="index.html" class="gtop-logo">PICCOLAVITA</a>
+  <div class="gtop-right">
+    <a href="https://wa.me/905324521522?text=Merhaba%2C%20Pico%20005B%20modeli%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="gwa"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.36 4.91L2 22l5.31-1.39a9.87 9.87 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.83 14.04c-.25.7-1.45 1.34-2.01 1.42-.51.08-1.16.11-1.87-.12-.43-.13-.98-.31-1.7-.6-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.6-1.21-3.06s.76-2.16 1.03-2.46c.27-.3.6-.37.8-.37.2 0 .4.002.58.01.18.01.43-.07.67.51.25.6.84 2.06.91 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.45.51-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.05.18-.18.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.71.81 2 .96.3.15.49.22.56.34.07.13.07.71-.18 1.4z"/></svg>Bilgi Al</a>
+    <a href="tum-modeller.html" class="gtop-back">← Modellere Dön</a>
+  </div>
+</div>
+
+<div class="gmain">
+  <div class="gstage">
+    <button class="gnav gprev" onclick="gStep(-1)" aria-label="Önceki">‹</button>
+    <img id="gImg" src="" alt="Pico 005B">
+    <video id="gVideo" controls playsinline style="display:none"></video>
+    <button class="gnav gnext" onclick="gStep(1)" aria-label="Sonraki">›</button>
+  </div>
+  <div class="gcaption">
+    <h1>Pico <em>005B</em></h1>
+    <div class="gcounter" id="gCounter">1 / 13</div>
+  </div>
+  <div class="gspecs">
+    <div class="gspec"><div class="gspec-label">En</div><div class="gspec-value">2,55 m</div></div>
+    <div class="gspec"><div class="gspec-label">Uzunluk</div><div class="gspec-value">9 m</div></div>
+    <div class="gspec"><div class="gspec-label">Yükseklik</div><div class="gspec-value">4 m</div></div>
+    <div class="gspec"><div class="gspec-label">Alan</div><div class="gspec-value">22,5 m²</div></div>
+    <div class="gspec"><div class="gspec-label">Fiyat</div><div class="gspec-value">1.450.000 TL</div></div>
+    <div class="gspec"><div class="gspec-label">Garanti</div><div class="gspec-value">24 ay</div></div>
+    <div class="gspec"><div class="gspec-label">Römork</div><div class="gspec-value">3500 kg</div></div>
+  </div>
+  <div class="grooms">Mekanlar: <strong>1 Mutfak + 1 Salon + 1 Zemin Yatak Odası + 1 Banyo</strong></div>
+</div>
+
+<div class="gthumbs" id="gThumbs"></div>
+
+<div class="gbottom-cta">
+  <a href="https://wa.me/905324521522?text=Merhaba%2C%20Pico%20005B%20modeli%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="gwa gwa-lg"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.36 4.91L2 22l5.31-1.39a9.87 9.87 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.83 14.04c-.25.7-1.45 1.34-2.01 1.42-.51.08-1.16.11-1.87-.12-.43-.13-.98-.31-1.7-.6-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.6-1.21-3.06s.76-2.16 1.03-2.46c.27-.3.6-.37.8-.37.2 0 .4.002.58.01.18.01.43-.07.67.51.25.6.84 2.06.91 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.45.51-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.05.18-.18.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.71.81 2 .96.3.15.49.22.56.34.07.13.07.71-.18 1.4z"/></svg>Teklif Al</a>
+</div>
+
+<script>
+const media = [
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-01.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-02.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-03.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-04.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-05.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-06.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-07.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-08.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-09.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-10.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-11.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-12.jpg' },
+  { type: 'img', src: 'assets/images/pico-005b/pico-005b-13.jpg' },
+];
+const total = media.length;
+let idx = 0;
+
+const gImg = document.getElementById('gImg');
+const gVideo = document.getElementById('gVideo');
+
+function render() {
+  const item = media[idx];
+  gVideo.pause();
+  if (item.type === 'img') {
+    gImg.src = item.src;
+    gImg.style.display = '';
+    gVideo.style.display = 'none';
+    gVideo.removeAttribute('src');
+  } else {
+    gVideo.src = item.src;
+    gVideo.style.display = '';
+    gImg.style.display = 'none';
+    gImg.removeAttribute('src');
+  }
+  document.getElementById('gCounter').textContent = (idx + 1) + ' / ' + total;
+  document.querySelectorAll('.gthumb').forEach((el, i) => el.classList.toggle('gt-active', i === idx));
+  const active = document.querySelector('.gthumb.gt-active');
+  if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+function gStep(d) { idx = (idx + d + total) % total; render(); }
+
+const thumbs = document.getElementById('gThumbs');
+media.forEach((item, i) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'gthumb';
+  if (item.type === 'img') {
+    const im = document.createElement('img');
+    im.src = item.src;
+    im.alt = 'Pico 005B fotoğraf ' + (i + 1);
+    im.loading = 'lazy';
+    wrap.appendChild(im);
+  } else {
+    const vid = document.createElement('video');
+    vid.src = item.src + '#t=0.1';
+    vid.muted = true;
+    vid.preload = 'metadata';
+    vid.playsInline = true;
+    wrap.appendChild(vid);
+    const play = document.createElement('span');
+    play.className = 'gthumb-play';
+    play.textContent = '▶';
+    wrap.appendChild(play);
+  }
+  wrap.addEventListener('click', () => { idx = i; render(); });
+  thumbs.appendChild(wrap);
+});
+render();
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') gStep(-1);
+  if (e.key === 'ArrowRight') gStep(1);
+  if (e.key === 'Escape') window.location.href = 'tum-modeller.html';
+});
+
+window.PVGallery = {
+  get idx() { return idx; },
+  setIdx(v) { idx = ((v % total) + total) % total; render(); },
+  get total() { return total; },
+  getItem(i) { return media[i]; },
+};
+</script>
+<script src="assets/js/gallery-lightbox.js" defer></script>
+
+</body>
+</html>

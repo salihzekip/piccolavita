@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katalog İndiriliyor | Piccola Vita Tiny House</title>
+<meta name="description" content="Piccola Vita 2026 Eylül kataloğu indiriliyor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:   #2F4A3D;
+  --secondary: #8A5A3B;
+  --accent:    #C8A36A;
+  --forest:    #111c11;
+  --bg:        #F8F5F0;
+  --neutral-2: #5F6468;
+  --white:     #ffffff;
+  --serif:     'Playfair Display', Georgia, serif;
+  --sans:      'Montserrat', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--primary);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+a { text-decoration: none; color: inherit; }
+
+.gtop {
+  background: var(--forest); color: var(--white);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 28px; flex-shrink: 0;
+}
+.gtop-logo { font-family: var(--serif); font-weight: 700; font-size: 20px; letter-spacing: .03em; color: var(--white); }
+.gtop-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.75);
+  padding: 8px 16px; border: 1px solid rgba(255,255,255,.25); border-radius: 30px;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.gtop-back:hover { color: var(--white); border-color: var(--accent); background: rgba(255,255,255,.06); }
+
+.wrap {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 56px 24px; text-align: center;
+}
+.card {
+  width: 100%; max-width: 520px; background: var(--white);
+  border-radius: 18px; box-shadow: 0 12px 40px rgba(17,28,17,.1);
+  padding: 44px 36px;
+}
+.check {
+  width: 56px; height: 56px; border-radius: 50%; background: var(--primary);
+  color: var(--white); display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; font-size: 26px;
+}
+.card .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--secondary); }
+.card h1 { font-family: var(--serif); font-size: clamp(24px, 4vw, 30px); font-weight: 700; margin-top: 10px; }
+.card h1 em { font-style: italic; color: var(--secondary); }
+.card p.sub { color: var(--neutral-2); font-size: 14px; line-height: 1.6; margin-top: 12px; }
+
+.btn-dl {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 26px;
+  padding: 14px 28px; border-radius: 30px; background: var(--primary); color: var(--white);
+  font-size: 14px; font-weight: 700; letter-spacing: .03em;
+  transition: background .2s, transform .2s;
+}
+.btn-dl:hover { background: #3E5D4F; transform: translateY(-2px); }
+.form-note { font-size: 12px; color: var(--neutral-2); margin-top: 18px; line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .gtop { padding: 14px 16px; }
+  .card { padding: 32px 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="gtop">
+  <a href="index.html" class="gtop-logo">PICCOLAVITA</a>
+  <a href="index.html" class="gtop-back">← Ana Sayfaya Dön</a>
+</div>
+
+<div class="wrap">
+  <div class="card">
+    <div class="check">✓</div>
+    <div class="label">Teşekkürler</div>
+    <h1>Kataloğunuz <em>Hazır.</em></h1>
+    <p class="sub">Bilgileriniz bize ulaştı. İndirme birazdan otomatik başlayacak — başlamazsa aşağıdaki butona tıklayın.</p>
+    <a href="assets/docs/piccolavita-katalog-2026-eylul.pdf" download class="btn-dl" id="dlBtn">Kataloğu İndir</a>
+    <p class="form-note">Sorularınız için <a href="https://wa.me/905324521522" target="_blank" rel="noopener" style="color:var(--secondary);font-weight:700;">WhatsApp'tan</a> bize ulaşabilirsiniz.</p>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('dlBtn').click(); }, 900);
+});
+</script>
+
+</body>
+</html>

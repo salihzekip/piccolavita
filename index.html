@@ -1038,9 +1038,14 @@ html.lenis, html.lenis body { height: auto; }
       <a href="uretim-galeri.html" class="mobile-sub-link" onclick="closeMobile()">Adım Adım Üretim</a>
     </div>
   </details>
-  <a href="katalog-indir.html" onclick="closeMobile()">Yeni Katalog</a>
-  <a href="ornek-projeler-indir.html" onclick="closeMobile()">Proje Kataloğu</a>
-  <a href="#projeler" onclick="closeMobile()">Projeler</a>
+  <details class="mobile-models">
+    <summary>Katalog</summary>
+    <div class="mobile-models-body">
+      <a href="katalog-indir.html" class="mobile-sub-link" onclick="closeMobile()">Yeni Katalog</a>
+      <a href="ornek-projeler-indir.html" class="mobile-sub-link" onclick="closeMobile()">Örnek Projeler Kataloğu</a>
+    </div>
+  </details>
+  <a href="opsiyonlar.html" onclick="closeMobile()">Opsiyonlar</a>
   <a href="#hikaye" onclick="closeMobile()">Hakkımızda</a>
   <a href="#iletisim" onclick="closeMobile()">İletişim</a>
   <a href="https://wa.me/905324521522" class="btn btn-cta" target="_blank" rel="noopener">Teklif Al</a>
@@ -1073,9 +1078,14 @@ html.lenis, html.lenis body { height: auto; }
           <li><a href="uretim-galeri.html">Adım Adım Üretim</a></li>
         </ul>
       </li>
-      <li><a href="katalog-indir.html">Yeni Katalog</a></li>
-      <li><a href="ornek-projeler-indir.html">Proje Kataloğu</a></li>
-      <li><a href="#projeler">Projeler</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle">Katalog</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="katalog-indir.html">Yeni Katalog</a></li>
+          <li><a href="ornek-projeler-indir.html">Örnek Projeler Kataloğu</a></li>
+        </ul>
+      </li>
+      <li><a href="opsiyonlar.html">Opsiyonlar</a></li>
       <li><a href="#hikaye">Hakkımızda</a></li>
       <li><a href="#iletisim">İletişim</a></li>
     </ul>

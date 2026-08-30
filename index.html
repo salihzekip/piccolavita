@@ -881,6 +881,36 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 }
 .form-success.show { display: block; }
 
+/* ── MULTI-SELECT MODEL PICKER ── */
+.ms-wrap { position: relative; }
+.ms-toggle {
+  font-family: var(--sans); font-size: 15px; color: var(--primary);
+  padding: 12px 14px; border: 1px solid var(--neutral-1); border-radius: 6px;
+  background: var(--bg); width: 100%; text-align: left; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  transition: border-color .2s;
+}
+.ms-toggle span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ms-toggle svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--neutral-2); transition: transform .2s; }
+.ms-wrap.open .ms-toggle { border-color: var(--secondary); }
+.ms-wrap.open .ms-toggle svg { transform: rotate(180deg); }
+.ms-panel {
+  display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 20;
+  background: var(--white); border: 1px solid var(--neutral-1); border-radius: 10px;
+  box-shadow: 0 14px 34px rgba(17,28,17,.14); max-height: 300px; overflow-y: auto; padding: 8px 0;
+}
+.ms-wrap.open .ms-panel { display: block; }
+.ms-group-label {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--secondary); padding: 10px 16px 4px;
+}
+.ms-option {
+  display: flex; align-items: center; gap: 9px; padding: 7px 16px; cursor: pointer;
+  font-size: 13.5px; color: var(--primary); transition: background .15s;
+}
+.ms-option:hover { background: rgba(47,74,61,.06); }
+.ms-option input { width: 15px; height: 15px; flex-shrink: 0; accent-color: var(--secondary); cursor: pointer; }
+
 /* ── FAQ ── */
 .faq-section { background: var(--bg); padding: 100px 0; }
 .faq-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; }
@@ -2061,7 +2091,8 @@ html.lenis, html.lenis body { height: auto; }
       </div>
       <div class="project-item reveal" data-model="Bodrum" data-loc="Bodrum / Muğla, 2026">
       <div class="mini-gallery" data-idx="0">
-        <img src="assets/images/bodrum/bodrum-01.png" alt="Bodrum — Bodrum teslimatı" class="mg-active" style="object-position:center 90%">
+        <img src="assets/images/bodrum/bodrum-00.jpg" alt="Bodrum — Bodrum teslimatı" class="mg-active">
+        <img src="assets/images/bodrum/bodrum-01.png" alt="Bodrum — Bodrum teslimatı" loading="lazy" style="object-position:center 90%">
         <img src="assets/images/bodrum/bodrum-02.jpg" alt="Bodrum — Bodrum teslimatı" loading="lazy">
         <img src="assets/images/bodrum/bodrum-03.jpg" alt="Bodrum — Bodrum teslimatı" loading="lazy">
         <img src="assets/images/bodrum/bodrum-04.jpg" alt="Bodrum — Bodrum teslimatı" loading="lazy">
@@ -2078,7 +2109,7 @@ html.lenis, html.lenis body { height: auto; }
         <span class="mg-play" style="display:none">▶</span>
         <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
         <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
-        <span class="mg-counter">1/14</span>
+        <span class="mg-counter">1/15</span>
         <span class="model-badge" style="z-index:3">Model 05 · 40 m², 2-8 Kişilik</span>
       </div>
         <div class="project-info"><span class="project-model">Model 05</span><span class="project-loc">Bodrum / Muğla, 2026 · 2.250.000 TL</span></div>
@@ -2388,10 +2419,10 @@ html.lenis, html.lenis body { height: auto; }
       </div>
       <div class="project-item reveal reveal-delay-2" data-model="Model 16" data-loc="2023">
       <div class="mini-gallery" data-idx="0">
-        <img src="assets/images/acipayam/acipayam-01.jpg" alt="Model 16 teslimatı" class="mg-active">
+        <img src="assets/images/acipayam/acipayam-04.jpg" alt="Model 16 teslimatı" class="mg-active">
+        <img src="assets/images/acipayam/acipayam-01.jpg" alt="Model 16 teslimatı" loading="lazy">
         <img src="assets/images/acipayam/acipayam-02.jpg" alt="Model 16 teslimatı" loading="lazy">
         <img src="assets/images/acipayam/acipayam-03.jpg" alt="Model 16 teslimatı" loading="lazy">
-        <img src="assets/images/acipayam/acipayam-04.jpg" alt="Model 16 teslimatı" loading="lazy">
         <img src="assets/images/acipayam/acipayam-05.jpg" alt="Model 16 teslimatı" loading="lazy">
         <img src="assets/images/acipayam/acipayam-06.jpg" alt="Model 16 teslimatı" loading="lazy">
         <img src="assets/images/acipayam/acipayam-07.jpg" alt="Model 16 teslimatı" loading="lazy">
@@ -2495,7 +2526,8 @@ html.lenis, html.lenis body { height: auto; }
       </div>
       <div class="project-item reveal reveal-delay-3" data-model="Model 19" data-loc="9m, 1 Loft, 1 Yatak Odası, 2023">
       <div class="mini-gallery" data-idx="0">
-        <img src="assets/images/akyaka/akyaka-01.jpg" alt="Model 19 teslimatı" class="mg-active">
+        <img src="assets/images/akyaka/akyaka-00.jpg" alt="Model 19 teslimatı" class="mg-active">
+        <img src="assets/images/akyaka/akyaka-01.jpg" alt="Model 19 teslimatı" loading="lazy">
         <img src="assets/images/akyaka/akyaka-02.jpg" alt="Model 19 teslimatı" loading="lazy">
         <img src="assets/images/akyaka/akyaka-03.jpg" alt="Model 19 teslimatı" loading="lazy">
         <img src="assets/images/akyaka/akyaka-04.jpg" alt="Model 19 teslimatı" loading="lazy">
@@ -2658,14 +2690,14 @@ html.lenis, html.lenis body { height: auto; }
       </div>
       <div class="project-item reveal" data-model="Model 26" data-loc="Ofis Modeli, 2025">
       <div class="mini-gallery" data-idx="0">
-        <img src="assets/images/lavoro/lavoro-01.jpg" alt="Model 26 teslimatı" class="mg-active">
+        <img src="assets/images/lavoro/lavoro-08.jpg" alt="Model 26 teslimatı" class="mg-active">
+        <img src="assets/images/lavoro/lavoro-01.jpg" alt="Model 26 teslimatı" loading="lazy">
         <img src="assets/images/lavoro/lavoro-02.jpg" alt="Model 26 teslimatı" loading="lazy">
         <img src="assets/images/lavoro/lavoro-03.jpg" alt="Model 26 teslimatı" loading="lazy">
         <img src="assets/images/lavoro/lavoro-04.jpg" alt="Model 26 teslimatı" loading="lazy">
         <img src="assets/images/lavoro/lavoro-05.jpg" alt="Model 26 teslimatı" loading="lazy">
         <img src="assets/images/lavoro/lavoro-06.jpg" alt="Model 26 teslimatı" loading="lazy">
         <img src="assets/images/lavoro/lavoro-07.jpg" alt="Model 26 teslimatı" loading="lazy">
-        <img src="assets/images/lavoro/lavoro-08.jpg" alt="Model 26 teslimatı" loading="lazy">
         <span class="mg-play" style="display:none">▶</span>
         <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
         <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
@@ -2935,36 +2967,60 @@ html.lenis, html.lenis body { height: auto; }
             <input type="email" id="fMail" name="E-posta" required autocomplete="email" placeholder="ornek@eposta.com">
           </div>
           <div class="form-group">
-            <label for="fModel">İlgilendiğiniz Model</label>
-            <select id="fModel" name="Model">
-              <option value="Kararsızım" selected>Kararsızım / Fikir almak istiyorum</option>
-              <optgroup label="Pico Serisi">
-                <option value="Pico 001">Pico 001 — 40 m²</option>
-                <option value="Pico 002">Pico 002 — 40 m²</option>
-                <option value="Pico 003A">Pico 003A — 29,5 m²</option>
-                <option value="Pico 003B">Pico 003B — 31 m²</option>
-                <option value="Pico 004A">Pico 004A — 26,5 m²</option>
-                <option value="Pico 004B">Pico 004B — 29 m²</option>
-                <option value="Pico 005A">Pico 005A — 20 m²</option>
-                <option value="Pico 005B">Pico 005B — 22,5 m²</option>
-                <option value="Pico 005C">Pico 005C — 25 m²</option>
-              </optgroup>
-              <optgroup label="Örnek Projelerden İlham">
-                <option value="Uşak">Uşak — 30 m²</option>
-                <option value="Foça">Foça — 40 m²</option>
-                <option value="Milas">Milas — 26 m²</option>
-                <option value="Nikfer">Nikfer — 40 m²</option>
-                <option value="Tavas">Tavas — 40 m²</option>
-                <option value="Honaz">Honaz — 40 m²</option>
-                <option value="İnciraltı">İnciraltı — 40 m²</option>
-                <option value="Çeşme">Çeşme — 20 m²</option>
-                <option value="Didim">Didim — 30 m²</option>
-                <option value="Sinpaş">Sinpaş — 30 m²</option>
-                <option value="Banaz">Banaz — 20 m² (Ofis)</option>
-                <option value="Sabit">Sabit — 90 m² (3+1)</option>
-              </optgroup>
-              <option value="Diğer">Diğer bir model</option>
-            </select>
+            <label for="msToggle">İlgilendiğiniz Model(ler)</label>
+            <div class="ms-wrap" id="msWrap">
+              <button type="button" class="ms-toggle" id="msToggle">
+                <span id="msToggleText">Kararsızım / Fikir almak istiyorum</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="ms-panel" id="msPanel">
+                <label class="ms-option"><input type="checkbox" value="Kararsızım / Fikir almak istiyorum" data-solo checked>Kararsızım / Fikir almak istiyorum</label>
+                <div class="ms-group-label">Pico Serisi</div>
+                <label class="ms-option"><input type="checkbox" value="Pico 001 — 40 m²">Pico 001 — 40 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Pico 002 — 40 m²">Pico 002 — 40 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Pico 003A — 29,5 m²">Pico 003A — 29,5 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Pico 003B — 31 m²">Pico 003B — 31 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Pico 004A — 26,5 m²">Pico 004A — 26,5 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Pico 004B — 29 m²">Pico 004B — 29 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Pico 005A — 20 m²">Pico 005A — 20 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Pico 005B — 22,5 m²">Pico 005B — 22,5 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Pico 005C — 25 m²">Pico 005C — 25 m²</label>
+                <div class="ms-group-label">Örnek Projeler — Model 01-29</div>
+                <label class="ms-option"><input type="checkbox" value="Model 01 — 40 m²">Model 01 — 40 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 02 — 40 m²">Model 02 — 40 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 03 — 40 m²">Model 03 — 40 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 04 — 40 m²">Model 04 — 40 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 05 — 40 m²">Model 05 — 40 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 06 — 20 m²">Model 06 — 20 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 07 — 26 m²">Model 07 — 26 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 08 — 26 m²">Model 08 — 26 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 09 — 30 m²">Model 09 — 30 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 10 — 26 m²">Model 10 — 26 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 11 — 35 m²">Model 11 — 35 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 12 — 26 m²">Model 12 — 26 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 13 — 35 m²">Model 13 — 35 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 14 — 30 m²">Model 14 — 30 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 15 — 30 m²">Model 15 — 30 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 16 — 35 m²">Model 16 — 35 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 17 — 26 m²">Model 17 — 26 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 18 — 32 m²">Model 18 — 32 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 19 — 26 m²">Model 19 — 26 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 20 — 23 m²">Model 20 — 23 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 21 — 30 m²">Model 21 — 30 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 22 — 32 m²">Model 22 — 32 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 23 — 40 m²">Model 23 — 40 m²</label>
+                <label class="ms-option"><input type="checkbox" value="Model 24 — 20 m² (Ofis)">Model 24 — 20 m² (Ofis)</label>
+                <label class="ms-option"><input type="checkbox" value="Model 25 — 20 m² (Ofis)">Model 25 — 20 m² (Ofis)</label>
+                <label class="ms-option"><input type="checkbox" value="Model 26 — 15 m² (Ofis)">Model 26 — 15 m² (Ofis)</label>
+                <label class="ms-option"><input type="checkbox" value="Model 27 — 20 m² (Ofis)">Model 27 — 20 m² (Ofis)</label>
+                <label class="ms-option"><input type="checkbox" value="Model 28 — 15 m² (Ofis)">Model 28 — 15 m² (Ofis)</label>
+                <label class="ms-option"><input type="checkbox" value="Model 29 — 26 m² (Ofis)">Model 29 — 26 m² (Ofis)</label>
+                <div class="ms-group-label">Diğer</div>
+                <label class="ms-option"><input type="checkbox" value="Sabit — 90 m² (3+1)">Sabit — 90 m² (3+1)</label>
+                <label class="ms-option"><input type="checkbox" value="Diğer bir model">Diğer bir model</label>
+              </div>
+              <input type="hidden" id="fModel" name="Model" value="Kararsızım / Fikir almak istiyorum">
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -3220,6 +3276,57 @@ projectItems.forEach((el) => {
   } else if (el.dataset.model === 'Sinpaş') {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => { window.location.href = 'sinpas-galeri.html'; });
+  } else if (el.dataset.model === 'Model 07') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'cameli-galeri.html'; });
+  } else if (el.dataset.model === 'Model 11') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'tekke-galeri.html'; });
+  } else if (el.dataset.model === 'Model 12') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'kusadasi-galeri.html'; });
+  } else if (el.dataset.model === 'Model 14') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'barisbey-galeri.html'; });
+  } else if (el.dataset.model === 'Model 16') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'acipayam-galeri.html'; });
+  } else if (el.dataset.model === 'Model 17') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'cesme2-galeri.html'; });
+  } else if (el.dataset.model === 'Model 18') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'muratkaraman-galeri.html'; });
+  } else if (el.dataset.model === 'Model 19') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'akyaka-galeri.html'; });
+  } else if (el.dataset.model === 'Model 20') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'urla-galeri.html'; });
+  } else if (el.dataset.model === 'Model 21') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'izmirurla-galeri.html'; });
+  } else if (el.dataset.model === 'Model 22') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'ismailbey-galeri.html'; });
+  } else if (el.dataset.model === 'Model 23') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'honazkizilyer-galeri.html'; });
+  } else if (el.dataset.model === 'Model 24') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'mekalift-galeri.html'; });
+  } else if (el.dataset.model === 'Model 26') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'lavoro-galeri.html'; });
+  } else if (el.dataset.model === 'Model 27') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'putzmeister-galeri.html'; });
+  } else if (el.dataset.model === 'Model 28') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'studio-galeri.html'; });
+  } else if (el.dataset.model === 'Model 29') {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => { window.location.href = 'dim-galeri.html'; });
   } else {
     el.addEventListener('click', () => openLightbox(el));
   }
@@ -3276,6 +3383,51 @@ document.querySelectorAll('.faq-item').forEach(item => {
 if (new URLSearchParams(location.search).has('gonderildi')) {
   document.getElementById('formSuccess').classList.add('show');
 }
+
+// Ilgilendiginiz Model - coklu secim
+(() => {
+  const wrap = document.getElementById('msWrap');
+  if (!wrap) return;
+  const toggle = document.getElementById('msToggle');
+  const toggleText = document.getElementById('msToggleText');
+  const panel = document.getElementById('msPanel');
+  const hidden = document.getElementById('fModel');
+  const checkboxes = [...panel.querySelectorAll('input[type="checkbox"]')];
+  const soloBox = checkboxes.find(c => c.hasAttribute('data-solo'));
+
+  function updateSummary() {
+    const checked = checkboxes.filter(c => c.checked).map(c => c.value);
+    if (checked.length === 0) {
+      soloBox.checked = true;
+      hidden.value = soloBox.value;
+      toggleText.textContent = soloBox.value;
+    } else {
+      hidden.value = checked.join(', ');
+      toggleText.textContent = checked.length === 1 ? checked[0] : checked.length + ' model seçildi';
+    }
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.hasAttribute('data-solo')) {
+        if (cb.checked) checkboxes.forEach(o => { if (o !== cb) o.checked = false; });
+      } else if (cb.checked) {
+        soloBox.checked = false;
+      }
+      updateSummary();
+    });
+  });
+
+  toggle.addEventListener('click', e => {
+    e.stopPropagation();
+    wrap.classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (!wrap.contains(e.target)) wrap.classList.remove('open');
+  });
+
+  updateSummary();
+})();
 
 // Kelime kelime başlık animasyonu (section başlıkları)
 document.querySelectorAll('.section-h, .section-h-dark').forEach(h => {

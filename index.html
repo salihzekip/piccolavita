@@ -444,6 +444,32 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 }
 @media (max-width: 480px) { .picco-float span:not(.picco-avatar) { display: none; } .picco-float { padding: 14px; border-radius: 50%; bottom: 88px; } }
 
+/* ── INSTAGRAM FLOAT ── */
+.ig-float {
+  position: fixed; bottom: 160px; right: 24px; z-index: 99;
+  display: flex; align-items: center; justify-content: center;
+  width: 50px; height: 50px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: var(--white); box-shadow: 0 8px 28px rgba(214,36,159,.4);
+  transition: transform .22s, box-shadow .22s;
+}
+.ig-float:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(214,36,159,.5); }
+.ig-float svg { width: 24px; height: 24px; fill: var(--white); }
+
+/* ── YUKARI ÇIK ── */
+.scroll-top-btn {
+  position: fixed; bottom: 24px; left: 24px; z-index: 99;
+  width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
+  background: var(--primary); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 26px rgba(17,28,17,.35);
+  opacity: 0; visibility: hidden; transform: translateY(12px);
+  transition: opacity .25s, transform .25s, visibility .25s, background .2s;
+}
+.scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top-btn:hover { background: var(--secondary); }
+.scroll-top-btn svg { width: 20px; height: 20px; }
+
 .picco-panel {
   position: fixed; bottom: 24px; right: 24px; z-index: 200;
   width: 360px; max-width: calc(100vw - 32px); height: 520px; max-height: calc(100vh - 48px);
@@ -1068,6 +1094,7 @@ html.lenis, html.lenis body { height: auto; }
       </details>
       <a href="#projeler" class="mobile-sub-link" onclick="closeMobile()">Örnek Projeler</a>
       <a href="uretim-galeri.html" class="mobile-sub-link" onclick="closeMobile()">Adım Adım Üretim</a>
+      <a href="#fiyatlar" class="mobile-sub-link" onclick="closeMobile()">Fiyatlar</a>
     </div>
   </details>
   <details class="mobile-models">
@@ -1108,6 +1135,7 @@ html.lenis, html.lenis body { height: auto; }
           </li>
           <li><a href="#projeler">Örnek Projeler</a></li>
           <li><a href="uretim-galeri.html">Adım Adım Üretim</a></li>
+          <li><a href="#fiyatlar">Fiyatlar</a></li>
         </ul>
       </li>
       <li class="nav-dropdown">
@@ -2906,7 +2934,7 @@ html.lenis, html.lenis body { height: auto; }
           <button class="faq-q" aria-expanded="false">Modelimi özelleştirebilir miyim?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>14 modelin tamamı özelleştirilebilir: dış cephe kaplaması, iç malzemeler, mobilya, teknik donanım ve oda düzeni sizin seçiminize göre şekillenir. Mimarlarımız onayınız olmadan üretime başlamaz.</p></div>
+          <div class="faq-a"><p>9 modelin tamamı özelleştirilebilir: dış cephe kaplaması, iç malzemeler, mobilya, teknik donanım ve oda düzeni sizin seçiminize göre şekillenir. Mimarlarımız onayınız olmadan üretime başlamaz.</p></div>
         </div>
 
       </div>
@@ -3095,6 +3123,16 @@ html.lenis, html.lenis body { height: auto; }
   </div>
 </footer>
 
+<!-- INSTAGRAM FLOAT -->
+<a class="ig-float" href="https://www.instagram.com/piccolavitatinyhouse/" target="_blank" rel="noopener" aria-label="Instagram'da takip edin">
+  <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.42.61.24 1.05.52 1.5 1a4.15 4.15 0 0 1 1 1.5c.18.46.37 1.26.42 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.42 2.43-.24.61-.52 1.05-1 1.5a4.15 4.15 0 0 1-1.5 1c-.46.18-1.26.37-2.43.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.42a4.15 4.15 0 0 1-1.5-1 4.15 4.15 0 0 1-1-1.5c-.18-.46-.37-1.26-.42-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.42-2.43a4.15 4.15 0 0 1 1-1.5 4.15 4.15 0 0 1 1.5-1c.46-.18 1.26-.37 2.43-.42C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-.96.04-1.48.2-1.82.34-.46.18-.79.39-1.14.74-.35.35-.56.68-.74 1.14-.14.34-.3.86-.34 1.82C3.14 8.35 3.13 8.72 3.13 12s.01 3.65.07 4.89c.04.96.2 1.48.34 1.82.18.46.39.79.74 1.14.35.35.68.56 1.14.74.34.14.86.3 1.82.34 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.96-.04 1.48-.2 1.82-.34.46-.18.79-.39 1.14-.74.35-.35.56-.68.74-1.14.14-.34.3-.86.34-1.82.06-1.24.07-1.61.07-4.89s-.01-3.65-.07-4.89c-.04-.96-.2-1.48-.34-1.82a3.1 3.1 0 0 0-.74-1.14 3.1 3.1 0 0 0-1.14-.74c-.34-.14-.86-.3-1.82-.34C15.65 4.01 15.28 4 12.13 4H12zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.85-2.02a1.08 1.08 0 1 1-2.15 0 1.08 1.08 0 0 1 2.15 0z"/></svg>
+</a>
+
+<!-- YUKARI ÇIK -->
+<button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="Yukarı çık" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <!-- WHATSAPP FLOAT -->
 <a class="wa-float" href="https://wa.me/905324521522?text=Merhaba%2C%20Piccola%20Vita%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp'tan yaz">
   <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.36 4.91L2 22l5.31-1.39a9.87 9.87 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.83 14.04c-.25.7-1.45 1.34-2.01 1.42-.51.08-1.16.11-1.87-.12-.43-.13-.98-.31-1.7-.6-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.6-1.21-3.06s.76-2.16 1.03-2.46c.27-.3.6-.37.8-.37.2 0 .4.002.58.01.18.01.43-.07.67.51.25.6.84 2.06.91 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.45.51-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.05.18-.18.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.71.81 2 .96.3.15.49.22.56.34.07.13.07.71-.18 1.4z"/></svg>
@@ -3133,8 +3171,10 @@ html.lenis, html.lenis body { height: auto; }
 <script>
 // NAV scroll effect
 const navbar = document.getElementById('navbar');
+const scrollTopBtn = document.getElementById('scrollTopBtn');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('solid', window.scrollY > 60);
+  scrollTopBtn.classList.toggle('show', window.scrollY > 500);
 });
 
 // Mobile menu

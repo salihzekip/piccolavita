@@ -3622,7 +3622,14 @@ if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const id = a.getAttribute('href');
       if (id === '#') { e.preventDefault(); lenis.scrollTo(0); return; }
       const target = document.querySelector(id);
-      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -64 }); }
+      if (target) {
+        e.preventDefault();
+        // Sabit navbar + sticky cta-bar toplam yüksekliği kadar pay bırak, yoksa hedefin üstü bu barların altında kalıyor
+        const navH = document.getElementById('navbar')?.offsetHeight || 0;
+        const ctaBar = document.getElementById('ctaBar');
+        const ctaH = (ctaBar && getComputedStyle(ctaBar).position !== 'static') ? ctaBar.offsetHeight : 0;
+        lenis.scrollTo(target, { offset: -(navH + ctaH + 20) });
+      }
     });
   });
   // Mobil menü / lightbox açıkken kaydırmayı durdur
@@ -3656,24 +3663,32 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 })();
 
 // Adım Adım Üretim — sabit görsel, kayan anlatı
+// Not: dar bir IntersectionObserver rootMargin'i hızlı/momentum scroll'da adım atlayabiliyordu
+// (bazı başlık/görseller hiç aktifleşmiyordu) — bunun yerine her scroll'da en yakın adımı hesaplıyoruz.
 (function () {
-  const steps = document.querySelectorAll('.uretim-step');
+  const steps = [...document.querySelectorAll('.uretim-step')];
   if (!steps.length) return;
   const images = document.querySelectorAll('.uretim-visual img');
   const frameCount = document.getElementById('uretimFrameCount');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const i = entry.target.dataset.i;
-          steps.forEach(s => s.classList.toggle('active', s === entry.target));
-          images.forEach(img => img.classList.toggle('on', img.dataset.i === i));
-          frameCount.textContent = entry.target.dataset.frame + ' / 38';
-        }
-      });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-    steps.forEach(s => io.observe(s));
+  // Not: requestAnimationFrame ile throttle etmek bazı ortamlarda (arka plana alınmış/az güçlü
+  // cihaz vb.) geç veya hiç tetiklenmeyebiliyor. 6 elemanlık ölçüm çok ucuz, doğrudan çalıştırmak
+  // daha güvenilir.
+  function update() {
+    const line = window.innerHeight * 0.45;
+    let closest = steps[0], closestDist = Infinity;
+    steps.forEach(s => {
+      const r = s.getBoundingClientRect();
+      const dist = Math.abs((r.top + r.height / 2) - line);
+      if (dist < closestDist) { closestDist = dist; closest = s; }
+    });
+    const i = closest.dataset.i;
+    steps.forEach(s => s.classList.toggle('active', s === closest));
+    images.forEach(img => img.classList.toggle('on', img.dataset.i === i));
+    frameCount.textContent = closest.dataset.frame + ' / 38';
   }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
 })();
 </script>
 

@@ -592,20 +592,37 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .production-teaser-head h3 { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--primary); }
 .production-teaser-link { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--secondary); transition: color .2s; }
 .production-teaser-link:hover { color: var(--primary); }
-.production-teaser-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-@media (max-width: 900px) { .production-teaser-grid { grid-template-columns: repeat(2, 1fr); } }
-.production-teaser-item {
-  position: relative; overflow: hidden; border-radius: 10px;
-  aspect-ratio: 4/3; background: var(--neutral-1);
-  box-shadow: 0 2px 16px rgba(47,74,61,.07);
+.uretim-scrolly { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 8px; }
+@media (max-width: 900px) { .uretim-scrolly { grid-template-columns: 1fr; gap: 0; } }
+.uretim-visual { position: relative; }
+@media (min-width: 901px) { .uretim-visual { position: sticky; top: 100px; height: 60vh; align-self: start; } }
+@media (max-width: 900px) { .uretim-visual { height: 300px; margin-bottom: 6px; } }
+.uretim-visual .frame {
+  position: absolute; inset: 0; border-radius: 10px; overflow: hidden;
+  background: var(--neutral-1); box-shadow: 0 20px 50px -20px rgba(13,26,16,.35);
 }
-.production-teaser-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.production-teaser-item:hover img { transform: scale(1.06); }
-.production-teaser-item span {
-  position: absolute; inset: auto 0 0 0; padding: 30px 14px 12px;
-  background: linear-gradient(to top, rgba(13,26,16,.85), transparent);
-  font-size: 12.5px; font-weight: 600; color: var(--white); line-height: 1.3;
+.uretim-visual .frame img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity .5s ease;
 }
+.uretim-visual .frame img.on { opacity: 1; }
+.uretim-visual .frame-count {
+  position: absolute; top: 16px; left: 16px; z-index: 2;
+  font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--white);
+  background: rgba(13,26,16,.55); padding: 4px 13px; border-radius: 20px;
+}
+.uretim-steps { display: flex; flex-direction: column; }
+.uretim-step {
+  min-height: 60vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 20px 0; border-top: 1px solid var(--neutral-1);
+  opacity: .35; transition: opacity .4s ease;
+}
+.uretim-step:first-child { border-top: none; }
+.uretim-step.active { opacity: 1; }
+@media (max-width: 900px) { .uretim-step { min-height: 0; padding: 18px 0; } }
+.uretim-step .n { font-family: var(--serif); font-style: italic; font-size: 38px; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+.uretim-step h4 { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+.uretim-step p { font-size: 13.5px; color: var(--neutral-2); line-height: 1.55; max-width: 380px; }
 
 /* ── MODELS SECTION ── */
 .models-section { padding: 100px 0; background: var(--bg); }
@@ -641,10 +658,50 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .model-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.22,.61,.36,1); }
 .model-card:hover .model-card-img img { transform: scale(1.06); }
 .model-badge {
-  position: absolute; top: 14px; left: 14px; z-index: 4;
-  background: var(--accent); color: var(--primary);
-  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 20px;
+  position: absolute; top: 14px; left: -6px; z-index: 4;
+  background: var(--white); color: var(--secondary);
+  font-family: var(--serif); font-style: italic; font-size: 12.5px; font-weight: 600;
+  letter-spacing: .01em; text-transform: none;
+  padding: 5px 14px 5px 17px; border-radius: 0;
+  transform: rotate(-3deg);
+  box-shadow: 0 8px 16px -6px rgba(13,26,16,.35);
+}
+.model-badge::before {
+  content: ''; position: absolute; left: 6px; top: 50%; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--bg); border: 1px solid var(--secondary);
+  transform: translateY(-50%);
+}
+
+/* ── ÖNE ÇIKAN MODEL (dönen vitrin) ── */
+.model-feature {
+  position: relative; display: block; margin-bottom: 32px; border-radius: 14px;
+  overflow: hidden; cursor: pointer; aspect-ratio: 21/9;
+  box-shadow: 0 20px 50px -20px rgba(47,74,61,.3);
+}
+@media (max-width: 720px) { .model-feature { aspect-ratio: 4/3; } }
+.model-feature-media { position: absolute; inset: 0; }
+.model-feature-media img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 1.1s ease;
+}
+.model-feature-media img.mf-active { opacity: 1; }
+.model-feature-tag {
+  position: absolute; top: 28px; right: -14px; z-index: 2;
+  background: var(--white); padding: 16px 30px 16px 22px; transform: rotate(3deg);
+  box-shadow: 0 16px 30px -10px rgba(13,26,16,.4);
+  display: flex; flex-direction: column; gap: 5px; max-width: 300px;
+}
+.model-feature-tag::before {
+  content: ''; position: absolute; left: 10px; top: 50%; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--bg); border: 1.5px solid var(--secondary);
+  transform: translateY(-50%);
+}
+.mf-eyebrow { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--secondary); }
+.mf-name { font-family: var(--serif); font-size: 27px; font-weight: 700; color: var(--primary); }
+.mf-spec { font-size: 12.5px; color: var(--neutral-2); font-weight: 600; }
+@media (max-width: 600px) {
+  .model-feature-tag { right: 12px; top: 14px; padding: 12px 18px; max-width: 210px; }
+  .mf-name { font-size: 20px; }
 }
 .mini-gallery { position: absolute; inset: 0; }
 .mini-gallery img, .mini-gallery video {
@@ -1318,6 +1375,25 @@ html.lenis, html.lenis body { height: auto; }
       </div>
       <a href="tum-modeller.html" class="btn btn-outline-primary reveal reveal-delay-1">Tüm Modelleri Gör →</a>
     </div>
+    <div class="model-feature reveal" id="modelFeature">
+      <div class="model-feature-media">
+        <img class="mf-active" data-name="Pico 001" data-spec="40 m² · 2 loft yatak odası, 1 açık salon" data-href="pico-001-galeri.html" src="assets/images/pico-001/pico-001-01.jpg" alt="Pico 001">
+        <img data-name="Pico 002" data-spec="40 m² · 2 loft kat yatak odası, 1 zemin yatak odası" data-href="pico-002-galeri.html" src="assets/images/pico-002/pico-002-15.jpg" alt="Pico 002">
+        <img data-name="Pico 003A" data-spec="29,5 m² · 1 loft yatak odası, 1 zemin yatak odası" data-href="pico-003a-galeri.html" src="assets/images/pico-003a/pico-003a-01.jpg" alt="Pico 003A">
+        <img data-name="Pico 003B" data-spec="31 m² · 1 loft yatak odası, 1 zemin yatak odası" data-href="pico-003b-galeri.html" src="assets/images/pico-003b/pico-003b-01.jpg" alt="Pico 003B">
+        <img data-name="Pico 004A" data-spec="26,5 m² · 1 loft yatak odası" data-href="pico-004a-galeri.html" src="assets/images/pico-004a/pico-004a-01.jpg" alt="Pico 004A">
+        <img data-name="Pico 004B" data-spec="29 m² · 1 loft yatak odası" data-href="pico-004b-galeri.html" src="assets/images/pico-004b/pico-004b-01.jpg" alt="Pico 004B">
+        <img data-name="Pico 005A" data-spec="20 m² · 1 zemin yatak odası" data-href="pico-005a-galeri.html" src="assets/images/pico-005a/pico-005a-01.jpg" alt="Pico 005A">
+        <img data-name="Pico 005B" data-spec="22,5 m² · 1 zemin yatak odası" data-href="pico-005b-galeri.html" src="assets/images/pico-005b/pico-005b-01.jpg" alt="Pico 005B">
+        <img data-name="Pico 005C" data-spec="25 m² · 1 zemin yatak odası" data-href="pico-005c-galeri.html" src="assets/images/pico-005c/pico-005c-01.jpg" alt="Pico 005C">
+      </div>
+      <div class="model-feature-tag">
+        <span class="mf-eyebrow">Öne Çıkan Model</span>
+        <span class="mf-name" id="mfName">Pico 001</span>
+        <span class="mf-spec" id="mfSpec">40 m² · 2 loft yatak odası, 1 açık salon</span>
+      </div>
+    </div>
+
     <div class="models-grid">
 
       <div class="model-card reveal" id="model-pico-001">
@@ -1367,7 +1443,7 @@ html.lenis, html.lenis body { height: auto; }
       <div class="model-card reveal reveal-delay-1" id="model-pico-002">
         <div class="model-card-img">
         <div class="mini-gallery" data-idx="0" onclick="location.href='pico-002-galeri.html'" style="cursor:pointer">
-          <img src="assets/images/pico-002/pico-002-01.jpg" alt="Pico 002" class="mg-active">
+          <img src="assets/images/pico-002/pico-002-01.jpg" alt="Pico 002" loading="lazy">
           <img src="assets/images/pico-002/pico-002-02.jpg" alt="Pico 002" loading="lazy">
           <img src="assets/images/pico-002/pico-002-03.jpg" alt="Pico 002" loading="lazy">
           <img src="assets/images/pico-002/pico-002-04.jpg" alt="Pico 002" loading="lazy">
@@ -1381,7 +1457,7 @@ html.lenis, html.lenis body { height: auto; }
           <img src="assets/images/pico-002/pico-002-12.jpg" alt="Pico 002" loading="lazy">
           <img src="assets/images/pico-002/pico-002-13.jpg" alt="Pico 002" loading="lazy">
           <img src="assets/images/pico-002/pico-002-14.jpg" alt="Pico 002" loading="lazy">
-          <img src="assets/images/pico-002/pico-002-15.jpg" alt="Pico 002" loading="lazy">
+          <img src="assets/images/pico-002/pico-002-15.jpg" alt="Pico 002" class="mg-active">
           <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
           <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
           <span class="mg-counter">1/15</span>
@@ -1697,23 +1773,44 @@ html.lenis, html.lenis body { height: auto; }
         <h3>Adım Adım Üretim</h3>
         <a href="uretim-galeri.html" class="production-teaser-link">Tüm süreci izle (38 fotoğraf/video) →</a>
       </div>
-      <div class="production-teaser-grid">
-        <a href="uretim-galeri.html" class="production-teaser-item">
-          <img src="assets/images/uretim/uretim-01.jpg" alt="Şasemiz" loading="lazy">
-          <span>Şasemiz</span>
-        </a>
-        <a href="uretim-galeri.html" class="production-teaser-item">
-          <img src="assets/images/uretim/uretim-15.jpg" alt="İç duvarlarımız MDF lambrilerimiz döşeniyor" loading="lazy">
-          <span>İç duvarlarımız döşeniyor</span>
-        </a>
-        <a href="uretim-galeri.html" class="production-teaser-item">
-          <img src="assets/images/uretim/uretim-27.jpg" alt="Boya işi bitti." loading="lazy">
-          <span>Boya işi bitti.</span>
-        </a>
-        <a href="uretim-galeri.html" class="production-teaser-item">
-          <img src="assets/images/uretim/uretim-33.jpg" alt="Sahibine kavuşan tinymiz" loading="lazy">
-          <span>Sahibine kavuşan tinymiz</span>
-        </a>
+      <div class="uretim-scrolly">
+        <div class="uretim-visual">
+          <div class="frame">
+            <span class="frame-count" id="uretimFrameCount">01 / 38</span>
+            <img class="on" data-i="0" src="assets/images/uretim/uretim-01.jpg" alt="Şasemiz">
+            <img data-i="1" src="assets/images/uretim/uretim-08.jpg" alt="OSB montajı bitti">
+            <img data-i="2" src="assets/images/uretim/uretim-15.jpg" alt="İç duvarlarımız MDF lambrilerimiz döşeniyor">
+            <img data-i="3" src="assets/images/uretim/uretim-21.jpg" alt="Islak zemin için ctp döşeniyor">
+            <img data-i="4" src="assets/images/uretim/uretim-27.jpg" alt="Boya işi bitti.">
+            <img data-i="5" src="assets/images/uretim/uretim-33.jpg" alt="Sahibine kavuşan tinymiz">
+          </div>
+        </div>
+        <div class="uretim-steps" id="uretimSteps">
+          <a href="uretim-galeri.html" class="uretim-step active" data-i="0" data-frame="01">
+            <div class="n">01</div><h4>Şasemiz</h4>
+            <p>Denizli fabrikamızda üretim, sağlam bir çelik şase üzerine kurulur.</p>
+          </a>
+          <a href="uretim-galeri.html" class="uretim-step" data-i="1" data-frame="08">
+            <div class="n">02</div><h4>OSB montajı bitti</h4>
+            <p>Karkas ve gövde tamamlanır, evinizin hacmi ortaya çıkar.</p>
+          </a>
+          <a href="uretim-galeri.html" class="uretim-step" data-i="2" data-frame="15">
+            <div class="n">03</div><h4>İç duvarlarımız döşeniyor</h4>
+            <p>Yalıtım ve MDF lambri kaplamalarla iç yüzeyler şekillenir.</p>
+          </a>
+          <a href="uretim-galeri.html" class="uretim-step" data-i="3" data-frame="21">
+            <div class="n">04</div><h4>Islak zemin hazırlanıyor</h4>
+            <p>Banyo ve mutfak için su yalıtımlı zemin döşenir.</p>
+          </a>
+          <a href="uretim-galeri.html" class="uretim-step" data-i="4" data-frame="27">
+            <div class="n">05</div><h4>Boya işi bitti</h4>
+            <p>Son kat işçiliğiyle ev teslime hazır hale gelir.</p>
+          </a>
+          <a href="uretim-galeri.html" class="uretim-step" data-i="5" data-frame="33">
+            <div class="n">06</div><h4>Sahibine kavuşan tinymiz</h4>
+            <p>Arazisine götürülür, kurulur, anahtar sahibine teslim edilir.</p>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -3531,6 +3628,45 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Öne çıkan model — belirli süreyle dönen vitrin
+(function () {
+  const feature = document.getElementById('modelFeature');
+  if (!feature) return;
+  const imgs = [...feature.querySelectorAll('.model-feature-media img')];
+  const nameEl = document.getElementById('mfName');
+  const specEl = document.getElementById('mfSpec');
+  let fi = 0;
+  function showFeature(i) {
+    fi = i;
+    imgs.forEach((im, j) => im.classList.toggle('mf-active', j === i));
+    nameEl.textContent = imgs[i].dataset.name;
+    specEl.textContent = imgs[i].dataset.spec;
+  }
+  feature.addEventListener('click', () => { location.href = imgs[fi].dataset.href; });
+  setInterval(() => showFeature((fi + 1) % imgs.length), 4500);
+})();
+
+// Adım Adım Üretim — sabit görsel, kayan anlatı
+(function () {
+  const steps = document.querySelectorAll('.uretim-step');
+  if (!steps.length) return;
+  const images = document.querySelectorAll('.uretim-visual img');
+  const frameCount = document.getElementById('uretimFrameCount');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const i = entry.target.dataset.i;
+          steps.forEach(s => s.classList.toggle('active', s === entry.target));
+          images.forEach(img => img.classList.toggle('on', img.dataset.i === i));
+          frameCount.textContent = entry.target.dataset.frame + ' / 38';
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    steps.forEach(s => io.observe(s));
+  }
+})();
 </script>
 
 <script>

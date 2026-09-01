@@ -678,8 +678,9 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   overflow: hidden; cursor: pointer; aspect-ratio: 21/9;
   box-shadow: 0 20px 50px -20px rgba(47,74,61,.3);
 }
-@media (max-width: 720px) { .model-feature { aspect-ratio: 4/3; } }
+@media (max-width: 720px) { .model-feature { aspect-ratio: auto; display: flex; flex-direction: column; } }
 .model-feature-media { position: absolute; inset: 0; }
+@media (max-width: 720px) { .model-feature-media { position: relative; inset: auto; flex: none; width: 100%; aspect-ratio: 4/3; } }
 .model-feature-media img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   opacity: 0; transition: opacity 1.1s ease;
@@ -699,8 +700,15 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .mf-eyebrow { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--secondary); }
 .mf-name { font-family: var(--serif); font-size: 27px; font-weight: 700; color: var(--primary); }
 .mf-spec { font-size: 12.5px; color: var(--neutral-2); font-weight: 600; }
-@media (max-width: 600px) {
-  .model-feature-tag { right: 12px; top: 14px; padding: 12px 18px; max-width: 210px; }
+@media (max-width: 720px) {
+  /* Mobilde etiket görselin ÜSTÜNE değil, ALTINA oturur — görsel tam görünür kalır */
+  .model-feature-tag {
+    position: static; transform: none; right: auto; top: auto;
+    flex-direction: row; align-items: baseline; flex-wrap: wrap; row-gap: 3px; column-gap: 10px;
+    max-width: none; width: 100%; padding: 14px 18px; box-shadow: none;
+  }
+  .model-feature-tag::before { display: none; }
+  .mf-eyebrow { flex: 0 0 100%; }
   .mf-name { font-size: 20px; }
 }
 .mini-gallery { position: absolute; inset: 0; }

@@ -596,7 +596,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 @media (max-width: 900px) { .uretim-scrolly { grid-template-columns: 1fr; gap: 0; } }
 .uretim-visual { position: relative; }
 @media (min-width: 901px) { .uretim-visual { position: sticky; top: 100px; height: 60vh; align-self: start; } }
-@media (max-width: 900px) { .uretim-visual { height: 300px; margin-bottom: 6px; } }
+@media (max-width: 900px) { .uretim-visual { display: none; } }
 .uretim-visual .frame {
   position: absolute; inset: 0; border-radius: 10px; overflow: hidden;
   background: var(--neutral-1); box-shadow: 0 20px 50px -20px rgba(13,26,16,.35);
@@ -619,7 +619,15 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 }
 .uretim-step:first-child { border-top: none; }
 .uretim-step.active { opacity: 1; }
-@media (max-width: 900px) { .uretim-step { min-height: 0; padding: 18px 0; } }
+.uretim-step-img { display: none; }
+@media (max-width: 900px) {
+  .uretim-step { min-height: 0; padding: 18px 0; opacity: 1; }
+  .uretim-step-img {
+    display: block; width: 100%; aspect-ratio: 16/10; border-radius: 10px;
+    overflow: hidden; margin-bottom: 14px; background: var(--neutral-1);
+  }
+  .uretim-step-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+}
 .uretim-step .n { font-family: var(--serif); font-style: italic; font-size: 38px; color: var(--accent); line-height: 1; margin-bottom: 8px; }
 .uretim-step h4 { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
 .uretim-step p { font-size: 13.5px; color: var(--neutral-2); line-height: 1.55; max-width: 380px; }
@@ -1066,6 +1074,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .lightbox {
   position: fixed; inset: 0; z-index: 300; background: rgba(13,26,16,.94);
   display: none; align-items: center; justify-content: center; flex-direction: column; padding: 32px;
+  height: 100vh; height: 100dvh;
 }
 .lightbox.open { display: flex; }
 .lightbox img { max-width: min(1100px, 92vw); max-height: 76vh; border-radius: 8px; object-fit: contain; }
@@ -1497,9 +1506,10 @@ html.lenis, html.lenis body { height: auto; }
           <img src="assets/images/pico-003a/pico-003a-11.jpg" alt="Pico 003A" loading="lazy">
           <img src="assets/images/pico-003a/pico-003a-12.jpg" alt="Pico 003A" loading="lazy">
           <img src="assets/images/pico-003a/pico-003a-13.jpg" alt="Pico 003A" loading="lazy">
+          <img src="assets/images/pico-003a/pico-003a-14.png" alt="Pico 003A kat planı" loading="lazy">
           <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
           <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
-          <span class="mg-counter">1/13</span>
+          <span class="mg-counter">1/14</span>
         </div>
           <span class="model-badge">Pico Serisi</span>
         </div>
@@ -1535,9 +1545,10 @@ html.lenis, html.lenis body { height: auto; }
           <img src="assets/images/pico-003b/pico-003b-18.jpg" alt="Pico 003B" loading="lazy">
           <img src="assets/images/pico-003b/pico-003b-19.jpg" alt="Pico 003B" loading="lazy">
           <img src="assets/images/pico-003b/pico-003b-20.jpg" alt="Pico 003B" loading="lazy">
+          <img src="assets/images/pico-003b/pico-003b-21.png" alt="Pico 003B kat planı" loading="lazy">
           <button class="mg-nav mg-prev" onmousedown="event.preventDefault()" onclick="mgStep(event,this,-1)" aria-label="Önceki">‹</button>
           <button class="mg-nav mg-next" onmousedown="event.preventDefault()" onclick="mgStep(event,this,1)" aria-label="Sonraki">›</button>
-          <span class="mg-counter">1/20</span>
+          <span class="mg-counter">1/21</span>
         </div>
           <span class="model-badge">Pico Serisi</span>
         </div>
@@ -1795,26 +1806,32 @@ html.lenis, html.lenis body { height: auto; }
         </div>
         <div class="uretim-steps" id="uretimSteps">
           <a href="uretim-galeri.html" class="uretim-step active" data-i="0" data-frame="01">
+            <div class="uretim-step-img"><img src="assets/images/uretim/uretim-01.jpg" alt="Şasemiz" loading="lazy"></div>
             <div class="n">01</div><h4>Şasemiz</h4>
             <p>Denizli fabrikamızda üretim, sağlam bir çelik şase üzerine kurulur.</p>
           </a>
           <a href="uretim-galeri.html" class="uretim-step" data-i="1" data-frame="08">
+            <div class="uretim-step-img"><img src="assets/images/uretim/uretim-08.jpg" alt="OSB montajı bitti" loading="lazy"></div>
             <div class="n">02</div><h4>OSB montajı bitti</h4>
             <p>Karkas ve gövde tamamlanır, evinizin hacmi ortaya çıkar.</p>
           </a>
           <a href="uretim-galeri.html" class="uretim-step" data-i="2" data-frame="15">
+            <div class="uretim-step-img"><img src="assets/images/uretim/uretim-15.jpg" alt="İç duvarlarımız döşeniyor" loading="lazy"></div>
             <div class="n">03</div><h4>İç duvarlarımız döşeniyor</h4>
             <p>Yalıtım ve MDF lambri kaplamalarla iç yüzeyler şekillenir.</p>
           </a>
           <a href="uretim-galeri.html" class="uretim-step" data-i="3" data-frame="21">
+            <div class="uretim-step-img"><img src="assets/images/uretim/uretim-21.jpg" alt="Islak zemin hazırlanıyor" loading="lazy"></div>
             <div class="n">04</div><h4>Islak zemin hazırlanıyor</h4>
             <p>Banyo ve mutfak için su yalıtımlı zemin döşenir.</p>
           </a>
           <a href="uretim-galeri.html" class="uretim-step" data-i="4" data-frame="27">
+            <div class="uretim-step-img"><img src="assets/images/uretim/uretim-27.jpg" alt="Boya işi bitti" loading="lazy"></div>
             <div class="n">05</div><h4>Boya işi bitti</h4>
             <p>Son kat işçiliğiyle ev teslime hazır hale gelir.</p>
           </a>
           <a href="uretim-galeri.html" class="uretim-step" data-i="5" data-frame="33">
+            <div class="uretim-step-img"><img src="assets/images/uretim/uretim-33.jpg" alt="Sahibine kavuşan tinymiz" loading="lazy"></div>
             <div class="n">06</div><h4>Sahibine kavuşan tinymiz</h4>
             <p>Arazisine götürülür, kurulur, anahtar sahibine teslim edilir.</p>
           </a>

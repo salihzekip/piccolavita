@@ -22,7 +22,7 @@
 body {
   font-family: var(--sans); background: var(--forest); color: var(--white);
   -webkit-font-smoothing: antialiased; overflow-x: hidden;
-  display: flex; flex-direction: column; min-height: 100vh;
+  display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh;
 }
 a { text-decoration: none; color: inherit; }
 button { font-family: var(--sans); cursor: pointer; border: none; background: none; color: inherit; }
@@ -170,22 +170,23 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 <script>
 const media = [
   { type: 'img', src: 'assets/images/pico-004b/pico-004b-01.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-02.jpg' },
   { type: 'img', src: 'assets/images/pico-004b/pico-004b-03.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-04.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-05.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-06.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-07.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-08.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-kat-plani.png' },
   { type: 'img', src: 'assets/images/pico-004b/pico-004b-09.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-10.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-02.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-05.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-07.jpg' },
   { type: 'img', src: 'assets/images/pico-004b/pico-004b-11.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-14.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-17.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-06.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-08.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-10.jpg' },
   { type: 'img', src: 'assets/images/pico-004b/pico-004b-12.jpg' },
   { type: 'img', src: 'assets/images/pico-004b/pico-004b-13.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-14.jpg' },
+  { type: 'img', src: 'assets/images/pico-004b/pico-004b-04.jpg' },
   { type: 'img', src: 'assets/images/pico-004b/pico-004b-15.jpg' },
   { type: 'img', src: 'assets/images/pico-004b/pico-004b-16.jpg' },
-  { type: 'img', src: 'assets/images/pico-004b/pico-004b-17.jpg' },
 ];
 const total = media.length;
 let idx = 0;

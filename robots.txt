@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://piccolavita.netlify.app/sitemap.xml

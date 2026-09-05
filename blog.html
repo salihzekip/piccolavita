@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | Piccola Vita Tiny House</title>
+<meta name="description" content="Tiny house yaşamı, yapı malzemeleri, yatırım ve erişilebilirlik üzerine Piccola Vita'nın ürettiği pratik rehberler.">
+<link rel="canonical" href="https://piccolavita.netlify.app/blog.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog | Piccola Vita Tiny House">
+<meta property="og:description" content="Tiny house yaşamı, yapı malzemeleri, yatırım ve erişilebilirlik üzerine pratik rehberler.">
+<meta property="og:url" content="https://piccolavita.netlify.app/blog.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Piccola Vita Blog","url":"https://piccolavita.netlify.app/blog.html","blogPost":[{"@type":"BlogPosting","headline":"Tiny House'ta Nem ve Rutubet Sorunu: Gerçek Neden ve Kalıcı Çözüm","url":"https://piccolavita.netlify.app/blog-nem-ve-rutubet.html"},{"@type":"BlogPosting","headline":"Emeklilikte Küçülme: Tiny House'a Geçiş Gerçekten Mantıklı mı?","url":"https://piccolavita.netlify.app/blog-emeklilikte-kucalme.html"},{"@type":"BlogPosting","headline":"Yaşlı ve Engelli Bireyler İçin Erişilebilir Tiny House Tasarımı","url":"https://piccolavita.netlify.app/blog-erisilebilir-tasarim.html"},{"@type":"BlogPosting","headline":"Köpek ve Kedinizle Tiny House'ta Yaşamak: Pratik Rehber","url":"https://piccolavita.netlify.app/blog-evcil-hayvanla-yasam.html"},{"@type":"BlogPosting","headline":"Tiny House Yatırımınızın Değerini Korumak: İkinci El Gerçeği","url":"https://piccolavita.netlify.app/blog-ikinci-el-deger.html"}]}</script>
+<style>
+:root {
+  --primary:   #2F4A3D;
+  --primary-h: #3E5D4F;
+  --secondary: #8A5A3B;
+  --sec-h:     #6E4429;
+  --accent:    #C8A36A;
+  --dark:      #0d1a10;
+  --forest:    #111c11;
+  --bg:        #F8F5F0;
+  --neutral-1: #DCCDB8;
+  --neutral-2: #5F6468;
+  --white:     #ffffff;
+  --serif:     'Playfair Display', Georgia, serif;
+  --sans:      'Montserrat', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--bg); color: var(--primary); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--sans); cursor: pointer; border: none; background: none; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-weight: 600; font-size: 15px; padding: 13px 28px; border-radius: 4px; border: none; cursor: pointer; transition: background .22s, transform .15s; white-space: nowrap; letter-spacing: .02em; }
+.btn-cta { background: var(--secondary); color: var(--white); }
+.btn-cta:hover { background: var(--sec-h); transform: translateY(-2px); }
+.btn-wa { background: #25D366; color: var(--white); }
+.btn-wa:hover { background: #1da851; transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 2px solid var(--white); color: var(--white); padding: 11px 26px; }
+.btn-outline:hover { background: rgba(255,255,255,.12); }
+
+/* HEADER */
+.bhead { background: var(--primary); padding: 18px 0; position: sticky; top: 0; z-index: 50; }
+.bhead-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.bhead-logo { font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--white); letter-spacing: .04em; }
+.bhead-nav { display: flex; gap: 26px; }
+.bhead-nav a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.8); padding-bottom: 3px; border-bottom: 2px solid transparent; }
+.bhead-nav a:hover, .bhead-nav a.active { color: var(--white); border-color: var(--accent); }
+@media (max-width: 760px) { .bhead-nav { display: none; } }
+
+/* HUB */
+.bhero { padding: 64px 0 36px; text-align: center; }
+.bhero .tag { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--secondary); margin-bottom: 14px; }
+.bhero h1 { font-family: var(--serif); font-size: clamp(30px,4vw,44px); color: var(--primary); margin-bottom: 16px; line-height: 1.2; }
+.bhero p { color: var(--neutral-2); font-size: 17px; max-width: 620px; margin: 0 auto; line-height: 1.6; }
+
+.bgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 32px; padding: 12px 0 100px; }
+.bcard { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 6px 24px rgba(13,26,16,.08); transition: transform .2s, box-shadow .2s; display: flex; flex-direction: column; }
+.bcard:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(13,26,16,.15); }
+.bcard-img { aspect-ratio: 16/10; overflow: hidden; background: var(--neutral-1); }
+.bcard-img img { width: 100%; height: 100%; object-fit: cover; }
+.bcard-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.bcard-tag { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--secondary); }
+.bcard-body h2 { font-family: var(--serif); font-size: 20px; color: var(--primary); line-height: 1.35; }
+.bcard-body p { font-size: 14px; color: var(--neutral-2); line-height: 1.65; flex: 1; }
+.bcard-date { font-size: 12px; color: var(--neutral-2); opacity: .75; }
+
+/* ARTICLE */
+.art-head { padding: 48px 0 0; }
+.breadcrumb { font-size: 13px; color: var(--neutral-2); margin-bottom: 22px; }
+.breadcrumb a { color: var(--secondary); }
+.art-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--secondary); margin-bottom: 14px; }
+.art-head h1 { font-family: var(--serif); font-size: clamp(28px,4.2vw,40px); color: var(--primary); line-height: 1.28; margin-bottom: 18px; }
+.art-sub { font-size: 17px; color: var(--neutral-2); line-height: 1.65; margin-bottom: 22px; max-width: 680px; }
+.art-meta { font-size: 13px; color: var(--neutral-2); opacity: .85; padding-bottom: 32px; border-bottom: 1px solid var(--neutral-1); margin-bottom: 40px; }
+
+.art-hero { max-width: 940px; margin: 0 auto 48px; padding: 0 24px; }
+.art-hero img { width: 100%; border-radius: 10px; display: block; }
+
+.art-body p { font-size: 17px; line-height: 1.85; color: var(--primary); margin-bottom: 22px; }
+.art-body h2 { font-family: var(--serif); font-size: 26px; color: var(--primary); margin: 44px 0 18px; line-height: 1.3; }
+.art-body ul, .art-body ol { margin: 0 0 22px 22px; }
+.art-body li { font-size: 16px; line-height: 1.75; color: var(--primary); margin-bottom: 8px; }
+.pull { border-left: 3px solid var(--accent); padding: 4px 0 4px 22px; margin: 34px 0; font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--secondary); line-height: 1.6; }
+
+.art-cta { background: var(--primary); border-radius: 12px; padding: 34px 28px; text-align: center; margin: 44px 0; }
+.art-cta p { color: rgba(255,255,255,.9); font-size: 16px; margin-bottom: 20px; }
+
+.faq { margin-top: 6px; }
+.faq-item { border-bottom: 1px solid var(--neutral-1); padding: 18px 0; }
+.faq-item h3 { font-family: var(--sans); font-weight: 600; font-size: 16px; color: var(--primary); margin-bottom: 8px; }
+.faq-item p { font-size: 15px; color: var(--neutral-2); line-height: 1.7; margin: 0; }
+
+.art-related { padding: 50px 0 90px; }
+.art-related h2 { font-family: var(--serif); font-size: 24px; color: var(--primary); margin-bottom: 22px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; }
+.related-card { display: block; border-radius: 8px; overflow: hidden; background: var(--white); box-shadow: 0 4px 16px rgba(13,26,16,.08); transition: transform .2s; }
+.related-card:hover { transform: translateY(-3px); }
+.related-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.related-card span { display: block; padding: 14px 16px; font-size: 14px; font-weight: 600; color: var(--primary); line-height: 1.4; }
+
+@media (max-width: 640px) {
+  .art-hero { padding: 0 16px; }
+  .bhero { padding: 48px 0 28px; }
+  .art-head { padding: 36px 0 0; }
+}
+
+/* FOOTER */
+.bfoot { background: var(--forest); color: rgba(255,255,255,.7); padding: 50px 0 26px; margin-top: 10px; }
+.bfoot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center; }
+.bfoot-logo { font-family: var(--serif); color: var(--white); font-size: 18px; font-weight: 700; }
+.bfoot a { color: rgba(255,255,255,.7); font-size: 14px; }
+.bfoot a:hover { color: var(--accent); }
+.bfoot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.bfoot-bottom { text-align: center; font-size: 12px; opacity: .55; margin-top: 30px; width: 100%; }
+</style>
+</head>
+<body>
+<header class="bhead">
+  <div class="bhead-inner">
+    <a href="index.html" class="bhead-logo">PICCOLAVITA</a>
+    <nav class="bhead-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="tum-modeller.html">Modeller</a>
+      <a href="blog.html" class="active">Blog</a>
+    </nav>
+    <a href="https://wa.me/905324521522?text=Merhaba%2C%20blogda%20okudu%C4%9Fum%20bir%20konu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." class="btn btn-wa" target="_blank" rel="noopener">Teklif Al</a>
+  </div>
+</header>
+<main>
+  <section class="bhero container">
+    <span class="tag">Piccola Vita Blog</span>
+    <h1>Tiny House Yaşamı Üzerine</h1>
+    <p>Yapı malzemesinden yatırım kararına, erişilebilirlikten emeklilik planlarına — merak edilen ama az konuşulan konuları ele alıyoruz.</p>
+  </section>
+  <section class="bgrid container">
+    <a class="bcard" href="blog-nem-ve-rutubet.html">
+      <div class="bcard-img"><img src="assets/images/uretim/uretim-11.jpg" alt="Piccola Vita üretiminde dış cepheye döşenen nefes alabilen Tyvek membran" loading="lazy"></div>
+      <div class="bcard-body">
+        <span class="bcard-tag">Yapı ve Malzeme</span>
+        <h2>Tiny House'ta Nem ve Rutubet Sorunu: Gerçek Neden ve Kalıcı Çözüm</h2>
+        <p>Küçük hacim, nemi daha mı çabuk tutar? Kısa cevap: hayır — doğru malzeme ve havalandırmayla hiç sorun yaşamıyorsunuz.</p>
+        <span class="bcard-date">5 Eylül 2026 · 6 dk okuma</span>
+      </div>
+    </a>
+    <a class="bcard" href="blog-emeklilikte-kucalme.html">
+      <div class="bcard-img"><img src="assets/images/uretim/uretim-33.jpg" alt="Tesliminden sonra sahibine kavuşan bir Piccola Vita tiny house" loading="lazy"></div>
+      <div class="bcard-body">
+        <span class="bcard-tag">Yaşam Tarzı</span>
+        <h2>Emeklilikte Küçülme: Tiny House'a Geçiş Gerçekten Mantıklı mı?</h2>
+        <p>Aidat, bakım ve boş odalar emeklilikte yük olmaya başlıyor. Küçülmek gerçekten çözüm mü, yoksa yeni bir sorun mu?</p>
+        <span class="bcard-date">5 Eylül 2026 · 6 dk okuma</span>
+      </div>
+    </a>
+    <a class="bcard" href="blog-erisilebilir-tasarim.html">
+      <div class="bcard-img"><img src="assets/images/sabit/sabit-01.jpg" alt="Tek katlı, merdivensiz sabit tiny house modeli" loading="lazy"></div>
+      <div class="bcard-body">
+        <span class="bcard-tag">Yapı ve Malzeme</span>
+        <h2>Yaşlı ve Engelli Bireyler İçin Erişilebilir Tiny House Tasarımı</h2>
+        <p>Küçük ev demek, dar kapı ve merdiven demek değil. Doğru planlamayla tiny house'lar erişilebilirlik açısından bir daireden bile daha esnek olabiliyor.</p>
+        <span class="bcard-date">5 Eylül 2026 · 5 dk okuma</span>
+      </div>
+    </a>
+    <a class="bcard" href="blog-evcil-hayvanla-yasam.html">
+      <div class="bcard-img"><img src="assets/images/uretim/uretim-32.jpg" alt="Piccola Vita üretiminde hazırlanan veranda ve pergole" loading="lazy"></div>
+      <div class="bcard-body">
+        <span class="bcard-tag">Yaşam Tarzı</span>
+        <h2>Köpek ve Kedinizle Tiny House'ta Yaşamak: Pratik Rehber</h2>
+        <p>Küçük ev, küçük hayvan demek değil. Doğru veranda ve zemin seçimiyle büyük bir köpek bile tiny house'ta rahat ediyor.</p>
+        <span class="bcard-date">5 Eylül 2026 · 5 dk okuma</span>
+      </div>
+    </a>
+    <a class="bcard" href="blog-ikinci-el-deger.html">
+      <div class="bcard-img"><img src="assets/images/uretim/uretim-27.jpg" alt="Boya işlemleri tamamlanmış Piccola Vita tiny house üretimi" loading="lazy"></div>
+      <div class="bcard-body">
+        <span class="bcard-tag">Yatırım</span>
+        <h2>Tiny House Yatırımınızın Değerini Korumak: İkinci El Gerçeği</h2>
+        <p>İkinci el tiny house pazarı Türkiye'de henüz oturmadı — bu hem bir risk hem de doğru malzemeyle avantaja çevrilebilecek bir fırsat.</p>
+        <span class="bcard-date">5 Eylül 2026 · 6 dk okuma</span>
+      </div>
+    </a>
+  </section>
+</main>
+<footer class="bfoot">
+  <div class="container bfoot-inner">
+    <div class="bfoot-logo">PICCOLAVITA</div>
+    <div class="bfoot-links">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="tum-modeller.html">Modeller</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#iletisim">İletişim</a>
+      <a href="tel:05324521522">0 (532) 452 15 22</a>
+    </div>
+    <div class="bfoot-bottom">© 2026 Piccola Vita Tiny House. Tüm hakları saklıdır.</div>
+  </div>
+</footer>
+</body>
+</html>

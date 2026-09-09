@@ -505,10 +505,11 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 .picco-typing span:nth-child(2) { animation-delay: .2s; }
 .picco-typing span:nth-child(3) { animation-delay: .4s; }
 @keyframes picco-blink { 0%,80%,100%{opacity:.25} 40%{opacity:.8} }
-.picco-msg-cta { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.picco-cta-label { display: block; font-size: 12px; color: var(--neutral-2); opacity: .8; }
+.picco-msg-cta { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
 .picco-msg-cta a {
   display: flex; align-items: center; justify-content: center; gap: 6px;
-  padding: 9px 12px; border-radius: 20px; font-size: 13px; font-weight: 700;
+  padding: 6px 10px; border-radius: 16px; font-size: 12px; font-weight: 700;
   text-decoration: none; transition: opacity .2s;
 }
 .picco-msg-cta a:hover { opacity: .85; }
@@ -3799,7 +3800,10 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   function addCtaBubble(waText) {
     const div = document.createElement('div');
     div.className = 'picco-msg bot';
-    div.appendChild(document.createTextNode('Detaylı ve kesin bilgi için bize ulaşabilirsiniz:'));
+    const label = document.createElement('span');
+    label.className = 'picco-cta-label';
+    label.textContent = 'Detaylı ve kesin bilgi için bize ulaşabilirsiniz:';
+    div.appendChild(label);
 
     const cta = document.createElement('div');
     cta.className = 'picco-msg-cta';

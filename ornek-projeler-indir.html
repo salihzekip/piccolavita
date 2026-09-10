@@ -96,11 +96,7 @@ form { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
     <h1>Projeler <em>Kataloğumuz.</em></h1>
     <p class="sub">Türkiye'nin dört bir yanına teslim ettiğimiz projelerden bir seçkiyi içeren kataloğumuzu indirmek için bilgilerinizi bırakın.</p>
 
-    <form action="https://formsubmit.co/info@piccolavita.com" method="POST">
-      <input type="hidden" name="_subject" value="🔔 Örnek Projeler Kataloğu İndirildi — Bu kişiyi arayın veya mail atın">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://piccolavita.netlify.app/ornek-projeler-tesekkur.html">
+    <form id="catalogForm">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="form-group">
@@ -116,11 +112,44 @@ form { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
         <input type="email" id="kMail" name="E-posta" required autocomplete="email" placeholder="ornek@eposta.com">
       </div>
 
-      <button type="submit" class="btn-submit">Kataloğu İndir</button>
+      <button type="submit" class="btn-submit" id="submitBtn">Kataloğu İndir</button>
       <p class="form-note">Bilgileriniz yalnızca size dönüş yapmak için kullanılır, üçüncü kişilerle paylaşılmaz. Gönderdikten sonra katalog otomatik olarak indirilecektir.</p>
     </form>
   </div>
 </div>
+
+<script>
+document.getElementById('catalogForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (this.querySelector('[name="_honey"]').value) return;
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Gönderiliyor...';
+
+  var data = {
+    name: document.getElementById('kAd').value,
+    phone: document.getElementById('kTel').value,
+    email: document.getElementById('kMail').value,
+    formType: 'ornek-projeler',
+  };
+
+  var done = false;
+  function goToThankYou() {
+    if (done) return;
+    done = true;
+    window.location.href = 'ornek-projeler-tesekkur.html';
+  }
+
+  fetch('/.netlify/functions/send-catalog', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  }).catch(function () {}).finally(goToThankYou);
+
+  setTimeout(goToThankYou, 4000);
+});
+</script>
 
 </body>
 </html>

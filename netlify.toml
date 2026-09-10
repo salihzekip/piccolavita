@@ -4,3 +4,53 @@
 
 [functions]
   node_bundler = "esbuild"
+
+# Eski (.asp) site sayfalarindan yeni sayfalara 301 yonlendirme (Google index'inde hala eski linkler var)
+[[redirects]]
+  from = "/arte_tiny_house.asp"
+  to = "/10metre-arte-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/studio_tiny_house.asp"
+  to = "/studio-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cesme.asp"
+  to = "/comfort-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tiny_house_modelleri.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/centro_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/piccolavita.asp"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/belgeler.asp"
+  to = "/"
+  status = 301
+  force = true
+
+# Eslestirilemeyen tum diger eski .asp sayfalari icin genel yakalama (404 yerine ana sayfaya)
+[[redirects]]
+  from = "/*.asp"
+  to = "/"
+  status = 301
+  force = true

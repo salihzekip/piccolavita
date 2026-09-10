@@ -48,9 +48,10 @@
   status = 301
   force = true
 
-# Eslestirilemeyen tum diger eski .asp sayfalari icin genel yakalama (404 yerine ana sayfaya)
+# Genel yakalama: yukaridaki ozel kurallara girmeyen ve gercekte var olmayan HERHANGI bir sayfa
+# (eski .asp linkleri dahil) icin 404 yerine ana sayfaya 301. force=true YOK: gercek/var olan
+# sayfalar bu kuraldan etkilenmez, Netlify once statik dosyayi arar.
 [[redirects]]
-  from = "/*.asp"
+  from = "/*"
   to = "/"
   status = 301
-  force = true

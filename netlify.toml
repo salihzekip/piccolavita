@@ -48,10 +48,31 @@
   status = 301
   force = true
 
-# Genel yakalama: yukaridaki ozel kurallara girmeyen ve gercekte var olmayan HERHANGI bir sayfa
-# (eski .asp linkleri dahil) icin 404 yerine ana sayfaya 301. force=true YOK: gercek/var olan
-# sayfalar bu kuraldan etkilenmez, Netlify once statik dosyayi arar.
 [[redirects]]
-  from = "/*"
+  from = "/lavoro_tiny_office.asp"
+  to = "/lavoro-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/akyaka.asp"
+  to = "/akyaka-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bayilik.asp"
   to = "/"
   status = 301
+  force = true
+
+# Genel yakalama: yukaridaki ozel kurallara girmeyen ve gercekte var olmayan HERHANGI bir sayfa
+# icin (uzantili .asp/.php yollari dahil) Netlify'nin standart 404 sayfasi yerine ana sayfa
+# icerigini goster. status=404 ozel bir davranis: normal /* redirect kurallari nokta iceren
+# (dosya gibi gorunen) yollarda atlaniyor, ama status=404 ile tanimlanan kural Netlify'nin
+# "custom 404 page" mekanizmasi oldugu icin uzantili yollarda da calisiyor. Gercek/var olan
+# sayfalar bundan etkilenmez, once statik dosya aranir.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404

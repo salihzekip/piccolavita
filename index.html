@@ -3393,11 +3393,9 @@ function storySlideStep(dir) {
 }
 
 // Mini gallery (model cards + project cards with multiple photos)
-function mgStep(e, btn, dir) {
-  e.stopPropagation();
-  const gallery = btn.closest('.mini-gallery');
+function mgSetActive(gallery, idx) {
   const items = gallery.querySelectorAll('img, video');
-  const idx = (parseInt(gallery.dataset.idx || '0', 10) + dir + items.length) % items.length;
+  idx = ((idx % items.length) + items.length) % items.length;
   items.forEach((im, i) => im.classList.toggle('mg-active', i === idx));
   gallery.dataset.idx = idx;
   const counter = gallery.querySelector('.mg-counter');
@@ -3405,6 +3403,19 @@ function mgStep(e, btn, dir) {
   const play = gallery.querySelector('.mg-play');
   if (play) play.style.display = items[idx].tagName === 'VIDEO' ? 'flex' : 'none';
 }
+function mgStep(e, btn, dir) {
+  e.stopPropagation();
+  const gallery = btn.closest('.mini-gallery');
+  mgSetActive(gallery, parseInt(gallery.dataset.idx || '0', 10) + dir);
+}
+
+// Modeller ve Örnek Projeler kartlarındaki foto galerileri 4 saniyede bir otomatik kayar
+setInterval(() => {
+  document.querySelectorAll('.model-card-img .mini-gallery, .project-item .mini-gallery').forEach((gallery) => {
+    if (gallery.matches(':hover') || gallery.querySelectorAll('img, video').length < 2) return;
+    mgSetActive(gallery, parseInt(gallery.dataset.idx || '0', 10) + 1);
+  });
+}, 4000);
 
 // Lightbox
 const projectItems = [...document.querySelectorAll('.project-item')];

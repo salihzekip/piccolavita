@@ -10,6 +10,9 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="canonical" href="https://piccolavita.com/">
+<link rel="alternate" hreflang="tr" href="https://piccolavita.com/">
+<link rel="alternate" hreflang="en" href="https://piccolavita.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://piccolavita.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Piccola Vita Tiny House">
 <meta property="og:locale" content="tr_TR">
@@ -97,6 +100,7 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
   transition: color .2s, border-color .2s;
 }
 .navbar.solid .navbar-links a { color: var(--primary); }
+.navbar.solid .lang-switch { color: var(--primary) !important; }
 .navbar-links a:hover { border-bottom-color: var(--secondary); }
 
 /* ── MODELLER DROPDOWN ── */
@@ -1165,6 +1169,7 @@ html.lenis, html.lenis body { height: auto; }
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <a href="en/index.html" style="opacity:.7">🇬🇧 English</a>
   <a href="#" onclick="closeMobile()">Ana Sayfa</a>
   <details class="mobile-models">
     <summary>Modeller</summary>
@@ -1244,6 +1249,7 @@ html.lenis, html.lenis body { height: auto; }
     </ul>
     <div class="navbar-cta">
       <a href="https://wa.me/905324521522?text=Merhaba%2C%20Piccola%20Vita%20hakkında%20bilgi%20almak%20istiyorum." class="btn btn-cta btn-label" target="_blank" rel="noopener">Teklif Al</a>
+      <a href="en/index.html" class="lang-switch" style="font-size:13px;font-weight:700;letter-spacing:.03em;color:rgba(255,255,255,.85);margin-right:4px;">EN</a>
       <button class="navbar-burger" onclick="openMobile()" aria-label="Menü">
         <span></span><span></span><span></span>
       </button>

@@ -86,6 +86,12 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'invalid_json' }) };
   }
 
+  const LANG_NAMES = { en: 'English', de: 'German', fr: 'French', bg: 'Bulgarian' };
+  const langName = LANG_NAMES[payload.lang];
+  const systemPrompt = langName
+    ? `${SYSTEM_PROMPT}\n\nLANGUAGE OVERRIDE\n- Reply ONLY in ${langName}, regardless of the language the visitor writes in — this is the ${langName} version of the site.\n- Keep proper nouns as-is (Picco, Piccola Vita, Pico 001 etc., Denizli), and keep prices in TL and measurements in the units given above.`
+    : SYSTEM_PROMPT;
+
   const incomingMessages = Array.isArray(payload.messages) ? payload.messages : [];
   const trimmedHistory = incomingMessages
     .slice(-MAX_HISTORY_MESSAGES)
@@ -107,7 +113,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         model: MODEL,
         max_tokens: 500,
-        system: SYSTEM_PROMPT,
+        system: systemPrompt,
         messages: trimmedHistory,
       }),
     });

@@ -5,6 +5,13 @@
 [functions]
   node_bundler = "esbuild"
 
+# netlify.app alt alan adi ana domainin kopyasi olarak indexlenmesin
+[[redirects]]
+  from = "https://piccolavita.netlify.app/*"
+  to = "https://piccolavita.com/:splat"
+  status = 301
+  force = true
+
 # Eski (.asp) site sayfalarindan yeni sayfalara 301 yonlendirme (Google index'inde hala eski linkler var)
 [[redirects]]
   from = "/arte_tiny_house.asp"
@@ -66,6 +73,294 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/acipayam.asp"
+  to = "/acipayam-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cameli.asp"
+  to = "/cameli-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cesme_zeytinler.asp"
+  to = "/cesme2-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/didim.asp"
+  to = "/luna-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dim.asp"
+  to = "/dim-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/urla.asp"
+  to = "/urla-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/luna_tiny_house.asp"
+  to = "/luna-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/comfort_tiny_house.asp"
+  to = "/10metre-comfort-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/studio_tiny_ofis.asp"
+  to = "/studio-galeri.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog_araziye_tiny_house_koymak_yasalmi.asp"
+  to = "/tiny-house-yasal-mi.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tiny_house_nedir.asp"
+  to = "/tiny-house-nedir.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/biten.asp"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bize-ulasin.asp"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/iletisim.asp"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gizlilik.asp"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ik.asp"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.asp"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sss.asp"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aura_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/castello_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dimora_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/florin_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/foresta_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/freya_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/moderno_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/natura_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nerina_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nova_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/opera_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/silva_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vacanza_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vento_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/verde_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vista_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vita_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hotel_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/plain_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ozel_tasarim_tiny_house.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kisiye_ozel.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/standart.asp"
+  to = "/tum-modeller.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/elora_tiny_ofis.asp"
+  to = "/#projeler"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/oliva_tiny_ofis.asp"
+  to = "/#projeler"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/solena_tiny_ofis.asp"
+  to = "/#projeler"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terra_tiny_ofis.asp"
+  to = "/#projeler"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vera_tiny_ofis.asp"
+  to = "/#projeler"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vivano_tiny_ofis.asp"
+  to = "/#projeler"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ofis_tiny_house.asp"
+  to = "/#projeler"
+  status = 301
+  force = true
+
 # Genel yakalama: yukaridaki ozel kurallara girmeyen ve gercekte var olmayan HERHANGI bir sayfa
 # icin (uzantili .asp/.php yollari dahil) Netlify'nin standart 404 sayfasi yerine ana sayfa
 # icerigini goster. status=404 ozel bir davranis: normal /* redirect kurallari nokta iceren
@@ -76,3 +371,54 @@
   from = "/*"
   to = "/index.html"
   status = 404
+
+# Test/taslak kopyalari ve not dosyalari arama sonuclarina girmesin
+[[headers]]
+  for = "/v3/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/alternatif/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/piccolavita-combined.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/katalog-tesekkur.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/ornek-projeler-tesekkur.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/YAPILANLAR.md"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/CHANGELOG.md"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/ALTERNATIF-SITE.md"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/MILAS-GALERI-RAPORU.md"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/README.md"
+  [headers.values]
+    X-Robots-Tag = "noindex"

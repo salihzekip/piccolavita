@@ -1,0 +1,12 @@
+netlify.toml
+netlify/
+.netlify/
+wrangler.toml
+worker.js
+.wrangler/
+.git/
+.gitignore
+_eski-kopyalar/
+da/
+assets/docs/piccolavita-katalog-2026-eylul.pdf
+assets/docs/piccolavita-ornek-projeler-katalogu.pdf

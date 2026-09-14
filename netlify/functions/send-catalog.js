@@ -47,7 +47,7 @@ exports.handler = async (event) => {
   const phone = String(payload.phone || '').trim().slice(0, 50);
   const email = String(payload.email || '').trim().slice(0, 200);
   const formType = CATALOGS[payload.formType] ? payload.formType : 'katalog';
-  const lang = payload.lang === 'en' || payload.lang === 'de' ? payload.lang : 'tr';
+  const lang = ['en', 'de', 'fr', 'bg', 'da'].includes(payload.lang) ? payload.lang : 'tr';
 
   if (!name || !phone || !email) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'missing_fields' }) };
@@ -74,9 +74,7 @@ exports.handler = async (event) => {
       sendEmail({
         from: FROM,
         to: [email],
-        subject: lang === 'en' ? (cat.customerSubjectEn || cat.customerSubject)
-          : lang === 'de' ? (cat.customerSubjectDe || cat.customerSubject)
-          : cat.customerSubject,
+        subject: cat.customerSubject,
         html: lang === 'en'
           ? `<p>Hi ${escapeHtml(name)},</p>`
             + `<p>You can use the link below to download the ${escapeHtml(cat.fileName)} (PDF, in Turkish):</p>`
@@ -88,6 +86,24 @@ exports.handler = async (event) => {
             + `<p>Über den folgenden Link können Sie ${escapeHtml(cat.fileName)} (PDF, auf Türkisch) herunterladen:</p>`
             + `<p><a href="${cat.fileUrl}">${escapeHtml(cat.fileName)} herunterladen</a></p>`
             + `<p>Bei Fragen erreichen Sie uns auf WhatsApp: `
+            + `<a href="https://wa.me/905324521522">+90 532 452 15 22</a></p>`
+          : lang === 'fr'
+          ? `<p>Bonjour ${escapeHtml(name)},</p>`
+            + `<p>Vous pouvez utiliser le lien ci-dessous pour télécharger ${escapeHtml(cat.fileName)} (PDF, en turc) :</p>`
+            + `<p><a href="${cat.fileUrl}">Télécharger ${escapeHtml(cat.fileName)}</a></p>`
+            + `<p>Pour toute question, contactez-nous sur WhatsApp : `
+            + `<a href="https://wa.me/905324521522">+90 532 452 15 22</a></p>`
+          : lang === 'bg'
+          ? `<p>Здравейте, ${escapeHtml(name)},</p>`
+            + `<p>По-долу можете да използвате връзката, за да изтеглите ${escapeHtml(cat.fileName)} (PDF, на турски език):</p>`
+            + `<p><a href="${cat.fileUrl}">Изтеглете ${escapeHtml(cat.fileName)}</a></p>`
+            + `<p>При въпроси можете да се свържете с нас в WhatsApp: `
+            + `<a href="https://wa.me/905324521522">+90 532 452 15 22</a></p>`
+          : lang === 'da'
+          ? `<p>Hej ${escapeHtml(name)},</p>`
+            + `<p>Du kan bruge linket nedenfor til at downloade ${escapeHtml(cat.fileName)} (PDF, på tyrkisk):</p>`
+            + `<p><a href="${cat.fileUrl}">Download ${escapeHtml(cat.fileName)}</a></p>`
+            + `<p>Har du spørgsmål, er du velkommen til at kontakte os på WhatsApp: `
             + `<a href="https://wa.me/905324521522">+90 532 452 15 22</a></p>`
           : `<p>Merhaba ${escapeHtml(name)},</p>`
           + `<p>${escapeHtml(cat.fileName)} indirmek için aşağıdaki bağlantıyı kullanabilirsiniz:</p>`

@@ -86,7 +86,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'invalid_json' }) };
   }
 
-  const LANG_NAMES = { en: 'English', de: 'German', fr: 'French', bg: 'Bulgarian' };
+  const LANG_NAMES = { en: 'English', de: 'German', fr: 'French', bg: 'Bulgarian', da: 'Danish' };
   const langName = LANG_NAMES[payload.lang];
   const systemPrompt = langName
     ? `${SYSTEM_PROMPT}\n\nLANGUAGE OVERRIDE\n- Reply ONLY in ${langName}, regardless of the language the visitor writes in — this is the ${langName} version of the site.\n- Keep proper nouns as-is (Picco, Piccola Vita, Pico 001 etc., Denizli), and keep prices in TL and measurements in the units given above.`

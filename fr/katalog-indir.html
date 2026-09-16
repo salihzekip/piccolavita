@@ -161,7 +161,7 @@ document.getElementById('catalogForm').addEventListener('submit', function (e) {
     window.location.href = 'katalog-tesekkur.html';
   }
 
-  fetch('/.netlify/functions/send-catalog', {
+  fetch('https://piccolavita.piccolavita.workers.dev/.netlify/functions/send-catalog', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),

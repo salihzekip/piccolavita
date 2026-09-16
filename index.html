@@ -3906,7 +3906,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     showTyping();
 
     try {
-      const res = await fetch('/.netlify/functions/picco-chat', {
+      const res = await fetch('https://piccolavita.piccolavita.workers.dev/.netlify/functions/picco-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: history }),

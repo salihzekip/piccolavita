@@ -12,11 +12,3 @@ binding = "DOCS_BUCKET"
 directory = "."
 binding = "ASSETS"
 html_handling = "none"
-
-[[routes]]
-pattern = "piccolavita.com/*"
-zone_name = "piccolavita.com"
-
-[[routes]]
-pattern = "www.piccolavita.com/*"
-zone_name = "piccolavita.com"

@@ -352,16 +352,40 @@ async function handleSendCatalog(request, env) {
   }
 }
 
+// The main site is now hosted by a third party (piccolavita.com), so these two API endpoints
+// are called cross-origin from that server and need explicit CORS handling.
+const ALLOWED_ORIGINS = new Set(["https://piccolavita.com", "https://www.piccolavita.com"]);
+
+function corsHeadersFor(request) {
+  const origin = request.headers.get("Origin");
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) return null;
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Vary": "Origin",
+  };
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname;
 
-    if (request.method === "POST" && path === "/.netlify/functions/picco-chat") {
-      return handlePiccoChat(request, env);
-    }
-    if (request.method === "POST" && path === "/.netlify/functions/send-catalog") {
-      return handleSendCatalog(request, env);
+    if (path === "/.netlify/functions/picco-chat" || path === "/.netlify/functions/send-catalog") {
+      const cors = corsHeadersFor(request);
+      if (request.method === "OPTIONS") {
+        return new Response(null, { status: 204, headers: cors || {} });
+      }
+      if (request.method === "POST") {
+        const resp = path.endsWith("picco-chat")
+          ? await handlePiccoChat(request, env)
+          : await handleSendCatalog(request, env);
+        if (!cors) return resp;
+        const headers = new Headers(resp.headers);
+        for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+        return new Response(resp.body, { status: resp.status, headers });
+      }
     }
 
     const redirectTo = ASP_REDIRECTS[path];

@@ -64,13 +64,12 @@ const ASP_REDIRECTS = {
 };
 
 // Catalog PDFs are too large for Cloudflare Workers static assets (53MB/69MB, over the 25MB
-// per-file limit) and R2 isn't enabled on this account yet, so these two paths are proxied
-// straight through to the (still-live) Netlify deployment instead of being bundled as assets.
-const PROXIED_DOCS = new Set([
-  "/assets/docs/piccolavita-katalog-2026-eylul.pdf",
-  "/assets/docs/piccolavita-ornek-projeler-katalogu.pdf",
-]);
-const DOCS_ORIGIN = "https://piccolavita.netlify.app";
+// per-file limit), so they're stored in the "piccolavita-docs" R2 bucket (binding DOCS_BUCKET)
+// and served directly from the Worker instead of being bundled as assets.
+const DOCS_KEYS = {
+  "/assets/docs/piccolavita-katalog-2026-eylul.pdf": "piccolavita-katalog-2026-eylul.pdf",
+  "/assets/docs/piccolavita-ornek-projeler-katalogu.pdf": "piccolavita-ornek-projeler-katalogu.pdf",
+};
 
 // Paths that keep X-Robots-Tag: noindex (mirrors netlify.toml [[headers]] blocks)
 const NOINDEX_PREFIXES = ["/v3/", "/alternatif/"];
@@ -370,14 +369,31 @@ export default {
       return Response.redirect(new URL(redirectTo, url.origin).toString(), 301);
     }
 
-    if (PROXIED_DOCS.has(path)) {
-      // netlify.app itself 301s to piccolavita.com (see the site's own netlify.toml redirect),
-      // so this must explicitly follow rather than inherit the incoming request's redirect mode.
-      return fetch(new URL(path, DOCS_ORIGIN).toString(), {
-        method: request.method,
-        headers: request.headers,
-        redirect: "follow",
+    const docKey = DOCS_KEYS[path];
+    if (docKey) {
+      const hasRange = request.headers.has("range");
+      const object = await env.DOCS_BUCKET.get(docKey, {
+        range: hasRange ? request.headers : undefined,
+        onlyIf: request.headers,
       });
+      if (!object) {
+        return new Response("Not found", { status: 404 });
+      }
+      const docHeaders = new Headers();
+      object.writeHttpMetadata(docHeaders);
+      docHeaders.set("etag", object.httpEtag);
+      docHeaders.set("accept-ranges", "bytes");
+      if (hasRange && object.range) {
+        const start = object.range.offset ?? object.size - object.range.suffix;
+        const end = "end" in object.range
+          ? object.range.end
+          : "length" in object.range
+          ? start + object.range.length - 1
+          : object.size - 1;
+        docHeaders.set("content-range", `bytes ${start}-${end}/${object.size}`);
+        return new Response(object.body, { status: 206, headers: docHeaders });
+      }
+      return new Response(object.body, { headers: docHeaders });
     }
 
     // html_handling="none" (set to stop Cloudflare's default .html-stripping redirects, which

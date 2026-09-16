@@ -4,6 +4,10 @@ compatibility_date = "2026-09-14"
 
 workers_dev = true
 
+[[r2_buckets]]
+bucket_name = "piccolavita-docs"
+binding = "DOCS_BUCKET"
+
 [assets]
 directory = "."
 binding = "ASSETS"

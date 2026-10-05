@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7W4SWS7');</script>
+<!-- End Google Tag Manager -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tiny House Modelle und Preise 2026 | Piccola Vita Tiny House</title>
@@ -1168,6 +1176,11 @@ html.lenis, html.lenis body { height: auto; }
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7W4SWS7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
@@ -3579,9 +3592,22 @@ document.querySelectorAll('.faq-item').forEach(item => {
 });
 
 // Form basari mesaji (FormSubmit _next donusu)
-if (new URLSearchParams(location.search).has('gonderildi')) {
+// Donusum eventi (teklif_formu_gonderildi) yalnizca form gecerli sekilde gonderilip
+// FormSubmit basari donusu geldiginde, gonderim basina bir kez dataLayer a yazilir
+(() => {
+  const KEY = 'pvTeklifFormu';
+  const form = document.querySelector('form.contact-form');
+  if (form) form.addEventListener('submit', () => {
+    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+  });
+  if (!new URLSearchParams(location.search).has('gonderildi')) return;
   document.getElementById('formSuccess').classList.add('show');
-}
+  let sent = true;
+  try { sent = sessionStorage.getItem(KEY) === '1'; sessionStorage.removeItem(KEY); } catch (e) {}
+  if (!sent) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'teklif_formu_gonderildi' });
+})();
 
 // Ilgilendiginiz Model - coklu secim
 (() => {

@@ -3600,6 +3600,10 @@ document.querySelectorAll('.faq-item').forEach(item => {
 (() => {
   const KEY = 'pvTeklifFormu';
   const form = document.querySelector('form.contact-form');
+  // www ve www'siz adres ayri origin sayilir: donus adresi ziyaretcinin bulundugu adrese gore ayarlanir,
+  // aksi halde sessionStorage bayragi kaybolur ve donusum eventi tetiklenmez
+  const next = form && form.querySelector('input[name="_next"]');
+  if (next) next.value = next.value.replace('https://piccolavita.com', location.origin);
   if (form) form.addEventListener('submit', () => {
     try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
   });
